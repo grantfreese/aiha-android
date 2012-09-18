@@ -10,43 +10,43 @@ import com.actionbarsherlock.app.ActionBar;
 
 public class MainActivity extends SherlockFragmentActivity implements ActionBar.TabListener
 {
+	public static int THEME = R.style.Theme_Aiha_Light;
+	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
+		setTheme(THEME);
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		
+		
 
 		getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		// getSupportActionBar().setDisplayUseLogoEnabled(false);
-		// getSupportActionBar().setDisplayShowTitleEnabled(true);
-		// getSupportActionBar().setDisplayShowHomeEnabled(true);
-		// getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		
+		getSupportActionBar().setDisplayUseLogoEnabled(false);
+		getSupportActionBar().setDisplayShowTitleEnabled(false);
+		getSupportActionBar().setDisplayShowHomeEnabled(false);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
-		ActionBar.Tab newTab0 = getSupportActionBar().newTab();
-		newTab0.setText("AIHA");
-
-		ActionBar.Tab newTab1 = getSupportActionBar().newTab();
-		newTab1.setText("Noise");
-
-		ActionBar.Tab newTab2 = getSupportActionBar().newTab();
-		newTab2.setText("Heat Stress");
-
-		ActionBar.Tab newTab3 = getSupportActionBar().newTab();
-		newTab3.setText("Ventilation");
-
-		ActionBar.Tab newTab4 = getSupportActionBar().newTab();
-		newTab4.setText("Exposure Assessment");
-
-		ActionBar.Tab newTab5 = getSupportActionBar().newTab();
-		newTab5.setText("Unit Conversion");
-
+		
+		ActionBar.Tab newTab0 = getSupportActionBar().newTab().setText("AIHA");
+		ActionBar.Tab newTab1 = getSupportActionBar().newTab().setText("Convert");
+		ActionBar.Tab newTab2 = getSupportActionBar().newTab().setText("Noise");
+		ActionBar.Tab newTab3 = getSupportActionBar().newTab().setText("Heat");
+		ActionBar.Tab newTab4 = getSupportActionBar().newTab().setText("Ventilation");
+		ActionBar.Tab newTab5 = getSupportActionBar().newTab().setText("Exposure");
+		
+		
 		newTab0.setTabListener(this);
 		newTab1.setTabListener(this);
 		newTab2.setTabListener(this);
 		newTab3.setTabListener(this);
 		newTab4.setTabListener(this);
 		newTab5.setTabListener(this);
+		
 
 		getSupportActionBar().addTab(newTab0);
 		getSupportActionBar().addTab(newTab1);
@@ -54,6 +54,7 @@ public class MainActivity extends SherlockFragmentActivity implements ActionBar.
 		getSupportActionBar().addTab(newTab3);
 		getSupportActionBar().addTab(newTab4);
 		getSupportActionBar().addTab(newTab5);
+		
 
 	}
 
