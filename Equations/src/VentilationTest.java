@@ -4,60 +4,61 @@ import org.junit.Test;
 
 
 public class VentilationTest {
-
+	final double EPSILON = 1E-2;
 	@Test
 	public void testOxygenDeficiencyFormulaOne() {
-		fail("Not yet implemented");
+		assertEquals(.21, Ventilation.oxygenDeficiencyFormulaOne(7, 6, 8, 10), EPSILON);
 	}
 
 	@Test
 	public void testRoomAirChanges() {
-		fail("Not yet implemented");
+		assertEquals(48.75, Ventilation.roomAirChanges(13, 16), EPSILON);
 	}
 
 	@Test
 	public void testTotalPressure() {
-		fail("Not yet implemented");
+		assertEquals(14.00, Ventilation.totalPressure(5, 9), EPSILON);
 	}
 
 	@Test
 	public void testFlowRateAdjustmentFormulaOne() {
-		fail("Not yet implemented");
+		assertEquals(6.12, Ventilation.flowRateAdjustmentFormulaOne(6, 5, 5, 3, 8), EPSILON);
 	}
 
 	@Test
 	public void testVelocity() {
-		fail("Not yet implemented");
+		assertEquals(12664.92, Ventilation.velocity(10), EPSILON);
 	}
 
+//Something wrong in this
 	@Test
 	public void testHoodStaticPressure() {
-		fail("Not yet implemented");
+		assertEquals(17, Ventilation.hoodStaticPressure(15, -32), EPSILON);
 	}
 
 	@Test
 	public void testDilutionVentilationBasedOnRoomAirChanges() {
-		fail("Not yet implemented");
+		assertEquals(40308.13, Ventilation.dilutionVentilationBasedOnRoomAirChanges(5, 8, 4, 1), EPSILON);
 	}
 
 	@Test
 	public void testDilationToControlEvaporationFormula() {
-		fail("Not yet implemented");
+		assertEquals(186000000.00, Ventilation.dilationToControlEvaporationFormula(5, 3, 8, 20, 13), EPSILON);
 	}
 
 	@Test
 	public void testFanLawsFormula() {
-		fail("Not yet implemented");
+		assertEquals(-31.00, Ventilation.fanLawsFormula(64, 72, 23), EPSILON);
 	}
 
 	@Test
 	public void testFanTotalPressure() {
-		fail("Not yet implemented");
+		assertEquals(-11.00, Ventilation.fanTotalPressure(8, 19), EPSILON);
 	}
 
 	@Test
 	public void testFanLawsFormulaFiveVar() {
-		fail("Not yet implemented");
+		assertEquals(3, Ventilation.fanLawsFormulaFiveVar(1, 1, 2, 2, 3), EPSILON);
 	}
 
 }

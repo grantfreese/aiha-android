@@ -125,10 +125,10 @@ public class Conversions {
 		return convertedValue;
 	}
 	
-	public static double grainsToGrams(double grams)
+	public static double grainsToGrams(double grains)
 	{
 		double convertedValue;
-		convertedValue = grams / 15.43;
+		convertedValue = grains / 15.43;
 		return convertedValue;
 	}
 
