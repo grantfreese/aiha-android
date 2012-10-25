@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, MainActivity!</string>
+    <string name="app_name">SherlockDemo</string>
+	<string name="btnLabelFragmentLayout">Fragment Layout</string>
+	<string name="btnLabelFragmentTabsPager">Fragment Tabs Pager</string>
+	<string name="fragment_stack_support">Fragment/Stack</string>
+	<string name="home">Home</string>
+	<string name="new_fragment">New Fragment</string>
+    <string name="fragment_layout_support">Fragment/Layout</string>
+    <string name="fragment_tabs_pager">Fragment/Tabs and Pager</string>
+    <string name="loader_cursor_support">Loader/Cursor</string>
+    <string name="loader_custom_support">Loader/Custom</string>
+    <string name="loader_throttle_support">Loader/Throttle</string>
+</resources>
