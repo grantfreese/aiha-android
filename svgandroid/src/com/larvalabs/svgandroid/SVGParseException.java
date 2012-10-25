@@ -7,7 +7,9 @@ package com.larvalabs.svgandroid;
  */
 public class SVGParseException extends RuntimeException {
 
-    public SVGParseException(String s) {
+	private static final long serialVersionUID = 1L;
+
+	public SVGParseException(String s) {
         super(s);
     }
 
