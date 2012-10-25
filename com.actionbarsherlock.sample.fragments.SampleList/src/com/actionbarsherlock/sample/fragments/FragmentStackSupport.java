@@ -79,14 +79,16 @@ public class FragmentStackSupport extends SherlockFragmentActivity {
 
 
 
-    public static class CountingFragment extends SherlockFragment {
+    public static class CountingFragment extends SherlockFragment
+    {
         int mNum;
 
         /**
          * Create a new instance of CountingFragment, providing "num"
          * as an argument.
          */
-        static CountingFragment newInstance(int num) {
+        static CountingFragment newInstance(int num)
+        {
             CountingFragment f = new CountingFragment();
 
             // Supply num input as an argument.
