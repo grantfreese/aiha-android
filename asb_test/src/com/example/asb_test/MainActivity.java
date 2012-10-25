@@ -47,12 +47,12 @@ public class MainActivity extends SherlockFragmentActivity
 		mTabsAdapter = new TabsAdapter(this, mViewPager);
 
 		// create tabs for actionbar		
-		mTabsAdapter.addTab("aiha", "AIHA",					EquationListSupport.class, null);
-		mTabsAdapter.addTab("convert", "Convert",			EquationListSupport.class, null);
-		mTabsAdapter.addTab("noise", "Noise",				EquationListSupport.class, null);
-		mTabsAdapter.addTab("heat", "Heat",					EquationListSupport.class, null);
-		mTabsAdapter.addTab("ventilation", "Ventilation",	EquationListSupport.class, null);
-		mTabsAdapter.addTab("exposure", "Exposure",			EquationListSupport.class, null);
+		mTabsAdapter.addTab("aiha", "AIHA",					FragmentLayoutSupport.class, null);
+		mTabsAdapter.addTab("convert", "Convert",			FragmentLayoutSupport.class, null);
+		mTabsAdapter.addTab("noise", "Noise",				FragmentLayoutSupport.class, null);
+		mTabsAdapter.addTab("heat", "Heat",					FragmentLayoutSupport.class, null);
+		mTabsAdapter.addTab("ventilation", "Ventilation",	FragmentLayoutSupport.class, null);
+		mTabsAdapter.addTab("exposure", "Exposure",			FragmentLayoutSupport.class, null);
 
 		//display AIHA SVG image
 		//ImageView imageView = new ImageView(this);

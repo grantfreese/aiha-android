@@ -17,53 +17,26 @@ import android.widget.TextView;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.SherlockListFragment;
+import com.example.asb_test.EquationItemAdapter.ViewHolder;
 
 import com.larvalabs.svgandroid.SVG;
 import com.larvalabs.svgandroid.SVGParser;
 
-public class EquationListSupport extends SherlockFragmentActivity
+/*********************************************************************************************************************/
+public class FragmentLayoutSupport extends SherlockFragmentActivity
 {
-	public class MenuItem
-	{
-		public int number;
-		public SVG graphic_name;
-		public int graphic_bg_color;
-		public int graphic_fg_color;
-
-		public MenuItem(int number, String graphic_name, int graphic_bg_color, int graphic_fg_color)
-		{
-			this.number = number;
-			this.graphic_name = SVGParser.getSVGFromResource(getResources(),
-					getResources().getIdentifier(graphic_name, "SVG", getPackageName()));
-			this.graphic_bg_color = graphic_bg_color;
-			this.graphic_fg_color = graphic_fg_color;
-		}
-
-		public MenuItem(int number, String graphic_name, int graphic_bg_color)
-		{
-			this.number = number;
-			this.graphic_name = SVGParser.getSVGFromResource(getResources(),
-					getResources().getIdentifier(graphic_name, "SVG", getPackageName()));
-			this.graphic_bg_color = graphic_bg_color;
-			this.graphic_fg_color = Color.WHITE;
-		}
-
-	}
+	private static EquationList _equationList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+		_equationList = new EquationList();	// generates vector with menu data
 
-		final MenuItem[] _menu_items = { new MenuItem(1, "R.svg.eqn01", Color.BLACK, Color.WHITE),
-				new MenuItem(2, "R.svg.eqn02", Color.BLACK, Color.WHITE),
-				new MenuItem(3, "R.svg.eqn03", Color.BLACK, Color.WHITE),
-				new MenuItem(4, "R.svg.eqn04", Color.BLACK, Color.WHITE), };
-
-		setContentView(R.layout.equation_list_support);
+		setContentView(R.layout.fragment_layout_support);
 	}
 
-	//handler for smallish screen sizes
+	// handler for smallish screen sizes
 	public static class DetailsActivity extends SherlockFragmentActivity
 	{
 
@@ -90,8 +63,9 @@ public class EquationListSupport extends SherlockFragmentActivity
 		}
 	}
 
-	//top-level fragment showing list of items
-	public static class EquationMenuFragment extends SherlockListFragment
+	/*****************************************************************************************************************/
+	// top-level fragment showing list of items
+	public static class EquationListFragment extends SherlockListFragment
 	{
 		boolean mDualPane;
 		int mCurCheckPosition = 0;
@@ -102,26 +76,26 @@ public class EquationListSupport extends SherlockFragmentActivity
 			super.onActivityCreated(savedInstanceState);
 
 			// Populate list with our static array of titles.
-			setListAdapter(new ArrayAdapter<String>(getActivity(), R.layout.equation_evaluator, android.R.id.text1,
-					Shakespeare.TITLES));
+			// setListAdapter(new ArrayAdapter<String>(getActivity(), R.layout.menu_list_grid, android.R.id.text1, Shakespeare.TITLES)); //old one
+			//setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, _equationList.getVect()));
 
 			// Check to see if we have a frame in which to embed the details
 			// fragment directly in the containing UI.
-			View detailsFrame = getActivity().findViewById(R.id.details);
-			mDualPane = detailsFrame != null && detailsFrame.getVisibility() == View.VISIBLE;
+			//View detailsFrame = getActivity().findViewById(R.id.details);
+			//mDualPane = detailsFrame != null && detailsFrame.getVisibility() == View.VISIBLE;
 
 			if (savedInstanceState != null)
 			{
 				// Restore last state for checked position.
-				mCurCheckPosition = savedInstanceState.getInt("curChoice", 0);
+				//mCurCheckPosition = savedInstanceState.getInt("curChoice", 0);
 			}
 
-			if (mDualPane)
+			if(mDualPane)
 			{
 				// In dual-pane mode, the list view highlights the selected item.
-				getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+				//getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 				// Make sure our UI is in the correct state.
-				showDetails(mCurCheckPosition);
+				//showDetails(mCurCheckPosition);
 			}
 		}
 
@@ -145,6 +119,8 @@ public class EquationListSupport extends SherlockFragmentActivity
 		 */
 		void showDetails(int index)
 		{
+			//TODO temp disable
+			/*
 			mCurCheckPosition = index;
 
 			if (mDualPane)
@@ -168,7 +144,8 @@ public class EquationListSupport extends SherlockFragmentActivity
 					ft.commit();
 				}
 
-			} else
+			}
+			else
 			{
 				// Otherwise we need to launch a new activity to display
 				// the dialog fragment with selected text.
@@ -177,9 +154,11 @@ public class EquationListSupport extends SherlockFragmentActivity
 				intent.putExtra("index", index);
 				startActivity(intent);
 			}
+			*/
 		}
 	}
 
+	/*****************************************************************************************************************/
 	/**
 	 * This is the secondary fragment, displaying the details of a particular
 	 * item.
@@ -188,7 +167,7 @@ public class EquationListSupport extends SherlockFragmentActivity
 	public static class DetailsFragment extends SherlockFragment
 	{
 		/**
-		 * Create a new instance of DetailsFragment, initialized to show the
+		 * Create a new instance of EquationFragment, initialized to show the
 		 * text at 'index'.
 		 */
 		public static DetailsFragment newInstance(int index)
@@ -214,63 +193,34 @@ public class EquationListSupport extends SherlockFragmentActivity
 			if (container == null)
 			{
 				// We have different layouts, and in one of them this
-				// fragment's containing frame doesn't exist.  The fragment
+				// fragment's containing frame doesn't exist. The fragment
 				// may still be created from its saved state, but there is
 				// no reason to try to create its view hierarchy because it
-				// won't be displayed.  Note this is not needed -- we could
+				// won't be displayed. Note this is not needed -- we could
 				// just run the code below, where we would create and return
 				// the view hierarchy; it would just never be used.
 				return null;
 			}
 
 			ScrollView scroller = new ScrollView(getActivity());
+			/* TODO temp disable
 			TextView text = new TextView(getActivity());
-			int padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getActivity().getResources()
-					.getDisplayMetrics());
-			text.setPadding(padding, padding, padding, padding);
-			scroller.addView(text);
-			text.setText(Shakespeare.DIALOGUE[getShownIndex()]);
+			int padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getActivity().getResources().getDisplayMetrics());
+			 text.setPadding(padding, padding, padding, padding);
+			 scroller.addView(text);
+			 text.setText(_equationList.getVect().elementAt(getShownIndex()).graphic_name); //temporary just to display *something*
+			*/
 			return scroller;
 		}
 	}
 
-
+	/*****************************************************************************************************************/
 	public class EquationEvaluator
 	{
 
 	}
+	/*****************************************************************************************************************/
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*********************************************************************************************************************/
 
