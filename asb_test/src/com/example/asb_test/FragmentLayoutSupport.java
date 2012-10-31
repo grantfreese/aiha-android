@@ -1,5 +1,7 @@
 package com.example.asb_test;
 
+import java.util.Vector;
+
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -18,6 +20,7 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.example.asb_test.EquationItemAdapter.ViewHolder;
+import com.example.asb_test.EquationList.EqnMenuItem;
 
 import com.larvalabs.svgandroid.SVG;
 import com.larvalabs.svgandroid.SVGParser;
@@ -31,7 +34,11 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		_equationList = new EquationList();	// generates vector with menu data
+		
+		if(_equationList == null)
+		{
+			_equationList = new EquationList(); //generates vector with menu data
+		}	
 
 		setContentView(R.layout.fragment_layout_support);
 	}
@@ -74,20 +81,35 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		public void onActivityCreated(Bundle savedInstanceState)
 		{
 			super.onActivityCreated(savedInstanceState);
+			
+			if(_equationList == null)
+			{
+				_equationList = new EquationList();
+			}
 
+			
+			//TODO: this needs to generate a subset called eqn_subset, which contains the equations for current tab 
+			int vect_subset_start = 5;
+			int vect_subset_end = 11;
+			//Vector<EqnMenuItem> eqn_subset = SubVector(_equationList.getVect(), vect_subset_start, vect_subset_end);
+			
+			
+			
+			
 			// Populate list with our static array of titles.
 			// setListAdapter(new ArrayAdapter<String>(getActivity(), R.layout.menu_list_grid, android.R.id.text1, Shakespeare.TITLES)); //old one
 			//setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, _equationList.getVect()));
-
+			setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, eqn_subset));
+					
 			// Check to see if we have a frame in which to embed the details
 			// fragment directly in the containing UI.
-			//View detailsFrame = getActivity().findViewById(R.id.details);
-			//mDualPane = detailsFrame != null && detailsFrame.getVisibility() == View.VISIBLE;
+			View detailsFrame = getActivity().findViewById(R.id.details);
+			mDualPane = detailsFrame != null && detailsFrame.getVisibility() == View.VISIBLE;
 
 			if (savedInstanceState != null)
 			{
 				// Restore last state for checked position.
-				//mCurCheckPosition = savedInstanceState.getInt("curChoice", 0);
+				mCurCheckPosition = savedInstanceState.getInt("curChoice", 0);
 			}
 
 			if(mDualPane)
@@ -119,8 +141,6 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		 */
 		void showDetails(int index)
 		{
-			//TODO temp disable
-			/*
 			mCurCheckPosition = index;
 
 			if (mDualPane)
@@ -154,7 +174,6 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				intent.putExtra("index", index);
 				startActivity(intent);
 			}
-			*/
 		}
 	}
 
@@ -203,13 +222,12 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			}
 
 			ScrollView scroller = new ScrollView(getActivity());
-			/* TODO temp disable
 			TextView text = new TextView(getActivity());
 			int padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getActivity().getResources().getDisplayMetrics());
 			 text.setPadding(padding, padding, padding, padding);
 			 scroller.addView(text);
 			 text.setText(_equationList.getVect().elementAt(getShownIndex()).graphic_name); //temporary just to display *something*
-			*/
+
 			return scroller;
 		}
 	}

@@ -28,6 +28,21 @@ public class EquationList
 		menuItems.add(new EqnMenuItem(TAB_NOISE, 3, "eqn_noise_03", Color.BLACK, Color.WHITE));
 		menuItems.add(new EqnMenuItem(TAB_NOISE, 4, "eqn_noise_04", Color.BLACK, Color.WHITE));
 		menuItems.add(new EqnMenuItem(TAB_NOISE, 5, "eqn_noise_05", Color.BLACK, Color.WHITE));
+		menuItems.add(new EqnMenuItem(TAB_HEAT, 1, "eqn_noise_01", Color.BLACK, Color.WHITE));
+		menuItems.add(new EqnMenuItem(TAB_HEAT, 2, "eqn_noise_02", Color.BLACK, Color.WHITE));
+		menuItems.add(new EqnMenuItem(TAB_HEAT, 3, "eqn_noise_03", Color.BLACK, Color.WHITE));
+		menuItems.add(new EqnMenuItem(TAB_HEAT, 4, "eqn_noise_04", Color.BLACK, Color.WHITE));
+		menuItems.add(new EqnMenuItem(TAB_HEAT, 5, "eqn_noise_05", Color.BLACK, Color.WHITE));
+		menuItems.add(new EqnMenuItem(TAB_VENT, 1, "eqn_noise_01", Color.BLACK, Color.WHITE));
+		menuItems.add(new EqnMenuItem(TAB_VENT, 2, "eqn_noise_02", Color.BLACK, Color.WHITE));
+		menuItems.add(new EqnMenuItem(TAB_VENT, 3, "eqn_noise_03", Color.BLACK, Color.WHITE));
+		menuItems.add(new EqnMenuItem(TAB_VENT, 4, "eqn_noise_04", Color.BLACK, Color.WHITE));
+		menuItems.add(new EqnMenuItem(TAB_VENT, 5, "eqn_noise_05", Color.BLACK, Color.WHITE));
+		menuItems.add(new EqnMenuItem(TAB_EXPOS, 1, "eqn_noise_01", Color.BLACK, Color.WHITE));
+		menuItems.add(new EqnMenuItem(TAB_EXPOS, 2, "eqn_noise_02", Color.BLACK, Color.WHITE));
+		menuItems.add(new EqnMenuItem(TAB_EXPOS, 3, "eqn_noise_03", Color.BLACK, Color.WHITE));
+		menuItems.add(new EqnMenuItem(TAB_EXPOS, 4, "eqn_noise_04", Color.BLACK, Color.WHITE));
+		menuItems.add(new EqnMenuItem(TAB_EXPOS, 5, "eqn_noise_05", Color.BLACK, Color.WHITE));
 
 	}
 

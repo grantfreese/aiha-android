@@ -54,8 +54,8 @@ public class EquationItemAdapter extends ArrayAdapter<EqnMenuItem>
 		final EqnMenuItem menuitem = menuItems.get(position);
 		if (menuitem != null)
 		{
-			holder.item1.setText(menuitem.number);
-			holder.item2.setText(menuitem.tab);
+			holder.item1.setText("num=" + Integer.toString(menuitem.number));
+			holder.item2.setText("tab=" + Integer.toString(menuitem.tab));
 		}
 		return row;
 	}
