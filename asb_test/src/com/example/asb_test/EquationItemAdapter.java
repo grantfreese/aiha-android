@@ -1,6 +1,7 @@
 package com.example.asb_test;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import com.actionbarsherlock.app.SherlockActivity;
@@ -19,13 +20,15 @@ public class EquationItemAdapter extends ArrayAdapter<EqnMenuItem>
 {
 	private FragmentActivity activity;
 	private EquationList equationList;
-	private Vector<EqnMenuItem> menuItems;
+	private ArrayList<EqnMenuItem> menuItems;
 
-	public EquationItemAdapter(FragmentActivity activity, int textViewResourceId, Vector<EqnMenuItem> menuItems)
+	public EquationItemAdapter(FragmentActivity activity, int textViewResourceId, ArrayList<EqnMenuItem> menuItems)
 	{
 		super(activity, textViewResourceId, menuItems);
 		this.activity = activity;
 		this.menuItems = menuItems;
+		
+		
 	}
 
 	public static class ViewHolder
@@ -51,11 +54,12 @@ public class EquationItemAdapter extends ArrayAdapter<EqnMenuItem>
 		else
 			holder = (ViewHolder) row.getTag();
 
-		final EqnMenuItem menuitem = menuItems.get(position);
+		//final EqnMenuItem menuitem = menuItems.get(position);
+		EqnMenuItem menuitem = menuItems.get(position);
 		if (menuitem != null)
 		{
 			holder.item1.setText("num=" + Integer.toString(menuitem.number));
-			holder.item2.setText("tab=" + Integer.toString(menuitem.tab));
+			holder.item2.setText("img=" + menuitem.graphic_name);
 		}
 		return row;
 	}
@@ -64,8 +68,9 @@ public class EquationItemAdapter extends ArrayAdapter<EqnMenuItem>
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-		// TODO Auto-generated method stub
-		// return super.getView(position, convertView, parent);
+		// TODO fix getView 
+		//Auto-generated method stub
+		//return super.getView(position, convertView, parent);
 
 		View row = convertView;
 
