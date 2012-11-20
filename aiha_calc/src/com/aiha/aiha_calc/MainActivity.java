@@ -57,6 +57,7 @@ public class MainActivity extends SherlockFragmentActivity
 		//display AIHA SVG image
 		//ImageView imageView = new ImageView(this);
 		// imageView.setBackgroundColor(Color.RED); // Set the background color
+		
 		//SVG svg = SVGParser.getSVGFromResource(getResources(), R.raw.aiha_tag_white);
 		//imageView.setImageDrawable(svg.createPictureDrawable());
 		//setContentView(imageView);

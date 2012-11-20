@@ -33,55 +33,57 @@ public class EquationList
 
 		// add menu items
 		//index_number, image_name, count_var, 
+		tab_convert.add(new EqnMenuItem(1, R.raw.eqn_expos_01));
+		/*
+		tab_convert.add(new EqnMenuItem(1, R.raw.conv_volume));
+		tab_convert.add(new EqnMenuItem(2, R.raw.conv_distance));
+		tab_convert.add(new EqnMenuItem(3, R.raw.conv_pressure));
+		tab_convert.add(new EqnMenuItem(4, R.raw.conv_mass));
+		tab_convert.add(new EqnMenuItem(5, R.raw.conv_temperature));
+		tab_convert.add(new EqnMenuItem(6, R.raw.conv_area));
+		tab_convert.add(new EqnMenuItem(7, R.raw.conv_oem));
+		tab_convert.add(new EqnMenuItem(8, R.raw.conv_concentration));
+		tab_convert.add(new EqnMenuItem(9, R.raw.conv_flowrate));
+		tab_convert.add(new EqnMenuItem(10, R.raw.conv_constants));
+		*/
 		
-		tab_convert.add(new EqnMenuItem(1, "conv_volume"));
-		tab_convert.add(new EqnMenuItem(2, "conv_distance"));
-		tab_convert.add(new EqnMenuItem(3, "conv_pressure"));
-		tab_convert.add(new EqnMenuItem(4, "conv_mass"));
-		tab_convert.add(new EqnMenuItem(5, "conv_temperature"));
-		tab_convert.add(new EqnMenuItem(6, "conv_area"));
-		tab_convert.add(new EqnMenuItem(7, "conv_oem"));
-		tab_convert.add(new EqnMenuItem(8, "conv_concentration"));
-		tab_convert.add(new EqnMenuItem(9, "conv_flowrate"));
-		tab_convert.add(new EqnMenuItem(10, "conv_constants"));
+		tab_noise.add(new EqnMenuItem(1, R.raw.eqn_noise_01));
+		tab_noise.add(new EqnMenuItem(2, R.raw.eqn_noise_02));
+		tab_noise.add(new EqnMenuItem(3, R.raw.eqn_noise_03));
+		tab_noise.add(new EqnMenuItem(4, R.raw.eqn_noise_04));
+		tab_noise.add(new EqnMenuItem(5, R.raw.eqn_noise_05));
 		
-		tab_noise.add(new EqnMenuItem(1, "eqn_noise_01"));
-		tab_noise.add(new EqnMenuItem(2, "eqn_noise_02"));
-		tab_noise.add(new EqnMenuItem(3, "eqn_noise_03"));
-		tab_noise.add(new EqnMenuItem(4, "eqn_noise_04"));
-		tab_noise.add(new EqnMenuItem(5, "eqn_noise_05"));
+		tab_heat.add(new EqnMenuItem(1, R.raw.eqn_heat_01));
+		tab_heat.add(new EqnMenuItem(2, R.raw.eqn_heat_02));
 		
-		tab_heat.add(new EqnMenuItem(1, "eqn_heat_01"));
-		tab_heat.add(new EqnMenuItem(2, "eqn_heat_02"));
+		tab_vent.add(new EqnMenuItem(1, R.raw.eqn_vent_01));
+		tab_vent.add(new EqnMenuItem(2, R.raw.eqn_vent_02));
+		tab_vent.add(new EqnMenuItem(3, R.raw.eqn_vent_03));
+		tab_vent.add(new EqnMenuItem(4, R.raw.eqn_vent_04));
+		tab_vent.add(new EqnMenuItem(5, R.raw.eqn_vent_05));
+		tab_vent.add(new EqnMenuItem(6, R.raw.eqn_vent_06));
+		tab_vent.add(new EqnMenuItem(7, R.raw.eqn_vent_07));
+		tab_vent.add(new EqnMenuItem(8, R.raw.eqn_vent_08));
+		tab_vent.add(new EqnMenuItem(9, R.raw.eqn_vent_09));
+		tab_vent.add(new EqnMenuItem(10, R.raw.eqn_vent_10));
+		tab_vent.add(new EqnMenuItem(11, R.raw.eqn_vent_11));
 		
-		tab_vent.add(new EqnMenuItem(1, "eqn_vent_01"));
-		tab_vent.add(new EqnMenuItem(2, "eqn_vent_02"));
-		tab_vent.add(new EqnMenuItem(3, "eqn_vent_03"));
-		tab_vent.add(new EqnMenuItem(4, "eqn_vent_04"));
-		tab_vent.add(new EqnMenuItem(5, "eqn_vent_05"));
-		tab_vent.add(new EqnMenuItem(6, "eqn_vent_06"));
-		tab_vent.add(new EqnMenuItem(7, "eqn_vent_07"));
-		tab_vent.add(new EqnMenuItem(8, "eqn_vent_08"));
-		tab_vent.add(new EqnMenuItem(9, "eqn_vent_09"));
-		tab_vent.add(new EqnMenuItem(10, "eqn_vent_10"));
-		tab_vent.add(new EqnMenuItem(11, "eqn_vent_11"));
-		
-		tab_expos.add(new EqnMenuItem(1, "eqn_expos_01"));
-		tab_expos.add(new EqnMenuItem(2, "eqn_expos_02"));
-		tab_expos.add(new EqnMenuItem(3, "eqn_expos_03"));
+		tab_expos.add(new EqnMenuItem(1, R.raw.eqn_expos_01));
+		tab_expos.add(new EqnMenuItem(2, R.raw.eqn_expos_02));
+		tab_expos.add(new EqnMenuItem(3, R.raw.eqn_expos_03));
 
 	}
 
 	public class EqnMenuItem
 	{
 		public int number;
-		public String graphic_name;
+		public int graphic_id;
 
-		public EqnMenuItem(int number, String graphic_name)
+		public EqnMenuItem(int number, int graphic_id)
 		{
 			this.number = number;
 			// this.graphic_name = SVGParser.getSVGFromResource(c.getResources(), c.getResources().getIdentifier(graphic_name, "SVG", c.getPackageName()));
-			this.graphic_name = graphic_name;
+			this.graphic_id = graphic_id;
 		}
 	}
 
