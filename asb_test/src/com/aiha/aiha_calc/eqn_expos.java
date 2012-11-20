@@ -1,6 +1,6 @@
 package com.aiha.aiha_calc;
 
-public class eqn_ExposureAssessment
+public class eqn_expos
 {
 
 	// silicaRespirableFraction

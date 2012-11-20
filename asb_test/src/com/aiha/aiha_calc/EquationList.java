@@ -32,29 +32,30 @@ public class EquationList
 		tab_expos = new ArrayList<EqnMenuItem>();
 
 		// add menu items
-		tab_noise.add(new EqnMenuItem(1, "eqn_noise_01", Color.BLACK, Color.WHITE));
-		tab_noise.add(new EqnMenuItem(2, "eqn_noise_02", Color.BLACK, Color.WHITE));
-		tab_noise.add(new EqnMenuItem(3, "eqn_noise_03", Color.BLACK, Color.WHITE));
-		tab_noise.add(new EqnMenuItem(4, "eqn_noise_04", Color.BLACK, Color.WHITE));
-		tab_noise.add(new EqnMenuItem(5, "eqn_noise_05", Color.BLACK, Color.WHITE));
+		//index_number, image_name, count_var, 
+		tab_noise.add(new EqnMenuItem(1, "eqn_noise_01"));
+		tab_noise.add(new EqnMenuItem(2, "eqn_noise_02"));
+		tab_noise.add(new EqnMenuItem(3, "eqn_noise_03"));
+		tab_noise.add(new EqnMenuItem(4, "eqn_noise_04"));
+		tab_noise.add(new EqnMenuItem(5, "eqn_noise_05"));
 		
-		tab_heat.add(new EqnMenuItem(1, "eqn_heat_01", Color.BLACK, Color.WHITE));
-		tab_heat.add(new EqnMenuItem(2, "eqn_heat_02", Color.BLACK, Color.WHITE));
-		tab_heat.add(new EqnMenuItem(3, "eqn_heat_03", Color.BLACK, Color.WHITE));
-		tab_heat.add(new EqnMenuItem(4, "eqn_heat_04", Color.BLACK, Color.WHITE));
-		tab_heat.add(new EqnMenuItem(5, "eqn_heat_05", Color.BLACK, Color.WHITE));
+		tab_heat.add(new EqnMenuItem(1, "eqn_heat_01"));
+		tab_heat.add(new EqnMenuItem(2, "eqn_heat_02"));
+		tab_heat.add(new EqnMenuItem(3, "eqn_heat_03"));
+		tab_heat.add(new EqnMenuItem(4, "eqn_heat_04"));
+		tab_heat.add(new EqnMenuItem(5, "eqn_heat_05"));
 		
-		tab_vent.add(new EqnMenuItem(1, "eqn_vent_01", Color.BLACK, Color.WHITE));
-		tab_vent.add(new EqnMenuItem(2, "eqn_vent_02", Color.BLACK, Color.WHITE));
-		tab_vent.add(new EqnMenuItem(3, "eqn_vent_03", Color.BLACK, Color.WHITE));
-		tab_vent.add(new EqnMenuItem(4, "eqn_vent_04", Color.BLACK, Color.WHITE));
-		tab_vent.add(new EqnMenuItem(5, "eqn_vent_05", Color.BLACK, Color.WHITE));
+		tab_vent.add(new EqnMenuItem(1, "eqn_vent_01"));
+		tab_vent.add(new EqnMenuItem(2, "eqn_vent_02"));
+		tab_vent.add(new EqnMenuItem(3, "eqn_vent_03"));
+		tab_vent.add(new EqnMenuItem(4, "eqn_vent_04"));
+		tab_vent.add(new EqnMenuItem(5, "eqn_vent_05"));
 		
-		tab_expos.add(new EqnMenuItem(1, "eqn_expos_01", Color.BLACK, Color.WHITE));
-		tab_expos.add(new EqnMenuItem(2, "eqn_expos_02", Color.BLACK, Color.WHITE));
-		tab_expos.add(new EqnMenuItem(3, "eqn_expos_03", Color.BLACK, Color.WHITE));
-		tab_expos.add(new EqnMenuItem(4, "eqn_expos_04", Color.BLACK, Color.WHITE));
-		tab_expos.add(new EqnMenuItem(5, "eqn_expos_05", Color.BLACK, Color.WHITE));
+		tab_expos.add(new EqnMenuItem(1, "eqn_expos_01"));
+		tab_expos.add(new EqnMenuItem(2, "eqn_expos_02"));
+		tab_expos.add(new EqnMenuItem(3, "eqn_expos_03"));
+		tab_expos.add(new EqnMenuItem(4, "eqn_expos_04"));
+		tab_expos.add(new EqnMenuItem(5, "eqn_expos_05"));
 
 	}
 
@@ -62,16 +63,12 @@ public class EquationList
 	{
 		public int number;
 		public String graphic_name;
-		public int graphic_bg_color;
-		public int graphic_fg_color;
 
-		public EqnMenuItem(int number, String graphic_name, int graphic_bg_color, int graphic_fg_color)
+		public EqnMenuItem(int number, String graphic_name)
 		{
 			this.number = number;
 			// this.graphic_name = SVGParser.getSVGFromResource(c.getResources(), c.getResources().getIdentifier(graphic_name, "SVG", c.getPackageName()));
 			this.graphic_name = graphic_name;
-			this.graphic_bg_color = graphic_bg_color;
-			this.graphic_fg_color = graphic_fg_color;
 		}
 	}
 

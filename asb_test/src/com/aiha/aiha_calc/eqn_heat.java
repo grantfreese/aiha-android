@@ -1,6 +1,6 @@
 package com.aiha.aiha_calc;
 
-public class eqn_HeatStress
+public class eqn_heat
 {
 	// wetBulbGlobeTempOutdoors
 	public static double eqn_heat_01(double tnwb_o, double tg_o, double tdb_o)

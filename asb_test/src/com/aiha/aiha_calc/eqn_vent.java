@@ -1,6 +1,6 @@
 package com.aiha.aiha_calc;
 
-public class eqn_Ventilation
+public class eqn_vent
 {
 
 	// volumeOfDisplacedAir.svg (now eqn_vent_00)

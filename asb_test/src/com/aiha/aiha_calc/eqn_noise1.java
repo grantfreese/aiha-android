@@ -1,6 +1,6 @@
 package com.aiha.aiha_calc;
 
-public class eqn_Noise
+public class eqn_noise1
 {
 
 	// addingSoundPressureLevels
