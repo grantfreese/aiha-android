@@ -1,4 +1,4 @@
-package com.example.asb_test;
+package com.aiha.aiha_calc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.Vector;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.example.asb_test.EquationList.EqnMenuItem;
+import com.aiha.aiha_calc.EquationList.EqnMenuItem;
 
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;

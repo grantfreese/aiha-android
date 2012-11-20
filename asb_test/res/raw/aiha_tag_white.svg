@@ -3,8 +3,11 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="249.667px" height="91.25px" viewBox="0 0 249.667 91.25" enable-background="new 0 0 249.667 91.25" xml:space="preserve">
-<font horiz-adv-x="1000">
-<!-- Copyright 1992, 1994, 1997, 2000, 2004 Adobe Systems Incorporated. All rights reserved. Myriad is either a registered trademark or a trademark of Adobe Systems Incorporated in the United States and/or other countries. -->
+
+<!--
+	 <font horiz-adv-x="1000">
+
+
 <font-face font-family="Myriad-Roman" units-per-em="1000" underline-position="-100" underline-thickness="50"/>
 <missing-glyph horiz-adv-x="500" d="M0,0l500,0l0,700l-500,0M250,395l-170,255l340,0M280,350l170,255l0,-510M80,50l170,255l170,-255M50,605l170,-255l-170,-255z"/>
 <glyph unicode="A" horiz-adv-x="612" d="M424,212l72,-212l93,0l-230,674l-105,0l-229,-674l90,0l70,212M203,280l66,195C282,516 293,557 303,597l2,0C315,558 325,518 340,474l66,-194z"/>
@@ -843,7 +846,7 @@
 <glyph unicode="&#xF643;" horiz-adv-x="530" d="M265,-11C390,-11 490,84 490,242C490,402 389,495 265,495C141,495 40,399 40,242C40,81 141,-11 265,-11M265,56C177,56 125,135 125,242C125,349 177,428 265,428C353,428 405,349 405,242C405,135 354,56 265,56z"/>
 <glyph unicode="&#x3B6;" horiz-adv-x="409" d="M341,-143C368,-108 401,-26 401,32C401,38 397,43 392,44C345,49 298,56 252,73C179,99 128,143 128,250C128,397 247,568 407,649l-13,61l-167,0C182,710 137,710 105,714l-9,-59C126,647 167,645 212,645l71,0l0,-4C129,536 39,373 39,234C39,106 110,40 198,11C238,-2 281,-11 316,-16C314,-42 297,-103 283,-126z"/>
 </font>
-
+-->
 	<g>
 	<path fill="#FFFFFF" d="M133.579,15.176v38.241c0,2.134,1.276,3.514,3.252,3.514s3.252-1.38,3.252-3.514V15.176
 		c0-2.136-1.276-3.514-3.252-3.514S133.579,13.04,133.579,15.176z"/>

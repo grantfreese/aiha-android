@@ -1,4 +1,4 @@
-package com.example.asb_test;
+package com.aiha.aiha_calc;
 
 import java.util.ArrayList;
 
@@ -47,8 +47,8 @@ public class MainActivity extends SherlockFragmentActivity
 		mTabsAdapter = new TabsAdapter(this, mViewPager);
 
 		// create tabs for actionbar		
-		mTabsAdapter.addTab("aiha", "AIHA",					FragmentLayoutSupport.ExposListFragment.class, null);
-		mTabsAdapter.addTab("convert", "Convert",			FragmentLayoutSupport.ExposListFragment.class, null);
+		mTabsAdapter.addTab("aiha", "AIHA",					MainPageFragment.class, null);
+		mTabsAdapter.addTab("convert", "Convert",			MainPageFragment.class, null);
 		mTabsAdapter.addTab("noise", "Noise",				FragmentLayoutSupport.NoiseListFragment.class, null);
 		mTabsAdapter.addTab("heat", "Heat",					FragmentLayoutSupport.HeatListFragment.class, null);
 		mTabsAdapter.addTab("ventilation", "Ventilation",	FragmentLayoutSupport.VentListFragment.class, null);

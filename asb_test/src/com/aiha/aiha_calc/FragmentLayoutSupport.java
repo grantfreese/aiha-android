@@ -1,4 +1,4 @@
-package com.example.asb_test;
+package com.aiha.aiha_calc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +21,8 @@ import android.widget.TextView;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.SherlockListFragment;
-import com.example.asb_test.EquationItemAdapter.ViewHolder;
-import com.example.asb_test.EquationList.EqnMenuItem;
+import com.aiha.aiha_calc.EquationItemAdapter.ViewHolder;
+import com.aiha.aiha_calc.EquationList.EqnMenuItem;
 
 import com.larvalabs.svgandroid.SVG;
 import com.larvalabs.svgandroid.SVGParser;

@@ -1,4 +1,4 @@
-package com.example.asb_test;
+package com.aiha.aiha_calc;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

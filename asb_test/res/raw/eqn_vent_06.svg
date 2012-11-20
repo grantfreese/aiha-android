@@ -61,7 +61,7 @@
            y="0.45416585"
            id="rect3067" /></flowRegion><flowPara
          id="flowPara3069"></flowPara></flowRoot>    <path
-       d="m 294.68242,28.545163 50.39461,0"
+       d="m 170.04788,-46.235559 50.39461,0"
        id="path3142"
        style="fill:none;stroke:#000000;stroke-width:0.79703289px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     <text
@@ -84,87 +84,79 @@
          x="195.4917"
          y="-35.197559"
          id="tspan3150">)</tspan></text>
+    <path
+       d="m 81.557047,-28.74622 142.580693,0"
+       id="path3142-1"
+       style="fill:none;stroke:#000000;stroke-width:0.98075521px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     <g
-       transform="matrix(0.90120608,0,0,0.90120608,34.88255,-0.12424809)"
-       id="g3156">
+       transform="matrix(1.4109689,0,0,1.4109689,-110.711,7.5942608)"
+       id="g3361">
       <text
-         x="231.8782"
-         y="26.150265"
-         id="text3158"
+         x="241.95"
+         y="12.595687"
+         id="text3363"
          xml:space="preserve"
-         style="font-size:13.80000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;font-family:cmr10;-inkscape-font-specification:cmr10">T</text>
+         style="font-size:13.80000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;font-family:Cambria Math;-inkscape-font-specification:Cambria Math">|</text>
       <text
-         x="245.6891"
-         y="25.330851"
-         id="text3160"
+         x="246.3"
+         y="13.045533"
+         id="text3365"
+         xml:space="preserve"
+         style="font-size:13.80000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;font-family:cmr10;-inkscape-font-specification:cmr10">SP</text>
+      <text
+         x="262.2616"
+         y="15.894557"
+         id="text3367"
+         xml:space="preserve"
+         style="font-size:10.05000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;font-family:cmr10;-inkscape-font-specification:cmr10">h</text>
+      <text
+         x="267.75"
+         y="12.595687"
+         id="text3369"
+         xml:space="preserve"
+         style="font-size:13.80000019px;font-style:normal;font-weight:normal;text-align:start;text-anchor:start;fill:#000000;font-family:Cambria Math">|</text>
+      <text
+         x="275.85001"
+         y="13.045533"
+         id="text3371"
          xml:space="preserve"
          style="font-size:13.80000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;font-family:cmb10;-inkscape-font-specification:cmb10">=</text>
       <text
-         x="301.79999"
-         y="11.109026"
-         id="text3162"
+         x="289.79999"
+         y="13.045533"
+         id="text3373"
          xml:space="preserve"
-         style="font-size:13.80000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;font-family:cmr10;-inkscape-font-specification:cmr10">8</text>
+         style="font-size:13.80000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;font-family:cmr10;-inkscape-font-specification:cmr10">VP</text>
       <text
-         x="261.29999"
-         y="37.380371"
-         id="text3164"
+         x="307.73621"
+         y="15.894557"
+         id="text3375"
          xml:space="preserve"
-         style="font-size:13.80000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;font-family:cmr10;-inkscape-font-specification:cmr10">2</text>
+         style="font-size:10.05000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;font-family:cmr10;-inkscape-font-specification:cmr10">d</text>
       <text
-         x="271.95001"
-         y="37.380371"
-         id="text3166"
+         x="315.89999"
+         y="13.045533"
+         id="text3377"
          xml:space="preserve"
-         style="font-size:13.80000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;font-family:cmr10;-inkscape-font-specification:cmr10">*</text>
+         style="font-size:13.80000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;font-family:cmb10;-inkscape-font-specification:cmb10">+</text>
       <text
-         x="280.31708"
-         y="37.380371"
-         id="text3168"
+         x="329.25"
+         y="13.045533"
+         id="text3379"
          xml:space="preserve"
-         style="font-size:24.17440033px;font-style:normal;font-weight:normal;text-align:start;text-anchor:start;fill:#000000;font-family:Cambria Math"><tspan
-           id="tspan3199"
-           style="font-size:24.17440033px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:cmr10;-inkscape-font-specification:cmr10">(</tspan></text>
+         style="font-size:13.80000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;font-family:cmr10;-inkscape-font-specification:cmr10">h</text>
       <text
-         x="288.45001"
-         y="29.273785"
-         id="text3170"
+         x="338.7739"
+         y="15.894557"
+         id="text3381"
          xml:space="preserve"
-         style="font-size:13.80000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;font-family:cmr10;-inkscape-font-specification:cmr10">SPL</text>
+         style="font-size:10.05000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;font-family:cmr10;-inkscape-font-specification:cmr10">e</text>
       <text
-         x="317.8718"
-         y="29.273785"
-         id="text3172"
-         xml:space="preserve"
-         style="font-size:13.80000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;font-family:cmb10;-inkscape-font-specification:cmb10">-</text>
-      <text
-         x="328.20001"
-         y="29.273785"
-         id="text3174"
-         xml:space="preserve"
-         style="font-size:13.80000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;font-family:cmr10;-inkscape-font-specification:cmr10">90</text>
-      <text
-         x="312.14999"
-         y="44.436104"
-         id="text3176"
-         xml:space="preserve"
-         style="font-size:13.80000019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;font-family:cmr10;-inkscape-font-specification:cmr10">5</text>
-      <text
-         x="341.98911"
-         y="37.380371"
-         id="text3178"
-         xml:space="preserve"
-         style="font-size:24.17440033px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;font-family:cmr10;-inkscape-font-specification:cmr10">)</text>
-      <text
-         x="350.10001"
-         y="21.617563"
-         id="text3180"
+         x="343.20001"
+         y="13.045533"
+         id="text3383"
          xml:space="preserve"
          style="font-size:13.80000019px;font-style:normal;font-weight:normal;text-align:start;text-anchor:start;fill:#000000;font-family:Calibri"> </text>
     </g>
-    <path
-       d="m 270.43133,14.564281 80.69236,0"
-       id="path3142-1"
-       style="fill:none;stroke:#000000;stroke-width:1.00855696px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
   </g>
 </svg>
