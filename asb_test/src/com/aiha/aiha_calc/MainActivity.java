@@ -48,7 +48,7 @@ public class MainActivity extends SherlockFragmentActivity
 
 		// create tabs for actionbar		
 		mTabsAdapter.addTab("aiha", "AIHA",					MainPageFragment.class, null);
-		mTabsAdapter.addTab("convert", "Convert",			MainPageFragment.class, null);
+		mTabsAdapter.addTab("convert", "Convert",			FragmentLayoutSupport.ConvertListFragment.class, null);
 		mTabsAdapter.addTab("noise", "Noise",				FragmentLayoutSupport.NoiseListFragment.class, null);
 		mTabsAdapter.addTab("heat", "Heat",					FragmentLayoutSupport.HeatListFragment.class, null);
 		mTabsAdapter.addTab("ventilation", "Ventilation",	FragmentLayoutSupport.VentListFragment.class, null);

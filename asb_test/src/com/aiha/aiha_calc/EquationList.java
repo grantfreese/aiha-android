@@ -33,6 +33,18 @@ public class EquationList
 
 		// add menu items
 		//index_number, image_name, count_var, 
+		
+		tab_convert.add(new EqnMenuItem(1, "conv_volume"));
+		tab_convert.add(new EqnMenuItem(2, "conv_distance"));
+		tab_convert.add(new EqnMenuItem(3, "conv_pressure"));
+		tab_convert.add(new EqnMenuItem(4, "conv_mass"));
+		tab_convert.add(new EqnMenuItem(5, "conv_temperature"));
+		tab_convert.add(new EqnMenuItem(6, "conv_area"));
+		tab_convert.add(new EqnMenuItem(7, "conv_oem"));
+		tab_convert.add(new EqnMenuItem(8, "conv_concentration"));
+		tab_convert.add(new EqnMenuItem(9, "conv_flowrate"));
+		tab_convert.add(new EqnMenuItem(10, "conv_constants"));
+		
 		tab_noise.add(new EqnMenuItem(1, "eqn_noise_01"));
 		tab_noise.add(new EqnMenuItem(2, "eqn_noise_02"));
 		tab_noise.add(new EqnMenuItem(3, "eqn_noise_03"));
@@ -41,21 +53,22 @@ public class EquationList
 		
 		tab_heat.add(new EqnMenuItem(1, "eqn_heat_01"));
 		tab_heat.add(new EqnMenuItem(2, "eqn_heat_02"));
-		tab_heat.add(new EqnMenuItem(3, "eqn_heat_03"));
-		tab_heat.add(new EqnMenuItem(4, "eqn_heat_04"));
-		tab_heat.add(new EqnMenuItem(5, "eqn_heat_05"));
 		
 		tab_vent.add(new EqnMenuItem(1, "eqn_vent_01"));
 		tab_vent.add(new EqnMenuItem(2, "eqn_vent_02"));
 		tab_vent.add(new EqnMenuItem(3, "eqn_vent_03"));
 		tab_vent.add(new EqnMenuItem(4, "eqn_vent_04"));
 		tab_vent.add(new EqnMenuItem(5, "eqn_vent_05"));
+		tab_vent.add(new EqnMenuItem(6, "eqn_vent_06"));
+		tab_vent.add(new EqnMenuItem(7, "eqn_vent_07"));
+		tab_vent.add(new EqnMenuItem(8, "eqn_vent_08"));
+		tab_vent.add(new EqnMenuItem(9, "eqn_vent_09"));
+		tab_vent.add(new EqnMenuItem(10, "eqn_vent_10"));
+		tab_vent.add(new EqnMenuItem(11, "eqn_vent_11"));
 		
 		tab_expos.add(new EqnMenuItem(1, "eqn_expos_01"));
 		tab_expos.add(new EqnMenuItem(2, "eqn_expos_02"));
 		tab_expos.add(new EqnMenuItem(3, "eqn_expos_03"));
-		tab_expos.add(new EqnMenuItem(4, "eqn_expos_04"));
-		tab_expos.add(new EqnMenuItem(5, "eqn_expos_05"));
 
 	}
 
@@ -84,7 +97,7 @@ public class EquationList
 			System.out.println("getVect using TAB_AIHA (null)");
 			break;
 		case TAB_CONVERT:
-			menuItems = null;	//change to tab_convert later if needed
+			menuItems = tab_convert;	//change to tab_convert later if needed
 			System.out.println("getVect using TAB_CONVERT (null)");
 			break;
 		case TAB_NOISE:

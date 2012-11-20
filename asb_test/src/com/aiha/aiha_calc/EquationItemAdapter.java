@@ -47,8 +47,8 @@ public class EquationItemAdapter extends ArrayAdapter<EqnMenuItem>
 			LayoutInflater vi = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			row = vi.inflate(R.layout.menu_list_grid, null);
 			holder = new ViewHolder();
-			holder.item1 = (TextView) row.findViewById(R.id.big);
-			holder.item2 = (TextView) row.findViewById(R.id.small);
+			holder.item1 = (TextView) row.findViewById(R.id.number);
+			holder.item2 = (TextView) row.findViewById(R.id.image);
 			row.setTag(holder);
 		}
 		else

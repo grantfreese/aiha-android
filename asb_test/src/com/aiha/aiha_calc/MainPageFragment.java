@@ -22,7 +22,7 @@ public class MainPageFragment extends SherlockFragment
 
 		View V = inflater.inflate(R.layout.test, container, false);
 		ImageView imageView = (ImageView) V.findViewById(R.id.AIHAtestImage);
-		imageView.setBackgroundColor(Color.BLUE); // Set the background color
+		// imageView.setBackgroundColor(Color.BLUE); // Set the background color
 		SVG svg = SVGParser.getSVGFromResource(getResources(),
 				R.raw.aiha_tag_white);
 		imageView.setImageDrawable(svg.createPictureDrawable());
