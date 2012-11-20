@@ -27,6 +27,7 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.aiha.aiha_calc.EquationItemAdapter.ViewHolder;
+import com.aiha.aiha_calc.EquationList;
 import com.aiha.aiha_calc.EquationList.EqnMenuItem;
 
 import com.larvalabs.svgandroid.SVG;
@@ -41,11 +42,11 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
-		if(_equationList == null)
+
+		if (_equationList == null)
 		{
-			_equationList = new EquationList(); //generates vector with menu data
-		}	
+			_equationList = new EquationList(); // generates vector with menu data
+		}
 
 		setContentView(R.layout.fragment_layout_support);
 	}
@@ -83,61 +84,55 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 	{
 		boolean mDualPane;
 		int mCurCheckPosition = 0;
-		
+
 		EquationItemAdapter eqn_adapter_convert;
-		
+
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState)
 		{
 			super.onActivityCreated(savedInstanceState);
-			
-			if(_equationList == null)
+
+			if (_equationList == null)
 			{
 				_equationList = new EquationList();
 			}
 
-			//stuff to get tab number
+			// stuff to get tab number
 			int current_tab;
 			SherlockFragmentActivity sherlockContext = getSherlockActivity();
 			current_tab = sherlockContext.getSupportActionBar().getSelectedNavigationIndex();
-			
 
 			ArrayList<EqnMenuItem> list_convert = _equationList.getEqns(1);
-			
+
 			/***********************************************/
-			//setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
+			// setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
 			// Populate list with our static array of titles.
 
-		
-			if(list_convert != null)
+			if (list_convert != null)
 			{
-				eqn_adapter_convert = new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_convert);			
-			}	
-			
-			
+				eqn_adapter_convert = new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_convert);
+			}
 
 			System.out.println("convert setListAdapter");
 			setListAdapter(eqn_adapter_convert);
 
-			
 			// Check to see if we have a frame in which to embed the details
 			// fragment directly in the containing UI.
 			View detailsFrame = getActivity().findViewById(R.id.details);
 			mDualPane = detailsFrame != null && detailsFrame.getVisibility() == View.VISIBLE;
 
-			
 			if (savedInstanceState != null)
 			{
 				// Restore last state for checked position.
 				mCurCheckPosition = savedInstanceState.getInt("curChoice", 0);
 			}
-			
-			if(mDualPane)
+
+			if (mDualPane)
 			{
 				// In dual-pane mode, the list view highlights the selected item.
-				//getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+				// getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 				// Make sure our UI is in the correct state.
-				//showDetails(mCurCheckPosition);
+				// showDetails(mCurCheckPosition);
 			}
 		}
 
@@ -196,61 +191,59 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			}
 		}
 	}
-	
+
 	public static class NoiseListFragment extends SherlockListFragment
 	{
 		boolean mDualPane;
 		int mCurCheckPosition = 0;
-		
+
 		EquationItemAdapter eqn_adapter_noise;
-		
+
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState)
 		{
 			super.onActivityCreated(savedInstanceState);
-			
-			if(_equationList == null)
+
+			if (_equationList == null)
 			{
 				_equationList = new EquationList();
 			}
 
-			//stuff to get tab number
+			// stuff to get tab number
 			int current_tab;
 			SherlockFragmentActivity sherlockContext = getSherlockActivity();
 			current_tab = sherlockContext.getSupportActionBar().getSelectedNavigationIndex();
-			
+
 			ArrayList<EqnMenuItem> list_noise = _equationList.getEqns(2);
-			
+
 			/***********************************************/
-			//setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
+			// setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
 			// Populate list with our static array of titles.
-			if(list_noise != null)
+			if (list_noise != null)
 			{
-				eqn_adapter_noise = new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_noise);			
+				eqn_adapter_noise = new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_noise);
 			}
-			
+
 			System.out.println("noise setListAdapter");
 			setListAdapter(eqn_adapter_noise);
 
-			
 			// Check to see if we have a frame in which to embed the details
 			// fragment directly in the containing UI.
 			View detailsFrame = getActivity().findViewById(R.id.details);
 			mDualPane = detailsFrame != null && detailsFrame.getVisibility() == View.VISIBLE;
 
-			
 			if (savedInstanceState != null)
 			{
 				// Restore last state for checked position.
 				mCurCheckPosition = savedInstanceState.getInt("curChoice", 0);
 			}
-			
-			if(mDualPane)
+
+			if (mDualPane)
 			{
 				// In dual-pane mode, the list view highlights the selected item.
-				//getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+				// getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 				// Make sure our UI is in the correct state.
-				//showDetails(mCurCheckPosition);
+				// showDetails(mCurCheckPosition);
 			}
 		}
 
@@ -314,64 +307,58 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 	{
 		boolean mDualPane;
 		int mCurCheckPosition = 0;
-		
+
 		EquationItemAdapter eqn_adapter_noise;
 		EquationItemAdapter eqn_adapter_heat;
 		EquationItemAdapter eqn_adapter_vent;
 		EquationItemAdapter eqn_adapter_expos;
-		
+
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState)
 		{
 			super.onActivityCreated(savedInstanceState);
-			
-			if(_equationList == null)
+
+			if (_equationList == null)
 			{
 				_equationList = new EquationList();
 			}
 
-			//stuff to get tab number
+			// stuff to get tab number
 			int current_tab;
 			SherlockFragmentActivity sherlockContext = getSherlockActivity();
 			current_tab = sherlockContext.getSupportActionBar().getSelectedNavigationIndex();
-			
 
 			ArrayList<EqnMenuItem> list_heat = _equationList.getEqns(3);
-			
+
 			/***********************************************/
-			//setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
+			// setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
 			// Populate list with our static array of titles.
 
-		
-			if(list_heat != null)
+			if (list_heat != null)
 			{
-				eqn_adapter_heat = new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_heat);			
-			}	
-			
-			
+				eqn_adapter_heat = new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_heat);
+			}
 
 			System.out.println("heat setListAdapter");
 			setListAdapter(eqn_adapter_heat);
 
-			
 			// Check to see if we have a frame in which to embed the details
 			// fragment directly in the containing UI.
 			View detailsFrame = getActivity().findViewById(R.id.details);
 			mDualPane = detailsFrame != null && detailsFrame.getVisibility() == View.VISIBLE;
 
-			
 			if (savedInstanceState != null)
 			{
 				// Restore last state for checked position.
 				mCurCheckPosition = savedInstanceState.getInt("curChoice", 0);
 			}
-			
-			if(mDualPane)
+
+			if (mDualPane)
 			{
 				// In dual-pane mode, the list view highlights the selected item.
-				//getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+				// getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 				// Make sure our UI is in the correct state.
-				//showDetails(mCurCheckPosition);
+				// showDetails(mCurCheckPosition);
 			}
 		}
 
@@ -430,71 +417,63 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			}
 		}
 	}
-	
-	
+
 	public static class VentListFragment extends SherlockListFragment
 	{
 		boolean mDualPane;
 		int mCurCheckPosition = 0;
-		
+
 		EquationItemAdapter eqn_adapter_noise;
 		EquationItemAdapter eqn_adapter_heat;
 		EquationItemAdapter eqn_adapter_vent;
 		EquationItemAdapter eqn_adapter_expos;
-		
+
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState)
 		{
 			super.onActivityCreated(savedInstanceState);
-			
-			if(_equationList == null)
+
+			if (_equationList == null)
 			{
 				_equationList = new EquationList();
 			}
 
-			//stuff to get tab number
+			// stuff to get tab number
 			int current_tab;
 			SherlockFragmentActivity sherlockContext = getSherlockActivity();
 			current_tab = sherlockContext.getSupportActionBar().getSelectedNavigationIndex();
-			
 
 			ArrayList<EqnMenuItem> list_vent = _equationList.getEqns(4);
-			
+
 			/***********************************************/
-			//setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
+			// setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
 			// Populate list with our static array of titles.
 
-			
-			if(list_vent != null)
+			if (list_vent != null)
 			{
-				eqn_adapter_vent = new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_vent);			
-			}	
-
-			
-			
+				eqn_adapter_vent = new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_vent);
+			}
 
 			System.out.println("vent setListAdapter");
 			setListAdapter(eqn_adapter_vent);
 
-			
 			// Check to see if we have a frame in which to embed the details
 			// fragment directly in the containing UI.
 			View detailsFrame = getActivity().findViewById(R.id.details);
 			mDualPane = detailsFrame != null && detailsFrame.getVisibility() == View.VISIBLE;
 
-			
 			if (savedInstanceState != null)
 			{
 				// Restore last state for checked position.
 				mCurCheckPosition = savedInstanceState.getInt("curChoice", 0);
 			}
-			
-			if(mDualPane)
+
+			if (mDualPane)
 			{
 				// In dual-pane mode, the list view highlights the selected item.
-				//getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+				// getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 				// Make sure our UI is in the correct state.
-				//showDetails(mCurCheckPosition);
+				// showDetails(mCurCheckPosition);
 			}
 		}
 
@@ -553,68 +532,63 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			}
 		}
 	}
-	
-	
+
 	public static class ExposListFragment extends SherlockListFragment
 	{
 		boolean mDualPane;
 		int mCurCheckPosition = 0;
-		
+
 		EquationItemAdapter eqn_adapter_noise;
 		EquationItemAdapter eqn_adapter_heat;
 		EquationItemAdapter eqn_adapter_vent;
 		EquationItemAdapter eqn_adapter_expos;
-		
+
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState)
 		{
 			super.onActivityCreated(savedInstanceState);
-			
-			if(_equationList == null)
+
+			if (_equationList == null)
 			{
 				_equationList = new EquationList();
 			}
 
-			//stuff to get tab number
+			// stuff to get tab number
 			int current_tab;
 			SherlockFragmentActivity sherlockContext = getSherlockActivity();
 			current_tab = sherlockContext.getSupportActionBar().getSelectedNavigationIndex();
-			
+
 			ArrayList<EqnMenuItem> list_expos = _equationList.getEqns(5);
-			
+
 			/***********************************************/
-			//setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
+			// setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
 			// Populate list with our static array of titles.
-			
-			if(list_expos != null)
+
+			if (list_expos != null)
 			{
-				eqn_adapter_expos = new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_expos);			
-			}	
-			
-			
+				eqn_adapter_expos = new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_expos);
+			}
 
 			System.out.println("expos setListAdapter");
 			setListAdapter(eqn_adapter_expos);
 
-			
 			// Check to see if we have a frame in which to embed the details
 			// fragment directly in the containing UI.
 			View detailsFrame = getActivity().findViewById(R.id.details);
 			mDualPane = detailsFrame != null && detailsFrame.getVisibility() == View.VISIBLE;
 
-			
 			if (savedInstanceState != null)
 			{
 				// Restore last state for checked position.
 				mCurCheckPosition = savedInstanceState.getInt("curChoice", 0);
 			}
-			
-			if(mDualPane)
+
+			if (mDualPane)
 			{
 				// In dual-pane mode, the list view highlights the selected item.
-				//getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+				// getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 				// Make sure our UI is in the correct state.
-				//showDetails(mCurCheckPosition);
+				// showDetails(mCurCheckPosition);
 			}
 		}
 
@@ -673,6 +647,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			}
 		}
 	}
+
 	/*****************************************************************************************************************/
 	/**
 	 * This is the secondary fragment, displaying the details of a particular
@@ -717,46 +692,47 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				return null;
 			}
 
-			  View V = inflater.inflate(R.layout.var_test, container, false);
-		        int numberOfFields = 3;
-		        
-		        TableLayout tl = (TableLayout)V.findViewById(R.id.varTable);
-		        LayoutParams params = new TableRow.LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f);
-				
-				for(int i=0; i < numberOfFields; i++){
-					TableRow tr = new TableRow(V.getContext());
-					tr.setWeightSum(3);
-					tr.setGravity(Gravity.CENTER_HORIZONTAL);
-					tr.setId(1000+i);
-					
-					TextView tv1 = new TextView(V.getContext());
-					tl.setColumnStretchable(0, true);
-					tv1.setId(100+i);
-					tv1.setGravity(Gravity.RIGHT);
-					tv1.setText("Variable " + (i+1) + " ");
-					tv1.setLayoutParams(params);
-					tr.addView(tv1);
-				
-					EditText textbox1 = new EditText(V.getContext());
-					tl.setColumnStretchable(1, true);
-					textbox1.setId(10+i);
-					textbox1.setGravity(Gravity.RIGHT);
-					textbox1.setLayoutParams(params);
-					tr.addView(textbox1);
-				
-					TextView tv1f = new TextView(V.getContext());
-					tl.setColumnStretchable(2, true);
-					tv1f.setId(200+i);
-					tv1f.setText(" Unit " + (i+1));
-					tv1f.setLayoutParams(params);
-					tr.addView(tv1f);
-				
-					tl.addView(tr);
-					
-				}
-		        
-		        return V;
-			
+			View V = inflater.inflate(R.layout.var_test, container, false);
+			int numberOfFields = 3;
+
+			TableLayout tl = (TableLayout) V.findViewById(R.id.varTable);
+			LayoutParams params = new TableRow.LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f);
+
+			for (int i = 0; i < numberOfFields; i++)
+			{
+				TableRow tr = new TableRow(V.getContext());
+				tr.setWeightSum(3);
+				tr.setGravity(Gravity.CENTER_HORIZONTAL);
+				tr.setId(1000 + i);
+
+				TextView tv1 = new TextView(V.getContext());
+				tl.setColumnStretchable(0, true);
+				tv1.setId(100 + i);
+				tv1.setGravity(Gravity.RIGHT);
+				tv1.setText("Variable " + (i + 1) + " ");
+				tv1.setLayoutParams(params);
+				tr.addView(tv1);
+
+				EditText textbox1 = new EditText(V.getContext());
+				tl.setColumnStretchable(1, true);
+				textbox1.setId(10 + i);
+				textbox1.setGravity(Gravity.RIGHT);
+				textbox1.setLayoutParams(params);
+				tr.addView(textbox1);
+
+				TextView tv1f = new TextView(V.getContext());
+				tl.setColumnStretchable(2, true);
+				tv1f.setId(200 + i);
+				tv1f.setText(" Unit " + (i + 1));
+				tv1f.setLayoutParams(params);
+				tr.addView(tv1f);
+
+				tl.addView(tr);
+
+			}
+
+			return V;
+
 		}
 	}
 
