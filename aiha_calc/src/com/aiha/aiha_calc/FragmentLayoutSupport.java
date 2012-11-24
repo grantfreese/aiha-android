@@ -86,6 +86,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		int mCurCheckPosition = 0;
 
 		EquationItemAdapter eqn_adapter_convert;
+		ArrayList<EqnMenuItem> list_convert;
 
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState)
@@ -102,7 +103,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			SherlockFragmentActivity sherlockContext = getSherlockActivity();
 			current_tab = sherlockContext.getSupportActionBar().getSelectedNavigationIndex();
 
-			ArrayList<EqnMenuItem> list_convert = _equationList.getEqns(1);
+			list_convert = _equationList.getEqns(1);
 
 			/***********************************************/
 			// setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
@@ -169,7 +170,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				if (details == null || details.getShownIndex() != index)
 				{
 					// Make new fragment to show this selection.
-					details = DetailsFragment.newInstance(index);
+					details = DetailsFragment.newInstance(index,1);
 
 					// Execute a transaction, replacing any existing fragment
 					// with this one inside the frame.
@@ -187,6 +188,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				Intent intent = new Intent();
 				intent.setClass(getActivity(), DetailsActivity.class);
 				intent.putExtra("index", index);
+				intent.putExtra("currentTab", 1);
 				startActivity(intent);
 			}
 		}
@@ -198,6 +200,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		int mCurCheckPosition = 0;
 
 		EquationItemAdapter eqn_adapter_noise;
+		ArrayList<EqnMenuItem> list_noise;
 
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState)
@@ -214,7 +217,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			SherlockFragmentActivity sherlockContext = getSherlockActivity();
 			current_tab = sherlockContext.getSupportActionBar().getSelectedNavigationIndex();
 
-			ArrayList<EqnMenuItem> list_noise = _equationList.getEqns(2);
+			list_noise = _equationList.getEqns(2);
 
 			/***********************************************/
 			// setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
@@ -280,7 +283,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				if (details == null || details.getShownIndex() != index)
 				{
 					// Make new fragment to show this selection.
-					details = DetailsFragment.newInstance(index);
+					details = DetailsFragment.newInstance(index,2);
 
 					// Execute a transaction, replacing any existing fragment
 					// with this one inside the frame.
@@ -298,6 +301,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				Intent intent = new Intent();
 				intent.setClass(getActivity(), DetailsActivity.class);
 				intent.putExtra("index", index);
+				intent.putExtra("currentTab", 2);
 				startActivity(intent);
 			}
 		}
@@ -308,10 +312,10 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		boolean mDualPane;
 		int mCurCheckPosition = 0;
 
-		EquationItemAdapter eqn_adapter_noise;
+		
 		EquationItemAdapter eqn_adapter_heat;
-		EquationItemAdapter eqn_adapter_vent;
-		EquationItemAdapter eqn_adapter_expos;
+		ArrayList<EqnMenuItem> list_heat;
+		
 
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState)
@@ -328,7 +332,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			SherlockFragmentActivity sherlockContext = getSherlockActivity();
 			current_tab = sherlockContext.getSupportActionBar().getSelectedNavigationIndex();
 
-			ArrayList<EqnMenuItem> list_heat = _equationList.getEqns(3);
+			list_heat = _equationList.getEqns(3);
 
 			/***********************************************/
 			// setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
@@ -395,7 +399,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				if (details == null || details.getShownIndex() != index)
 				{
 					// Make new fragment to show this selection.
-					details = DetailsFragment.newInstance(index);
+					details = DetailsFragment.newInstance(index,3);
 
 					// Execute a transaction, replacing any existing fragment
 					// with this one inside the frame.
@@ -413,6 +417,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				Intent intent = new Intent();
 				intent.setClass(getActivity(), DetailsActivity.class);
 				intent.putExtra("index", index);
+				intent.putExtra("currentTab", 3);
 				startActivity(intent);
 			}
 		}
@@ -423,10 +428,9 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		boolean mDualPane;
 		int mCurCheckPosition = 0;
 
-		EquationItemAdapter eqn_adapter_noise;
-		EquationItemAdapter eqn_adapter_heat;
 		EquationItemAdapter eqn_adapter_vent;
-		EquationItemAdapter eqn_adapter_expos;
+		ArrayList<EqnMenuItem> list_vent;
+		
 
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState)
@@ -443,7 +447,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			SherlockFragmentActivity sherlockContext = getSherlockActivity();
 			current_tab = sherlockContext.getSupportActionBar().getSelectedNavigationIndex();
 
-			ArrayList<EqnMenuItem> list_vent = _equationList.getEqns(4);
+			list_vent = _equationList.getEqns(4);
 
 			/***********************************************/
 			// setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
@@ -510,7 +514,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				if (details == null || details.getShownIndex() != index)
 				{
 					// Make new fragment to show this selection.
-					details = DetailsFragment.newInstance(index);
+					details = DetailsFragment.newInstance(index,4);
 
 					// Execute a transaction, replacing any existing fragment
 					// with this one inside the frame.
@@ -528,6 +532,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				Intent intent = new Intent();
 				intent.setClass(getActivity(), DetailsActivity.class);
 				intent.putExtra("index", index);
+				intent.putExtra("currentTab", 4);
 				startActivity(intent);
 			}
 		}
@@ -538,10 +543,8 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		boolean mDualPane;
 		int mCurCheckPosition = 0;
 
-		EquationItemAdapter eqn_adapter_noise;
-		EquationItemAdapter eqn_adapter_heat;
-		EquationItemAdapter eqn_adapter_vent;
 		EquationItemAdapter eqn_adapter_expos;
+		ArrayList<EqnMenuItem> list_expos;
 
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState)
@@ -558,7 +561,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			SherlockFragmentActivity sherlockContext = getSherlockActivity();
 			current_tab = sherlockContext.getSupportActionBar().getSelectedNavigationIndex();
 
-			ArrayList<EqnMenuItem> list_expos = _equationList.getEqns(5);
+			list_expos = _equationList.getEqns(5);
 
 			/***********************************************/
 			// setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
@@ -625,7 +628,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				if (details == null || details.getShownIndex() != index)
 				{
 					// Make new fragment to show this selection.
-					details = DetailsFragment.newInstance(index);
+					details = DetailsFragment.newInstance(index, 5);
 
 					// Execute a transaction, replacing any existing fragment
 					// with this one inside the frame.
@@ -643,6 +646,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				Intent intent = new Intent();
 				intent.setClass(getActivity(), DetailsActivity.class);
 				intent.putExtra("index", index);
+				intent.putExtra("currentTab", 5);
 				startActivity(intent);
 			}
 		}
@@ -656,17 +660,15 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 
 	public static class DetailsFragment extends SherlockFragment
 	{
-		/**
-		 * Create a new instance of EquationFragment, initialized to show the
-		 * text at 'index'.
-		 */
-		public static DetailsFragment newInstance(int index)
+		private int selection, tab;
+		public static DetailsFragment newInstance(int index, int currentTab)
 		{
 			DetailsFragment f = new DetailsFragment();
 
 			// Supply index input as an argument.
 			Bundle args = new Bundle();
 			args.putInt("index", index);
+			args.putInt("currentTab", currentTab);
 			f.setArguments(args);
 
 			return f;
@@ -676,6 +678,12 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		{
 			return getArguments().getInt("index", 0);
 		}
+		
+		public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            selection = getArguments().getInt("index");
+            tab = getArguments().getInt("currentTab");
+        }
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -693,7 +701,8 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			}
 
 			View V = inflater.inflate(R.layout.var_test, container, false);
-			int numberOfFields = 3;
+			EqnMenuItem emi = _equationList.getEqns(tab).get(selection);
+			int numberOfFields = emi.num_of_variables;
 
 			TableLayout tl = (TableLayout) V.findViewById(R.id.varTable);
 			LayoutParams params = new TableRow.LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f);
@@ -709,7 +718,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				tl.setColumnStretchable(0, true);
 				tv1.setId(100 + i);
 				tv1.setGravity(Gravity.RIGHT);
-				tv1.setText("Variable " + (i + 1) + " ");
+				tv1.setText(emi.unitList[i].variable + " ");
 				tv1.setLayoutParams(params);
 				tr.addView(tv1);
 
@@ -723,7 +732,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				TextView tv1f = new TextView(V.getContext());
 				tl.setColumnStretchable(2, true);
 				tv1f.setId(200 + i);
-				tv1f.setText(" Unit " + (i + 1));
+				tv1f.setText(" " + emi.unitList[i].unit);
 				tv1f.setLayoutParams(params);
 				tr.addView(tv1f);
 

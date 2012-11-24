@@ -33,7 +33,8 @@ public class EquationList
 
 		// add menu items
 		//index_number, image_name, count_var, 
-		tab_convert.add(new EqnMenuItem(1, R.raw.eqn_expos_01));
+		tab_convert.add(new EqnMenuItem(1, R.raw.eqn_expos_01, 3,
+				new String[]{"qrtz", "", "crist", "", "trid", ""}));
 		/*
 		tab_convert.add(new EqnMenuItem(1, R.raw.conv_volume));
 		tab_convert.add(new EqnMenuItem(2, R.raw.conv_distance));
@@ -47,30 +48,73 @@ public class EquationList
 		tab_convert.add(new EqnMenuItem(10, R.raw.conv_constants));
 		*/
 		
-		tab_noise.add(new EqnMenuItem(1, R.raw.eqn_noise_01));
-		tab_noise.add(new EqnMenuItem(2, R.raw.eqn_noise_02));
-		tab_noise.add(new EqnMenuItem(3, R.raw.eqn_noise_03));
-		tab_noise.add(new EqnMenuItem(4, R.raw.eqn_noise_04));
-		tab_noise.add(new EqnMenuItem(5, R.raw.eqn_noise_05));
+		// Noise /////////////////////////////////////////////////////
+		tab_noise.add(new EqnMenuItem(1, R.raw.eqn_noise_01, 2, 
+				new String[]{"N", "decibels", "SPLi", "decibels"}));
 		
-		tab_heat.add(new EqnMenuItem(1, R.raw.eqn_heat_01));
-		tab_heat.add(new EqnMenuItem(2, R.raw.eqn_heat_02));
+		tab_noise.add(new EqnMenuItem(2, R.raw.eqn_noise_02, 1, 
+				new String[]{"SPL", ""}));
+
+		tab_noise.add(new EqnMenuItem(3, R.raw.eqn_noise_03, 1, 
+				new String[]{"L", ""}));
 		
-		tab_vent.add(new EqnMenuItem(1, R.raw.eqn_vent_01));
-		tab_vent.add(new EqnMenuItem(2, R.raw.eqn_vent_02));
-		tab_vent.add(new EqnMenuItem(3, R.raw.eqn_vent_03));
-		tab_vent.add(new EqnMenuItem(4, R.raw.eqn_vent_04));
-		tab_vent.add(new EqnMenuItem(5, R.raw.eqn_vent_05));
-		tab_vent.add(new EqnMenuItem(6, R.raw.eqn_vent_06));
-		tab_vent.add(new EqnMenuItem(7, R.raw.eqn_vent_07));
-		tab_vent.add(new EqnMenuItem(8, R.raw.eqn_vent_08));
-		tab_vent.add(new EqnMenuItem(9, R.raw.eqn_vent_09));
-		tab_vent.add(new EqnMenuItem(10, R.raw.eqn_vent_10));
-		tab_vent.add(new EqnMenuItem(11, R.raw.eqn_vent_11));
+		tab_noise.add(new EqnMenuItem(4, R.raw.eqn_noise_04, 3, 
+				new String[]{"I1", "", "D1", "", "D2", ""}));
 		
-		tab_expos.add(new EqnMenuItem(1, R.raw.eqn_expos_01));
-		tab_expos.add(new EqnMenuItem(2, R.raw.eqn_expos_02));
-		tab_expos.add(new EqnMenuItem(3, R.raw.eqn_expos_03));
+		tab_noise.add(new EqnMenuItem(5, R.raw.eqn_noise_05, 1, 
+				new String[]{"%D", ""}));
+		
+		// Heat //////////////////////////////////////////////////////
+		tab_heat.add(new EqnMenuItem(1, R.raw.eqn_heat_01, 3,
+				new String[]{"tnwb", "", "tg", "", "db", ""}));
+		
+		tab_heat.add(new EqnMenuItem(2, R.raw.eqn_heat_02, 2,
+				new String[]{"tnwb", "", "tg", ""}));
+		
+		// Ventilation ///////////////////////////////////////////////
+		tab_vent.add(new EqnMenuItem(1, R.raw.eqn_vent_01, 4,
+				new String[]{"cryogen", "", "density", "", "mw", "", "roomVolume", ""}));
+		
+		tab_vent.add(new EqnMenuItem(2, R.raw.eqn_vent_02, 2,
+				new String[]{"qVal", "", "volume", ""}));
+		
+		tab_vent.add(new EqnMenuItem(3, R.raw.eqn_vent_03, 2,
+				new String[]{"VP", "", "SP", ""}));
+		
+		tab_vent.add(new EqnMenuItem(4, R.raw.eqn_vent_04, 5,
+				new String[]{"Qind", "", "Pc", "", "Ts", "", "Ps", "", "Tc", ""}));
+		
+		tab_vent.add(new EqnMenuItem(5, R.raw.eqn_vent_05, 1,
+				new String[]{"VP", ""}));
+		
+		tab_vent.add(new EqnMenuItem(6, R.raw.eqn_vent_06, 2,
+				new String[]{"VPd", "", "he", ""}));
+		
+		tab_vent.add(new EqnMenuItem(7, R.raw.eqn_vent_07, 4,
+				new String[]{"G", "", "Q", "", "t", "", "N", ""}));
+		
+		
+		tab_vent.add(new EqnMenuItem(8, R.raw.eqn_vent_08, 5,
+				new String[]{"SG", "", "ER", "", "K", "", "MW", "", "C", ""}));
+		
+		tab_vent.add(new EqnMenuItem(9, R.raw.eqn_vent_09, 3,
+				new String[]{"SPout", "", "SPin", "", "VPin", ""}));
+		
+		tab_vent.add(new EqnMenuItem(10, R.raw.eqn_vent_10, 2,
+				new String[]{"TPout", "", "TPin", ""}));
+		
+		tab_vent.add(new EqnMenuItem(11, R.raw.eqn_vent_11, 5,
+				new String[]{"size1", "", "size2", "", "RPM1", "", "RPM2", "", "Q", ""}));
+		
+		// Exposure //////////////////////////////////////////////////
+		tab_expos.add(new EqnMenuItem(1, R.raw.eqn_expos_01, 3,
+				new String[]{"qrtz", "", "crist", "", "trid", ""}));
+		
+		tab_expos.add(new EqnMenuItem(2, R.raw.eqn_expos_02, 3,
+				new String[]{"qrtz", "", "crist", "", "trid", ""}));
+		
+		tab_expos.add(new EqnMenuItem(3, R.raw.eqn_expos_03, 4,
+				new String[]{"C1", "", "T1", "", "C2", "", "T2", ""}));
 
 	}
 
@@ -78,12 +122,39 @@ public class EquationList
 	{
 		public int number;
 		public int graphic_id;
+		public int num_of_variables;
+		public EqnUnits[] unitList;
 
-		public EqnMenuItem(int number, int graphic_id)
+		public EqnMenuItem(int number, int graphic_id, int num_of_variables, String[] units)
 		{
 			this.number = number;
 			// this.graphic_name = SVGParser.getSVGFromResource(c.getResources(), c.getResources().getIdentifier(graphic_name, "SVG", c.getPackageName()));
 			this.graphic_id = graphic_id;
+			this.num_of_variables = num_of_variables;
+			unitList = new EqnUnits[units.length/2];
+			
+			for(int i = 0 ; i< unitList.length; i++){
+				unitList[i] = new EqnUnits("variable", "unit");
+			}
+			
+			int k = 0;
+			for(int j = 0 ; j < units.length; j++){
+				unitList[k].variable = units[j];
+				j++;
+				unitList[k].unit = units[j];
+				k++;
+			}
+		}
+	}
+	
+	public class EqnUnits
+	{
+		public String variable, unit;
+
+		public EqnUnits(String variable, String unit)
+		{
+			this.variable = variable;
+			this.unit = unit;
 		}
 	}
 

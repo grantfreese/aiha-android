@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".FragmentLayoutSupport" />
-        <activity android:name=".FragmentLayoutSupport$DetailsActivity" />
+        <activity android:name=".FragmentLayoutSupport$DetailsActivity"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>
