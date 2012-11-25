@@ -1,5 +1,7 @@
 package com.aiha.aiha_calc;
 
+import java.lang.reflect.InvocationTargetException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -9,6 +11,9 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
+import android.text.InputType;
+import android.text.method.DigitsKeyListener;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -16,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
@@ -23,6 +29,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.TableRow.LayoutParams;
 
+import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.SherlockListFragment;
@@ -50,15 +57,20 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 
 		setContentView(R.layout.fragment_layout_support);
 	}
+	
 
 	// handler for smallish screen sizes
 	public static class DetailsActivity extends SherlockFragmentActivity
 	{
 
+		DetailsFragment details;
+		public static int THEME = R.style.Theme_Aiha_Light;
+		
 		@Override
 		protected void onCreate(Bundle savedInstanceState)
 		{
 			super.onCreate(savedInstanceState);
+			setTheme(THEME);
 
 			if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
 			{
@@ -67,14 +79,28 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				finish();
 				return;
 			}
+			
+			ActionBar bar = getSupportActionBar();
+
+			bar.setDisplayUseLogoEnabled(false);
+			bar.setDisplayShowTitleEnabled(false);
+			bar.setDisplayShowHomeEnabled(false);
+			bar.setDisplayHomeAsUpEnabled(false);
 
 			if (savedInstanceState == null)
 			{
 				// During initial setup, plug in the details fragment.
-				DetailsFragment details = new DetailsFragment();
+				details = new DetailsFragment();
 				details.setArguments(getIntent().getExtras());
 				getSupportFragmentManager().beginTransaction().add(android.R.id.content, details).commit();
 			}
+		}
+		public void calcButtonClick(View v){
+			details.calcButtonClick(v);
+		}
+		
+		public void clearButtonClick(View v){
+			details.clearButtonClick(v);
 		}
 	}
 
@@ -661,6 +687,10 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 	public static class DetailsFragment extends SherlockFragment
 	{
 		private int selection, tab;
+		private EqnMenuItem emi;
+		private EditText[] entries;
+		private EditText result;
+		
 		public static DetailsFragment newInstance(int index, int currentTab)
 		{
 			DetailsFragment f = new DetailsFragment();
@@ -690,19 +720,19 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		{
 			if (container == null)
 			{
-				// We have different layouts, and in one of them this
-				// fragment's containing frame doesn't exist. The fragment
-				// may still be created from its saved state, but there is
-				// no reason to try to create its view hierarchy because it
-				// won't be displayed. Note this is not needed -- we could
-				// just run the code below, where we would create and return
-				// the view hierarchy; it would just never be used.
+				
 				return null;
 			}
 
 			View V = inflater.inflate(R.layout.var_test, container, false);
-			EqnMenuItem emi = _equationList.getEqns(tab).get(selection);
+			emi = _equationList.getEqns(tab).get(selection);
 			int numberOfFields = emi.num_of_variables;
+			entries = new EditText[emi.num_of_variables];
+			result = (EditText)V.findViewById(R.id.editText1);
+			
+			ImageView imageView = (ImageView) V.findViewById(R.id.imageView1);
+			SVG svg = SVGParser.getSVGFromResource(getResources(), emi.graphic_id);
+			imageView.setImageDrawable(svg.createPictureDrawable());
 
 			TableLayout tl = (TableLayout) V.findViewById(R.id.varTable);
 			LayoutParams params = new TableRow.LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f);
@@ -719,6 +749,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				tv1.setId(100 + i);
 				tv1.setGravity(Gravity.RIGHT);
 				tv1.setText(emi.unitList[i].variable + " ");
+				tv1.setTextColor(Color.WHITE);
 				tv1.setLayoutParams(params);
 				tr.addView(tv1);
 
@@ -727,12 +758,16 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				textbox1.setId(10 + i);
 				textbox1.setGravity(Gravity.RIGHT);
 				textbox1.setLayoutParams(params);
+				textbox1.setInputType(InputType.TYPE_CLASS_NUMBER);
+				textbox1.setKeyListener(DigitsKeyListener.getInstance("0123456789."));
+				entries[i] = textbox1;
 				tr.addView(textbox1);
 
 				TextView tv1f = new TextView(V.getContext());
 				tl.setColumnStretchable(2, true);
 				tv1f.setId(200 + i);
 				tv1f.setText(" " + emi.unitList[i].unit);
+				tv1f.setTextColor(Color.WHITE);
 				tv1f.setLayoutParams(params);
 				tr.addView(tv1f);
 
@@ -741,7 +776,50 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			}
 
 			return V;
-
+		}
+		
+		public void calcButtonClick(View v){
+			
+			Object[] params = new Object[emi.num_of_variables];
+			boolean calculate = true;
+			
+			for(int i = 0; i < params.length; i++){
+				
+				if(entries[i].getText().length() > 0)
+				{
+					try{
+						params[i] = new Double(Double.parseDouble(entries[i].getText().toString()));
+					}
+					catch(NumberFormatException e){
+					}
+				}
+				else{
+					calculate = false;
+				}
+			}
+			
+			if(calculate){
+				try {
+					Object returnVal = emi.eqnMethod.invoke(this, params);
+					Double rVal = (Double)returnVal;
+					double d = rVal.doubleValue();
+					String s = new DecimalFormat("#.####").format(d);
+					result.setText(s);
+				} catch (IllegalArgumentException e) {
+			
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+				
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+				
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		public void clearButtonClick(View v){
+			result.setText("0");
 		}
 	}
 

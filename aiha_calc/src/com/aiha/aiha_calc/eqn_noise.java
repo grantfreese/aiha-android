@@ -1,8 +1,11 @@
 package com.aiha.aiha_calc;
 
+import java.lang.reflect.Method;
+
 public class eqn_noise
 {
-
+	private Method[] equationMethods;
+	
 	// addingSoundPressureLevels
 	public static double eqn_noise_01(double N, double SPLi)
 	{
@@ -68,5 +71,34 @@ public class eqn_noise
 
 		return part2;
 
+	}
+	
+	public eqn_noise(){
+		equationMethods = new Method[5];
+		
+		try {
+			equationMethods[0]= this.getClass().getMethod(
+					"eqn_noise_01", Double.TYPE, Double.TYPE);
+			
+			equationMethods[1]= this.getClass().getMethod(
+					"eqn_noise_02", Double.TYPE);
+			
+			equationMethods[2]= this.getClass().getMethod(
+					"eqn_noise_03", Double.TYPE);
+			
+			equationMethods[3]= this.getClass().getMethod(
+					"eqn_noise_04", Double.TYPE, Double.TYPE, Double.TYPE);
+			
+			equationMethods[4]= this.getClass().getMethod(
+					"eqn_noise_05", Double.TYPE);
+			
+		} catch (NoSuchMethodException e) {
+		} catch (SecurityException e) {
+		} 
+	}
+	
+	public Method getMethod(int index){
+		
+		return equationMethods[index-1];
 	}
 }

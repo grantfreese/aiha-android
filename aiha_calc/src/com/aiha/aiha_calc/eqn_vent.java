@@ -1,7 +1,10 @@
 package com.aiha.aiha_calc;
 
+import java.lang.reflect.Method;
+
 public class eqn_vent
 {
+	Method[] equationMethods;
 
 	// volumeOfDisplacedAir.svg (now eqn_vent_00)
 	// oxygenLevelOfRoom.svg (now eqn_vent_01)
@@ -128,5 +131,52 @@ public class eqn_vent
 		retVal = Q * retVal * (RPM1 / RPM2);
 
 		return retVal;
+	}
+	
+	public eqn_vent(){
+		equationMethods = new Method[11];
+		
+		try {
+			equationMethods[0]= this.getClass().getMethod(
+					"eqn_vent_01", Double.TYPE, Double.TYPE, Double.TYPE, Double.TYPE);
+			
+			equationMethods[1]= this.getClass().getMethod(
+					"eqn_vent_02", Double.TYPE, Double.TYPE);
+			
+			equationMethods[2]= this.getClass().getMethod(
+					"eqn_vent_03", Double.TYPE, Double.TYPE);
+			
+			equationMethods[3]= this.getClass().getMethod(
+					"eqn_vent_04", Double.TYPE, Double.TYPE, Double.TYPE, Double.TYPE, Double.TYPE);
+			
+			equationMethods[4]= this.getClass().getMethod(
+					"eqn_vent_05", Double.TYPE);
+			
+			equationMethods[5]= this.getClass().getMethod(
+					"eqn_vent_06", Double.TYPE, Double.TYPE);
+			
+			equationMethods[6]= this.getClass().getMethod(
+					"eqn_vent_07", Double.TYPE, Double.TYPE, Double.TYPE, Double.TYPE);
+			
+			equationMethods[7]= this.getClass().getMethod(
+					"eqn_vent_08", Double.TYPE, Double.TYPE, Double.TYPE, Double.TYPE, Double.TYPE);
+			
+			equationMethods[8]= this.getClass().getMethod(
+					"eqn_vent_09", Double.TYPE, Double.TYPE, Double.TYPE);
+			
+			equationMethods[9]= this.getClass().getMethod(
+					"eqn_vent_10", Double.TYPE, Double.TYPE);
+			
+			equationMethods[10]= this.getClass().getMethod(
+					"eqn_vent_11", Double.TYPE, Double.TYPE, Double.TYPE, Double.TYPE, Double.TYPE);
+			
+		} catch (NoSuchMethodException e) {
+		} catch (SecurityException e) {
+		} 
+	}
+	
+	public Method getMethod(int index){
+		
+		return equationMethods[index-1];
 	}
 }

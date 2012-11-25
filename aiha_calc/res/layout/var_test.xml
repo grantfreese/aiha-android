@@ -2,13 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/aiha__turquoise"
+    android:clickable="false"
     android:orientation="vertical" >
-
+
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="left"
         android:layout_weight="0.07"
+        android:adjustViewBounds="true"
+        android:clickable="true"
         android:src="@drawable/ic_action_search" />
 
     <ScrollView
@@ -60,7 +65,8 @@
             android:layout_height="match_parent"
             android:layout_weight="0.2"
             android:text="X"
-            android:textColor="@color/aiha__white" />
+            android:textColor="@color/aiha__white" 
+            android:onClick="clearButtonClick"/>
 
         <EditText
             android:id="@+id/editText1"
@@ -72,7 +78,8 @@
             android:focusable="false"
             android:gravity="right"
             android:inputType="numberDecimal"
-            android:selectAllOnFocus="true" >
+            android:selectAllOnFocus="true"
+            android:text="0" >
 
             <requestFocus />
         </EditText>
@@ -84,7 +91,8 @@
             android:layout_height="match_parent"
             android:layout_weight="0.2"
             android:text="="
-            android:textColor="@color/aiha__white" />
+            android:textColor="@color/aiha__white" 
+            android:onClick="calcButtonClick" />
     </LinearLayout>
 
 </LinearLayout>

@@ -1,7 +1,10 @@
 package com.aiha.aiha_calc;
 
+import java.lang.reflect.Method;
+
 public class eqn_expos
 {
+	Method[] equationMethods;
 
 	// silicaRespirableFraction
 	public static double eqn_expos_01(double qrtz, double crist, double trid)
@@ -37,5 +40,28 @@ public class eqn_expos
 			part1 = ((c1 / t1) + (c2 / t2));
 
 		return part1;
+	}
+	
+	public eqn_expos(){
+		equationMethods = new Method[3];
+		
+		try {
+			equationMethods[0]= this.getClass().getMethod(
+					"eqn_expos_01", Double.TYPE, Double.TYPE, Double.TYPE);
+			
+			equationMethods[1]= this.getClass().getMethod(
+					"eqn_expos_02", Double.TYPE, Double.TYPE, Double.TYPE);
+			
+			equationMethods[2]= this.getClass().getMethod(
+					"eqn_expos_03", Double.TYPE, Double.TYPE, Double.TYPE, Double.TYPE);
+			
+		} catch (NoSuchMethodException e) {
+		} catch (SecurityException e) {
+		} 
+	}
+	
+	public Method getMethod(int index){
+		
+		return equationMethods[index-1];
 	}
 }
