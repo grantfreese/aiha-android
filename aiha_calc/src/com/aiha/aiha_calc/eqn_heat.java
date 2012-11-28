@@ -1,14 +1,17 @@
 package com.aiha.aiha_calc;
 
 import java.lang.reflect.Method;
+import java.text.DecimalFormat;
 
 public class eqn_heat
 {
 	private Method[] equationMethods;
+	static DecimalFormat df = new DecimalFormat("0.00");
 	
 	// wetBulbGlobeTempOutdoors
 	public static double eqn_heat_01(double tnwb_o, double tg_o, double tdb_o)
 	{
+		df.setMaximumFractionDigits(2);
 		double temp;
 		double tnwb = tnwb_o;
 		double tg = tg_o;
@@ -16,19 +19,20 @@ public class eqn_heat
 
 		temp = ((.7 * tnwb) + (.2 * tg) + (.1 * tdb));
 
-		return temp;
+		return Double.valueOf(df.format(temp));
 	}
 
 	// wetBulbGlobeTempIndoors
 	public static double eqn_heat_02(double tnwb_o, double tg_o)
 	{
+		df.setMaximumFractionDigits(2);
 		double temp;
 		double tnwb = tnwb_o;
 		double tg = tg_o;
 
 		temp = ((.7 * tnwb) + (.3 * tg));
 
-		return temp;
+		return Double.valueOf(df.format(temp));
 	}
 
 	public eqn_heat(){

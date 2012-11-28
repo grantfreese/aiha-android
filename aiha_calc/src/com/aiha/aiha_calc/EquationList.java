@@ -6,6 +6,8 @@ import java.lang.reflect.Method;
 import android.content.Context;
 import android.graphics.Color;
 
+import com.aiha.aiha_calc.R;
+import com.aiha.aiha_calc.EquationList.EqnMenuItem;
 import com.larvalabs.svgandroid.SVG;
 import com.larvalabs.svgandroid.SVGParser;
 
@@ -65,68 +67,68 @@ public class EquationList
 				new String[]{"N", "decibels", "SPLi", "decibels"},noiseObj.getMethod(1)));
 		
 		tab_noise.add(new EqnMenuItem(2, R.raw.eqn_noise_02, 1, 
-				new String[]{"SPL", ""}, noiseObj.getMethod(2)));
+				new String[]{"SPL", "decibels"}, noiseObj.getMethod(2)));
 
 		tab_noise.add(new EqnMenuItem(3, R.raw.eqn_noise_03, 1, 
-				new String[]{"L", ""}, noiseObj.getMethod(3)));
+				new String[]{"L", "hours"}, noiseObj.getMethod(3)));
 		
 		tab_noise.add(new EqnMenuItem(4, R.raw.eqn_noise_04, 3, 
-				new String[]{"I1", "", "D1", "", "D2", ""}, noiseObj.getMethod(4)));
+				new String[]{"I1", "watts/m2", "D1", "meters", "D2", "meters"}, noiseObj.getMethod(4)));
 		
 		tab_noise.add(new EqnMenuItem(5, R.raw.eqn_noise_05, 1, 
-				new String[]{"%D", ""}, noiseObj.getMethod(5)));
+				new String[]{"%D", "%"}, noiseObj.getMethod(5)));
 		
 		// Heat //////////////////////////////////////////////////////
 		tab_heat.add(new EqnMenuItem(1, R.raw.eqn_heat_01, 3,
-				new String[]{"tnwb", "", "tg", "", "db", ""}, heatObj.getMethod(1)));
+				new String[]{"tnwb", "Degrees F", "tg", "Degrees F", "db", "Degrees F"}, heatObj.getMethod(1)));
 		
 		tab_heat.add(new EqnMenuItem(2, R.raw.eqn_heat_02, 2,
-				new String[]{"tnwb", "", "tg", ""}, heatObj.getMethod(2)));
+				new String[]{"tnwb", "Degrees F", "tg", "Degrees F"}, heatObj.getMethod(2)));
 		
 		// Ventilation ///////////////////////////////////////////////
 		tab_vent.add(new EqnMenuItem(1, R.raw.eqn_vent_01, 4,
-				new String[]{"cryogen", "", "density", "", "mw", "", "roomVolume", ""},ventObj.getMethod(1)));
+				new String[]{"cryogen", "liters", "density", "grams/cm3", "mw", "grams", "roomVolume", "feet3"},ventObj.getMethod(1)));
 		
 		tab_vent.add(new EqnMenuItem(2, R.raw.eqn_vent_02, 2,
-				new String[]{"qVal", "", "volume", ""},ventObj.getMethod(2)));
+				new String[]{"qVal", "cfm", "volume", "feet3"},ventObj.getMethod(2)));
 		
 		tab_vent.add(new EqnMenuItem(3, R.raw.eqn_vent_03, 2,
 				new String[]{"VP", "", "SP", ""},ventObj.getMethod(3)));
 		
 		tab_vent.add(new EqnMenuItem(4, R.raw.eqn_vent_04, 5,
-				new String[]{"Qind", "", "Pc", "", "Ts", "", "Ps", "", "Tc", ""},ventObj.getMethod(4)));
+				new String[]{"Qind", "L/min", "Pc", "kPa", "Ts", "kPsa", "Ps", "", "Tc", ""},ventObj.getMethod(4)));
 		
 		tab_vent.add(new EqnMenuItem(5, R.raw.eqn_vent_05, 1,
-				new String[]{"VP", ""},ventObj.getMethod(5)));
+				new String[]{"VP", "in. WC"},ventObj.getMethod(5)));
 		
 		tab_vent.add(new EqnMenuItem(6, R.raw.eqn_vent_06, 2,
-				new String[]{"VPd", "", "he", ""},ventObj.getMethod(6)));
+				new String[]{"VPd", "in. WC", "he", "in. WC"},ventObj.getMethod(6)));
 		
 		tab_vent.add(new EqnMenuItem(7, R.raw.eqn_vent_07, 4,
-				new String[]{"G", "", "Q", "", "t", "", "N", ""},ventObj.getMethod(7)));
+				new String[]{"G", "cfm", "Q", "cfm", "t", "minutes", "N", "changes/hour"},ventObj.getMethod(7)));
 		
 		
 		tab_vent.add(new EqnMenuItem(8, R.raw.eqn_vent_08, 5,
-				new String[]{"SG", "", "ER", "", "K", "", "MW", "", "C", ""},ventObj.getMethod(8)));
+				new String[]{"SG", "", "ER", "pints/min", "K", "", "MW", "g", "C", "ppm"},ventObj.getMethod(8)));
 		
 		tab_vent.add(new EqnMenuItem(9, R.raw.eqn_vent_09, 3,
-				new String[]{"SPout", "", "SPin", "", "VPin", ""},ventObj.getMethod(9)));
+				new String[]{"SPout", "in. WC", "SPin", "in. WC", "VPin", "in. WC"},ventObj.getMethod(9)));
 		
 		tab_vent.add(new EqnMenuItem(10, R.raw.eqn_vent_10, 2,
-				new String[]{"TPout", "", "TPin", ""},ventObj.getMethod(10)));
+				new String[]{"TPout", "in. WC", "TPin", "in. WC"},ventObj.getMethod(10)));
 		
 		tab_vent.add(new EqnMenuItem(11, R.raw.eqn_vent_11, 5,
-				new String[]{"size1", "", "size2", "", "RPM1", "", "RPM2", "", "Q", ""},ventObj.getMethod(11)));
+				new String[]{"size1", "inches", "size2", "inches", "RPM1", "rpm", "RPM2", "rpm", "Q", "cfm"},ventObj.getMethod(11)));
 		
 		// Exposure //////////////////////////////////////////////////
 		tab_expos.add(new EqnMenuItem(1, R.raw.eqn_expos_01, 3,
-				new String[]{"qrtz", "", "crist", "", "trid", ""},exposObj.getMethod(1)));
+				new String[]{"qrtz", "%", "crist", "%", "trid", "%"},exposObj.getMethod(1)));
 		
 		tab_expos.add(new EqnMenuItem(2, R.raw.eqn_expos_02, 3,
-				new String[]{"qrtz", "", "crist", "", "trid", ""},exposObj.getMethod(2)));
+				new String[]{"qrtz", "%", "crist", "%", "trid", "%"},exposObj.getMethod(2)));
 		
 		tab_expos.add(new EqnMenuItem(3, R.raw.eqn_expos_03, 4,
-				new String[]{"C1", "", "T1", "", "C2", "", "T2", ""},exposObj.getMethod(3)));
+				new String[]{"C1", "ppm", "T1", "ppm", "C2", "ppm", "T2", "ppm"},exposObj.getMethod(3)));
 
 	}
 
