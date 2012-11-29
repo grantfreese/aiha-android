@@ -96,7 +96,7 @@ public class EquationList
 				new String[]{"VP", "", "SP", ""},ventObj.getMethod(3)));
 		
 		tab_vent.add(new EqnMenuItem(4, R.raw.eqn_vent_04, 5,
-				new String[]{"Qind", "L/min", "Pc", "kPa", "Ts", "kPsa", "Ps", "", "Tc", ""},ventObj.getMethod(4)));
+				new String[]{"Qind", "L/min", "Pc", "kPa", "Ts", "degrees K", "Ps", "kPa", "Tc", "degrees K"},ventObj.getMethod(4)));
 		
 		tab_vent.add(new EqnMenuItem(5, R.raw.eqn_vent_05, 1,
 				new String[]{"VP", "in. WC"},ventObj.getMethod(5)));
@@ -105,7 +105,7 @@ public class EquationList
 				new String[]{"VPd", "in. WC", "he", "in. WC"},ventObj.getMethod(6)));
 		
 		tab_vent.add(new EqnMenuItem(7, R.raw.eqn_vent_07, 4,
-				new String[]{"G", "cfm", "Q", "cfm", "t", "minutes", "N", "changes/hour"},ventObj.getMethod(7)));
+				new String[]{"G", "CFM", "Q", "CFM", "t", "minutes", "N", "air changes/hour"},ventObj.getMethod(7)));
 		
 		
 		tab_vent.add(new EqnMenuItem(8, R.raw.eqn_vent_08, 5,
@@ -118,7 +118,7 @@ public class EquationList
 				new String[]{"TPout", "in. WC", "TPin", "in. WC"},ventObj.getMethod(10)));
 		
 		tab_vent.add(new EqnMenuItem(11, R.raw.eqn_vent_11, 5,
-				new String[]{"size1", "inches", "size2", "inches", "RPM1", "rpm", "RPM2", "rpm", "Q", "cfm"},ventObj.getMethod(11)));
+				new String[]{"Q", "cfm", "size1", "inches", "size2", "inches", "RPM1", "", "RPM2", ""},ventObj.getMethod(11)));
 		
 		// Exposure //////////////////////////////////////////////////
 		tab_expos.add(new EqnMenuItem(1, R.raw.eqn_expos_01, 3,

@@ -48,7 +48,7 @@ public class eqn_vent
 		df.setMaximumFractionDigits(2);
 		double part1;
 		part1 = vp + sp;
-		return Double.valueOf(df.format(part1));
+		return Double.valueOf(df.format(part1*100));
 	}
 
 	// flowRateAdjustmentFormulaOne
@@ -92,7 +92,7 @@ public class eqn_vent
 		df.setMaximumFractionDigits(2);
 		double part1, retVal;
 		part1 = (G / Q);
-		retVal = -(N * (t / 60.0));
+		retVal = -((N*t)/ 60.0);
 		retVal = Math.exp(retVal);
 		retVal = 1 - retVal;
 		retVal = part1 * retVal * Math.pow(10.0, 6.0);
@@ -130,8 +130,8 @@ public class eqn_vent
 	}
 
 	// fanLawsFormulaFiveVar
-	public static double eqn_vent_11(double size1, double size2, double RPM1,
-			double RPM2, double Q)
+	public static double eqn_vent_11(double Q, double size1, double size2, double RPM1,
+			double RPM2)
 	{
 		df.setMaximumFractionDigits(2);
 		double retVal;

@@ -35,8 +35,8 @@ public class eqn_noise
 		df.setMaximumFractionDigits(2);
 		double part1;
 		part1 = (SPL - 90) / 5;
-		part1 = part1 * 2;
-		// part1 = Math.pow(2,part1);
+		//part1 = part1 * 2;
+		part1 = Math.pow(2,part1);
 		part1 = 8 / part1;
 
 		return Double.valueOf(df.format(part1));
