@@ -72,9 +72,9 @@ public class eqn_noise
 	{
 		df.setMaximumFractionDigits(2);
 		double part1, part2;
-		part1 = Math.log((percentDose / 100));
-		part2 = (16.61 * part1);
-		part2 = part2 + 90.0;
+		part1 = Math.log10((percentDose/100));
+		part2 = (16.61*part1);
+		part2 = part2+90.0;
 
 		return Double.valueOf(df.format(part2));
 

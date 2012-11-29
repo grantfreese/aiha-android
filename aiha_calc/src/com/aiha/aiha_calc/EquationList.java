@@ -67,7 +67,7 @@ public class EquationList
 				new String[]{"N", "decibels", "SPLi", "decibels"},noiseObj.getMethod(1)));
 		
 		tab_noise.add(new EqnMenuItem(2, R.raw.eqn_noise_02, 1, 
-				new String[]{"SPL", "decibels"}, noiseObj.getMethod(2)));
+				new String[]{"L", "decibels"}, noiseObj.getMethod(2)));
 
 		tab_noise.add(new EqnMenuItem(3, R.raw.eqn_noise_03, 1, 
 				new String[]{"L", "hours"}, noiseObj.getMethod(3)));
@@ -76,7 +76,7 @@ public class EquationList
 				new String[]{"I1", "watts/m2", "D1", "meters", "D2", "meters"}, noiseObj.getMethod(4)));
 		
 		tab_noise.add(new EqnMenuItem(5, R.raw.eqn_noise_05, 1, 
-				new String[]{"%D", "%"}, noiseObj.getMethod(5)));
+				new String[]{"%Dose", "%"}, noiseObj.getMethod(5)));
 		
 		// Heat //////////////////////////////////////////////////////
 		tab_heat.add(new EqnMenuItem(1, R.raw.eqn_heat_01, 3,
@@ -87,7 +87,7 @@ public class EquationList
 		
 		// Ventilation ///////////////////////////////////////////////
 		tab_vent.add(new EqnMenuItem(1, R.raw.eqn_vent_01, 4,
-				new String[]{"cryogen", "liters", "density", "grams/cm3", "mw", "grams", "roomVolume", "feet3"},ventObj.getMethod(1)));
+				new String[]{"gas", "liters", "density", "grams/cm3", "mw", "grams", "roomVolume", "feet3"},ventObj.getMethod(1)));
 		
 		tab_vent.add(new EqnMenuItem(2, R.raw.eqn_vent_02, 2,
 				new String[]{"qVal", "cfm", "volume", "feet3"},ventObj.getMethod(2)));

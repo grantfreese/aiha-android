@@ -93,7 +93,7 @@ public class eqn_vent
 		double part1, retVal;
 		part1 = (G / Q);
 		retVal = -(N * (t / 60.0));
-		retVal = Math.pow(e, retVal);
+		retVal = Math.exp(retVal);
 		retVal = 1 - retVal;
 		retVal = part1 * retVal * Math.pow(10.0, 6.0);
 
