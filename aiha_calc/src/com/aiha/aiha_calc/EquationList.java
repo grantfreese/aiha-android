@@ -76,7 +76,7 @@ public class EquationList
 				new String[]{"I1", "watts/m2", "D1", "meters", "D2", "meters"}, noiseObj.getMethod(4)));
 		
 		tab_noise.add(new EqnMenuItem(5, R.raw.eqn_noise_05, 1, 
-				new String[]{"%Dose", "%"}, noiseObj.getMethod(5)));
+				new String[]{"% Dose", "%"}, noiseObj.getMethod(5)));
 		
 		// Heat //////////////////////////////////////////////////////
 		tab_heat.add(new EqnMenuItem(1, R.raw.eqn_heat_01, 3,
