@@ -76,7 +76,7 @@ public class EquationList
 				new String[]{"I1", "watts/m2", "D1", "meters", "D2", "meters"}, noiseObj.getMethod(4)));
 		
 		tab_noise.add(new EqnMenuItem(5, R.raw.eqn_noise_05, 1, 
-				new String[]{"% Dose", "%"}, noiseObj.getMethod(5)));
+				new String[]{"% Dose", ""}, noiseObj.getMethod(5)));
 		
 		// Heat //////////////////////////////////////////////////////
 		tab_heat.add(new EqnMenuItem(1, R.raw.eqn_heat_01, 3,
@@ -87,10 +87,10 @@ public class EquationList
 		
 		// Ventilation ///////////////////////////////////////////////
 		tab_vent.add(new EqnMenuItem(1, R.raw.eqn_vent_01, 4,
-				new String[]{"gas", "liters", "density", "grams/cm3", "mw", "grams", "roomVolume", "feet3"},ventObj.getMethod(1)));
+				new String[]{"gas volume", "liters", "gas density", "grams/cm3", "gas MW", "grams", "roomVolume", "feet3"},ventObj.getMethod(1)));
 		
 		tab_vent.add(new EqnMenuItem(2, R.raw.eqn_vent_02, 2,
-				new String[]{"qVal", "cfm", "volume", "feet3"},ventObj.getMethod(2)));
+				new String[]{"Q", "cfm", "Volume", "feet3"},ventObj.getMethod(2)));
 		
 		tab_vent.add(new EqnMenuItem(3, R.raw.eqn_vent_03, 2,
 				new String[]{"VP", "", "SP", ""},ventObj.getMethod(3)));
@@ -118,14 +118,14 @@ public class EquationList
 				new String[]{"TPout", "in. WC", "TPin", "in. WC"},ventObj.getMethod(10)));
 		
 		tab_vent.add(new EqnMenuItem(11, R.raw.eqn_vent_11, 5,
-				new String[]{"Q", "cfm", "size1", "inches", "size2", "inches", "RPM1", "", "RPM2", ""},ventObj.getMethod(11)));
+				new String[]{"Q", "CFM", "Size1", "Inches", "Size2", "Inches", "RPM1", "", "RPM2", ""},ventObj.getMethod(11)));
 		
 		// Exposure //////////////////////////////////////////////////
 		tab_expos.add(new EqnMenuItem(1, R.raw.eqn_expos_01, 3,
-				new String[]{"qrtz", "%", "crist", "%", "trid", "%"},exposObj.getMethod(1)));
+				new String[]{"%qrtz", "", "%crist", "", "%trid", ""},exposObj.getMethod(1)));
 		
 		tab_expos.add(new EqnMenuItem(2, R.raw.eqn_expos_02, 3,
-				new String[]{"qrtz", "%", "crist", "%", "trid", "%"},exposObj.getMethod(2)));
+				new String[]{"%qrtz", "", "%crist", "", "%trid", ""},exposObj.getMethod(2)));
 		
 		tab_expos.add(new EqnMenuItem(3, R.raw.eqn_expos_03, 4,
 				new String[]{"C1", "ppm", "T1", "ppm", "C2", "ppm", "T2", "ppm"},exposObj.getMethod(3)));
