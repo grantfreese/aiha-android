@@ -10,6 +10,7 @@ import com.aiha.aiha_calc.EquationList.EqnMenuItem;
 import com.larvalabs.svgandroid.SVG;
 import com.larvalabs.svgandroid.SVGParser;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
@@ -41,6 +42,7 @@ public class EquationItemAdapter extends ArrayAdapter<EqnMenuItem>
 	}
 
 	@Override
+	@TargetApi(11)
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
 		View row = convertView;
@@ -50,6 +52,12 @@ public class EquationItemAdapter extends ArrayAdapter<EqnMenuItem>
 			LayoutInflater vi = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			row = vi.inflate(R.layout.menu_list_grid, null);
 			holder = new ViewHolder();
+			
+			if (android.os.Build.VERSION.RELEASE.startsWith("3.") ||
+					  android.os.Build.VERSION.RELEASE.startsWith("4."))
+				 {
+					row.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+				 }
 			//holder.eqn_number = (TextView) row.findViewById(R.id.number);
 
 			holder.eqn_image = (ImageView) row.findViewById(R.id.image);

@@ -10,11 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.annotation.TargetApi;
 import android.graphics.Color;
 
 public class MainPageFragment extends SherlockFragment
 {
 
+	@TargetApi(11)
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
@@ -24,6 +26,13 @@ public class MainPageFragment extends SherlockFragment
 		// imageView.setBackgroundColor(Color.BLUE); // Set the background color
 		SVG svg = SVGParser.getSVGFromResource(getResources(), R.raw.aiha_tag_white);
 		imageView.setImageDrawable(svg.createPictureDrawable());
+		
+		if (android.os.Build.VERSION.RELEASE.startsWith("3.") ||
+				  android.os.Build.VERSION.RELEASE.startsWith("4."))
+			 {
+				V.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+			 }
+		
 		return V;
 	}
 

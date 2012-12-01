@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -715,6 +716,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
             tab = getArguments().getInt("currentTab");
         }
 
+		@TargetApi(11)
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
@@ -729,6 +731,12 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			int numberOfFields = emi.num_of_variables;
 			entries = new EditText[emi.num_of_variables];
 			result = (EditText)V.findViewById(R.id.editText1);
+			
+			if (android.os.Build.VERSION.RELEASE.startsWith("3.") ||
+				  android.os.Build.VERSION.RELEASE.startsWith("4."))
+			 {
+				V.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+			 }
 			
 			ImageView imageView = (ImageView) V.findViewById(R.id.imageView1);
 			SVG svg = SVGParser.getSVGFromResource(getResources(), emi.graphic_id);
@@ -803,7 +811,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 					Object returnVal = emi.eqnMethod.invoke(this, params);
 					Double rVal = (Double)returnVal;
 					double d = rVal.doubleValue();
-					String s = new DecimalFormat("#.####").format(d);
+					String s = new DecimalFormat("#.##").format(d);
 					result.setText(s);
 				} catch (IllegalArgumentException e) {
 			
@@ -820,6 +828,9 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		
 		public void clearButtonClick(View v){
 			result.setText("0");
+			for(int i = 0; i < entries.length ; i++){
+				entries[i].setText("");
+			}
 		}
 	}
 
