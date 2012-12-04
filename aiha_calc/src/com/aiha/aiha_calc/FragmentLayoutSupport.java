@@ -21,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -738,6 +739,17 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				V.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 			 }
 			
+			if(emi.num_of_variables == 0){
+				heatStressTable(V);
+				EditText et1 = (EditText)V.findViewById(R.id.editText1);
+				Button bt1 = (Button)V.findViewById(R.id.button1);
+				Button bt2 = (Button)V.findViewById(R.id.button2);
+				et1.setVisibility(View.INVISIBLE);
+				bt1.setVisibility(View.INVISIBLE);
+				bt2.setVisibility(View.INVISIBLE);
+				return V;
+			}
+			
 			ImageView imageView = (ImageView) V.findViewById(R.id.imageView1);
 			SVG svg = SVGParser.getSVGFromResource(getResources(), emi.graphic_id);
 			imageView.setImageDrawable(svg.createPictureDrawable());
@@ -831,6 +843,112 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			for(int i = 0; i < entries.length ; i++){
 				entries[i].setText("");
 			}
+		}
+		
+		public View heatStressTable(View V){
+			TableLayout tl = (TableLayout) V.findViewById(R.id.varTable);
+			LayoutParams params = new TableRow.LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f);
+			tl.setColumnStretchable(0, true);
+			tl.setColumnStretchable(1, true);
+			tl.setColumnStretchable(2, true);
+			tl.setColumnStretchable(3, true);
+			
+			TableRow row0 = createTableRow(V,1);
+			createTableText("______Work Load**______", 1, params, V, row0);
+			tl.addView(row0);
+			
+			TableRow row1 = createTableRow(V,4);
+			createTableText("Work/rest regimen", 0, params, V, row1);
+			createTableText("Light", 1, params, V, row1);
+			createTableText("Moderate", 1, params, V, row1);
+			createTableText("Heavy", 1, params, V, row1);
+			tl.addView(row1);
+			
+			TableRow rowA = createTableRow(V,1);
+			createTableText("", 1, params, V, rowA);
+			tl.addView(rowA);
+			
+			TableRow row2 = createTableRow(V,4);
+			createTableText("Continuous Work", 0, params, V, row2);
+			createTableText("30.0\u00b0C (86\u00b0F)", 1, params, V, row2);
+			createTableText("26.7\u00b0C (80\u00b0F)", 1, params, V, row2);
+			createTableText("25.0\u00b0C (77\u00b0F)", 1, params, V, row2);
+			tl.addView(row2);
+			
+			TableRow rowB = createTableRow(V,1);
+			createTableText("", 1, params, V, rowB);
+			tl.addView(rowB);
+			
+			TableRow row3 = createTableRow(V,4);
+			createTableText("75% Work, 25% Rest*", 0, params, V, row3);
+			createTableText("30.6\u00b0C (87\u00b0F)", 1, params, V, row3);
+			createTableText("28.0\u00b0C (82\u00b0F)", 1, params, V, row3);
+			createTableText("25.9\u00b0C (78\u00b0F)", 1, params, V, row3);
+			tl.addView(row3);
+			
+			TableRow rowC = createTableRow(V,1);
+			createTableText("", 1, params, V, rowC);
+			tl.addView(rowC);
+			
+			TableRow row4 = createTableRow(V,4);
+			createTableText("50% Work, 50% Rest*", 0, params, V, row4);
+			createTableText("31.4\u00b0C (89\u00b0F)", 1, params, V, row4);
+			createTableText("29.4\u00b0C (85\u00b0F)", 1, params, V, row4);
+			createTableText("27.9\u00b0C (82\u00b0F)", 1, params, V, row4);
+			tl.addView(row4);
+			
+			TableRow rowD = createTableRow(V,1);
+			createTableText("", 1, params, V, rowD);
+			tl.addView(rowD);
+			
+			TableRow row5 = createTableRow(V,4);
+			createTableText("25% Work, 75% Rest*", 0, params, V, row5);
+			createTableText("32.2\u00b0C (90\u00b0F)", 1, params, V, row5);
+			createTableText("31.1\u00b0C (88\u00b0F)", 1, params, V, row5);
+			createTableText("30.0\u00b0C (86\u00b0F)", 1, params, V, row5);
+			tl.addView(row5);
+			
+			TableRow rowE = createTableRow(V,1);
+			createTableText("", 1, params, V, rowE);
+			tl.addView(rowE);
+			
+			TableRow rowF = createTableRow(V,1);
+			createTableText("*Each Hour", 1, params, V, rowF);
+			tl.addView(rowF);
+			
+			TableRow rowG = createTableRow(V,1);
+			createTableText("**Values in \u00b0C and \u00b0F, WBGT", 1, params, V, rowG);
+			tl.addView(rowG);
+			
+			return V;
+		}
+		
+		public void createTableText(String s, int gravity, LayoutParams lp, View V
+				, TableRow tr){
+			
+			TextView tv = new TextView(V.getContext());
+			tv.setText(s);
+			tv.setTextColor(Color.WHITE);
+			tv.setLayoutParams(lp);
+			
+			switch(gravity){
+				case 0: tv.setGravity(Gravity.LEFT);
+					break;
+				case 1: tv.setGravity(Gravity.CENTER);
+					break;
+				case 2: tv.setGravity(Gravity.RIGHT);
+					break;
+			default:
+					break;
+			}
+			tr.addView(tv);
+		}
+		
+		public TableRow createTableRow (View V, int columns){
+			TableRow tr = new TableRow(V.getContext());
+			tr.setWeightSum(columns);
+			tr.setGravity(Gravity.CENTER_HORIZONTAL);
+			return tr;
 		}
 	}
 

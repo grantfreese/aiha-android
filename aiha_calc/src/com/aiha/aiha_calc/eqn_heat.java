@@ -34,9 +34,13 @@ public class eqn_heat
 
 		return Double.valueOf(df.format(temp));
 	}
+	
+	public static void eqn_heat_03(){
+		// dummy method for heat exposure table
+	}
 
 	public eqn_heat(){
-		equationMethods = new Method[2];
+		equationMethods = new Method[3];
 		
 		try {
 			equationMethods[0]= this.getClass().getMethod(
@@ -44,6 +48,9 @@ public class eqn_heat
 			
 			equationMethods[1]= this.getClass().getMethod(
 					"eqn_heat_02", Double.TYPE, Double.TYPE);
+			
+			equationMethods[2]= this.getClass().getMethod(
+					"eqn_heat_03");
 			
 		} catch (NoSuchMethodException e) {
 		} catch (SecurityException e) {
