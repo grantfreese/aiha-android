@@ -42,7 +42,11 @@ import com.aiha.aiha_calc.EquationList.EqnMenuItem;
 import com.larvalabs.svgandroid.SVG;
 import com.larvalabs.svgandroid.SVGParser;
 
-/*********************************************************************************************************************/
+/******************************************************************************
+ * Class: FragmentLayoutSupport
+ * 
+ * 
+ ******************************************************************************/
 public class FragmentLayoutSupport extends SherlockFragmentActivity
 {
 	private static EquationList _equationList;
@@ -59,15 +63,18 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 
 		setContentView(R.layout.fragment_layout_support);
 	}
-	
 
-	// handler for smallish screen sizes
+	/**************************************************************************
+	 * Class: DetailsActivity
+	 * 
+	 * Fragment for small screens
+	 **************************************************************************/
 	public static class DetailsActivity extends SherlockFragmentActivity
 	{
 
 		DetailsFragment details;
 		public static int THEME = R.style.Theme_Aiha_Light;
-		
+
 		@Override
 		protected void onCreate(Bundle savedInstanceState)
 		{
@@ -81,14 +88,16 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				finish();
 				return;
 			}
-			
+
+			/* stuff that makes new bar
 			ActionBar bar = getSupportActionBar();
 
 			bar.setDisplayUseLogoEnabled(false);
-			bar.setDisplayShowTitleEnabled(false);
+			bar.setDisplayShowTitleEnabled(false);	//changed
 			bar.setDisplayShowHomeEnabled(false);
 			bar.setDisplayHomeAsUpEnabled(false);
-
+			*/
+			
 			if (savedInstanceState == null)
 			{
 				// During initial setup, plug in the details fragment.
@@ -97,17 +106,26 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				getSupportFragmentManager().beginTransaction().add(android.R.id.content, details).commit();
 			}
 		}
-		public void calcButtonClick(View v){
+		
+
+		
+		
+		public void calcButtonClick(View v)
+		{
 			details.calcButtonClick(v);
 		}
-		
-		public void clearButtonClick(View v){
+
+		public void clearButtonClick(View v)
+		{
 			details.clearButtonClick(v);
 		}
 	}
 
-	/*****************************************************************************************************************/
-	// top-level fragment showing list of items
+	/**************************************************************************
+	 * Class: ConvertListFragment
+	 * 
+	 * Top-level fragment showing list of conversion equations
+	 **************************************************************************/
 	public static class ConvertListFragment extends SherlockListFragment
 	{
 		boolean mDualPane;
@@ -133,7 +151,6 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 
 			list_convert = _equationList.getEqns(1);
 
-			/***********************************************/
 			// setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
 			// Populate list with our static array of titles.
 
@@ -142,7 +159,6 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				eqn_adapter_convert = new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_convert);
 			}
 
-			System.out.println("convert setListAdapter");
 			setListAdapter(eqn_adapter_convert);
 
 			// Check to see if we have a frame in which to embed the details
@@ -198,7 +214,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				if (details == null || details.getShownIndex() != index)
 				{
 					// Make new fragment to show this selection.
-					details = DetailsFragment.newInstance(index,1);
+					details = DetailsFragment.newInstance(index, 1);
 
 					// Execute a transaction, replacing any existing fragment
 					// with this one inside the frame.
@@ -222,6 +238,11 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		}
 	}
 
+	/**************************************************************************
+	 * Class: NoiseListFragment
+	 * 
+	 * Top-level fragment showing list of noise equations
+	 **************************************************************************/
 	public static class NoiseListFragment extends SherlockListFragment
 	{
 		boolean mDualPane;
@@ -247,7 +268,6 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 
 			list_noise = _equationList.getEqns(2);
 
-			/***********************************************/
 			// setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
 			// Populate list with our static array of titles.
 			if (list_noise != null)
@@ -311,7 +331,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				if (details == null || details.getShownIndex() != index)
 				{
 					// Make new fragment to show this selection.
-					details = DetailsFragment.newInstance(index,2);
+					details = DetailsFragment.newInstance(index, 2);
 
 					// Execute a transaction, replacing any existing fragment
 					// with this one inside the frame.
@@ -335,15 +355,18 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		}
 	}
 
+	/**************************************************************************
+	 * Class: HeatListFragment
+	 * 
+	 * Top-level fragment showing list of heat equations
+	 **************************************************************************/
 	public static class HeatListFragment extends SherlockListFragment
 	{
 		boolean mDualPane;
 		int mCurCheckPosition = 0;
 
-		
 		EquationItemAdapter eqn_adapter_heat;
 		ArrayList<EqnMenuItem> list_heat;
-		
 
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState)
@@ -362,7 +385,6 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 
 			list_heat = _equationList.getEqns(3);
 
-			/***********************************************/
 			// setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
 			// Populate list with our static array of titles.
 
@@ -427,7 +449,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				if (details == null || details.getShownIndex() != index)
 				{
 					// Make new fragment to show this selection.
-					details = DetailsFragment.newInstance(index,3);
+					details = DetailsFragment.newInstance(index, 3);
 
 					// Execute a transaction, replacing any existing fragment
 					// with this one inside the frame.
@@ -451,6 +473,11 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		}
 	}
 
+	/**************************************************************************
+	 * Class: VentListFragment
+	 * 
+	 * Top-level fragment showing list of vent equations
+	 **************************************************************************/
 	public static class VentListFragment extends SherlockListFragment
 	{
 		boolean mDualPane;
@@ -458,7 +485,6 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 
 		EquationItemAdapter eqn_adapter_vent;
 		ArrayList<EqnMenuItem> list_vent;
-		
 
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState)
@@ -477,7 +503,6 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 
 			list_vent = _equationList.getEqns(4);
 
-			/***********************************************/
 			// setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
 			// Populate list with our static array of titles.
 
@@ -542,7 +567,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				if (details == null || details.getShownIndex() != index)
 				{
 					// Make new fragment to show this selection.
-					details = DetailsFragment.newInstance(index,4);
+					details = DetailsFragment.newInstance(index, 4);
 
 					// Execute a transaction, replacing any existing fragment
 					// with this one inside the frame.
@@ -566,6 +591,11 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		}
 	}
 
+	/**************************************************************************
+	 * Class: ExposListFragment
+	 * 
+	 * Top-level fragment showing list of exposure equations
+	 **************************************************************************/
 	public static class ExposListFragment extends SherlockListFragment
 	{
 		boolean mDualPane;
@@ -591,7 +621,6 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 
 			list_expos = _equationList.getEqns(5);
 
-			/***********************************************/
 			// setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
 			// Populate list with our static array of titles.
 
@@ -680,19 +709,18 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		}
 	}
 
-	/*****************************************************************************************************************/
-	/**
-	 * This is the secondary fragment, displaying the details of a particular
-	 * item.
-	 */
-
+	/**************************************************************************
+	 * Class: DetailsFragment
+	 * 
+	 * Shows fragment for selected item (single(?) view modes only)
+	 ***************************************************************************/
 	public static class DetailsFragment extends SherlockFragment
 	{
 		private int selection, tab;
 		private EqnMenuItem emi;
 		private EditText[] entries;
 		private EditText result;
-		
+
 		public static DetailsFragment newInstance(int index, int currentTab)
 		{
 			DetailsFragment f = new DetailsFragment();
@@ -700,7 +728,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			// Supply index input as an argument.
 			Bundle args = new Bundle();
 			args.putInt("index", index);
-			args.putInt("currentTab", currentTab);
+			//args.putInt("currentTab", currentTab);
 			f.setArguments(args);
 
 			return f;
@@ -710,20 +738,21 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		{
 			return getArguments().getInt("index", 0);
 		}
-		
-		public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            selection = getArguments().getInt("index");
-            tab = getArguments().getInt("currentTab");
-        }
+
+		public void onCreate(Bundle savedInstanceState)
+		{
+			super.onCreate(savedInstanceState);
+			selection = getArguments().getInt("index");
+			tab = getArguments().getInt("currentTab");
+		}
 
 		@TargetApi(11)
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
+			//not all layouts use this view
 			if (container == null)
 			{
-				
 				return null;
 			}
 
@@ -731,25 +760,30 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			emi = _equationList.getEqns(tab).get(selection);
 			int numberOfFields = emi.num_of_variables;
 			entries = new EditText[emi.num_of_variables];
-			result = (EditText)V.findViewById(R.id.editText1);
+			result = (EditText) V.findViewById(R.id.editText1);
 			
-			if (android.os.Build.VERSION.RELEASE.startsWith("3.") ||
-				  android.os.Build.VERSION.RELEASE.startsWith("4."))
-			 {
+			
+			
+			
+
+			if (android.os.Build.VERSION.RELEASE.startsWith("3.") || android.os.Build.VERSION.RELEASE.startsWith("4."))
+			{
 				V.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-			 }
-			
-			if(emi.num_of_variables == 0){
+			}
+
+			//render equation
+			if (emi.num_of_variables == 0)
+			{
 				heatStressTable(V);
-				EditText et1 = (EditText)V.findViewById(R.id.editText1);
-				Button bt1 = (Button)V.findViewById(R.id.button1);
-				Button bt2 = (Button)V.findViewById(R.id.button2);
+				EditText et1 = (EditText) V.findViewById(R.id.editText1);
+				Button bt1 = (Button) V.findViewById(R.id.button1);
+				Button bt2 = (Button) V.findViewById(R.id.button2);
 				et1.setVisibility(View.INVISIBLE);
 				bt1.setVisibility(View.INVISIBLE);
 				bt2.setVisibility(View.INVISIBLE);
 				return V;
 			}
-			
+
 			ImageView imageView = (ImageView) V.findViewById(R.id.imageView1);
 			SVG svg = SVGParser.getSVGFromResource(getResources(), emi.graphic_id);
 			imageView.setImageDrawable(svg.createPictureDrawable());
@@ -757,6 +791,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			TableLayout tl = (TableLayout) V.findViewById(R.id.varTable);
 			LayoutParams params = new TableRow.LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f);
 
+			//create data fields
 			for (int i = 0; i < numberOfFields; i++)
 			{
 				TableRow tr = new TableRow(V.getContext());
@@ -797,154 +832,171 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 
 			return V;
 		}
-		
-		public void calcButtonClick(View v){
-			
+
+		public void calcButtonClick(View v)
+		{
+
 			Object[] params = new Object[emi.num_of_variables];
 			boolean calculate = true;
-			
-			for(int i = 0; i < params.length; i++){
-				
-				if(entries[i].getText().length() > 0)
+
+			for (int i = 0; i < params.length; i++)
+			{
+
+				if (entries[i].getText().length() > 0)
 				{
-					try{
+					try
+					{
 						params[i] = new Double(Double.parseDouble(entries[i].getText().toString()));
-					}
-					catch(NumberFormatException e){
+					} catch (NumberFormatException e)
+					{
 					}
 				}
-				else{
+				else
+				{
 					calculate = false;
 				}
 			}
-			
-			if(calculate){
-				try {
+
+			if (calculate)
+			{
+				try
+				{
 					Object returnVal = emi.eqnMethod.invoke(this, params);
-					Double rVal = (Double)returnVal;
+					Double rVal = (Double) returnVal;
 					double d = rVal.doubleValue();
 					String s = new DecimalFormat("#.##").format(d);
 					result.setText(s);
-				} catch (IllegalArgumentException e) {
-			
+				} catch (IllegalArgumentException e)
+				{
+
 					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-				
+				} catch (IllegalAccessException e)
+				{
+
 					e.printStackTrace();
-				} catch (InvocationTargetException e) {
-				
+				} catch (InvocationTargetException e)
+				{
+
 					e.printStackTrace();
 				}
 			}
 		}
-		
-		public void clearButtonClick(View v){
+
+		public void clearButtonClick(View v)
+		{
 			result.setText("0");
-			for(int i = 0; i < entries.length ; i++){
+			for (int i = 0; i < entries.length; i++)
+			{
 				entries[i].setText("");
 			}
 		}
-		
-		public View heatStressTable(View V){
+
+		public View heatStressTable(View V)
+		{
 			TableLayout tl = (TableLayout) V.findViewById(R.id.varTable);
 			LayoutParams params = new TableRow.LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f);
 			tl.setColumnStretchable(0, true);
 			tl.setColumnStretchable(1, true);
 			tl.setColumnStretchable(2, true);
 			tl.setColumnStretchable(3, true);
-			
-			TableRow row0 = createTableRow(V,1);
+
+			TableRow row0 = createTableRow(V, 1);
 			createTableText("______Work Load**______", 1, params, V, row0);
 			tl.addView(row0);
-			
-			TableRow row1 = createTableRow(V,4);
+
+			TableRow row1 = createTableRow(V, 4);
 			createTableText("Work/rest regimen", 0, params, V, row1);
 			createTableText("Light", 1, params, V, row1);
 			createTableText("Moderate", 1, params, V, row1);
 			createTableText("Heavy", 1, params, V, row1);
 			tl.addView(row1);
-			
-			TableRow rowA = createTableRow(V,1);
+
+			TableRow rowA = createTableRow(V, 1);
 			createTableText("", 1, params, V, rowA);
 			tl.addView(rowA);
-			
-			TableRow row2 = createTableRow(V,4);
+
+			TableRow row2 = createTableRow(V, 4);
 			createTableText("Continuous Work", 0, params, V, row2);
 			createTableText("30.0\u00b0C (86\u00b0F)", 1, params, V, row2);
 			createTableText("26.7\u00b0C (80\u00b0F)", 1, params, V, row2);
 			createTableText("25.0\u00b0C (77\u00b0F)", 1, params, V, row2);
 			tl.addView(row2);
-			
-			TableRow rowB = createTableRow(V,1);
+
+			TableRow rowB = createTableRow(V, 1);
 			createTableText("", 1, params, V, rowB);
 			tl.addView(rowB);
-			
-			TableRow row3 = createTableRow(V,4);
+
+			TableRow row3 = createTableRow(V, 4);
 			createTableText("75% Work, 25% Rest*", 0, params, V, row3);
 			createTableText("30.6\u00b0C (87\u00b0F)", 1, params, V, row3);
 			createTableText("28.0\u00b0C (82\u00b0F)", 1, params, V, row3);
 			createTableText("25.9\u00b0C (78\u00b0F)", 1, params, V, row3);
 			tl.addView(row3);
-			
-			TableRow rowC = createTableRow(V,1);
+
+			TableRow rowC = createTableRow(V, 1);
 			createTableText("", 1, params, V, rowC);
 			tl.addView(rowC);
-			
-			TableRow row4 = createTableRow(V,4);
+
+			TableRow row4 = createTableRow(V, 4);
 			createTableText("50% Work, 50% Rest*", 0, params, V, row4);
 			createTableText("31.4\u00b0C (89\u00b0F)", 1, params, V, row4);
 			createTableText("29.4\u00b0C (85\u00b0F)", 1, params, V, row4);
 			createTableText("27.9\u00b0C (82\u00b0F)", 1, params, V, row4);
 			tl.addView(row4);
-			
-			TableRow rowD = createTableRow(V,1);
+
+			TableRow rowD = createTableRow(V, 1);
 			createTableText("", 1, params, V, rowD);
 			tl.addView(rowD);
-			
-			TableRow row5 = createTableRow(V,4);
+
+			TableRow row5 = createTableRow(V, 4);
 			createTableText("25% Work, 75% Rest*", 0, params, V, row5);
 			createTableText("32.2\u00b0C (90\u00b0F)", 1, params, V, row5);
 			createTableText("31.1\u00b0C (88\u00b0F)", 1, params, V, row5);
 			createTableText("30.0\u00b0C (86\u00b0F)", 1, params, V, row5);
 			tl.addView(row5);
-			
-			TableRow rowE = createTableRow(V,1);
+
+			TableRow rowE = createTableRow(V, 1);
 			createTableText("", 1, params, V, rowE);
 			tl.addView(rowE);
-			
-			TableRow rowF = createTableRow(V,1);
+
+			TableRow rowF = createTableRow(V, 1);
 			createTableText("*Each Hour", 1, params, V, rowF);
 			tl.addView(rowF);
-			
-			TableRow rowG = createTableRow(V,1);
+
+			TableRow rowG = createTableRow(V, 1);
 			createTableText("**Values in \u00b0C and \u00b0F, WBGT", 1, params, V, rowG);
 			tl.addView(rowG);
-			
+
 			return V;
 		}
-		
-		public void createTableText(String s, int gravity, LayoutParams lp, View V
-				, TableRow tr){
-			
+
+		public void createTableText(String s, int gravity, LayoutParams lp, View V, TableRow tr)
+		{
+
 			TextView tv = new TextView(V.getContext());
 			tv.setText(s);
 			tv.setTextColor(Color.WHITE);
 			tv.setLayoutParams(lp);
-			
-			switch(gravity){
-				case 0: tv.setGravity(Gravity.LEFT);
-					break;
-				case 1: tv.setGravity(Gravity.CENTER);
-					break;
-				case 2: tv.setGravity(Gravity.RIGHT);
-					break;
+
+			switch (gravity)
+			{
+			case 0:
+				tv.setGravity(Gravity.LEFT);
+				break;
+			case 1:
+				tv.setGravity(Gravity.CENTER);
+				break;
+			case 2:
+				tv.setGravity(Gravity.RIGHT);
+				break;
 			default:
-					break;
+				break;
 			}
 			tr.addView(tv);
 		}
-		
-		public TableRow createTableRow (View V, int columns){
+
+		public TableRow createTableRow(View V, int columns)
+		{
 			TableRow tr = new TableRow(V.getContext());
 			tr.setWeightSum(columns);
 			tr.setGravity(Gravity.CENTER_HORIZONTAL);

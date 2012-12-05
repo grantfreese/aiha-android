@@ -27,6 +27,8 @@ public class MainPageFragment extends SherlockFragment
 		SVG svg = SVGParser.getSVGFromResource(getResources(), R.raw.aiha_tag_white);
 		imageView.setImageDrawable(svg.createPictureDrawable());
 		
+		//TODO: check if this hack will clobber later versions of Android-- maybe render in software always?
+		//TODO: find other places this hack is used
 		if (android.os.Build.VERSION.RELEASE.startsWith("3.") ||
 				  android.os.Build.VERSION.RELEASE.startsWith("4."))
 			 {
