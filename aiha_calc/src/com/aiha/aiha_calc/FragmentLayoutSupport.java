@@ -89,14 +89,10 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				return;
 			}
 
-			/* stuff that makes new bar
-			ActionBar bar = getSupportActionBar();
+			//hide actionbar in equation editor
+			ActionBar bar = getSupportActionBar();			
+			bar.hide();
 
-			bar.setDisplayUseLogoEnabled(false);
-			bar.setDisplayShowTitleEnabled(false);	//changed
-			bar.setDisplayShowHomeEnabled(false);
-			bar.setDisplayHomeAsUpEnabled(false);
-			*/
 			
 			if (savedInstanceState == null)
 			{
@@ -144,11 +140,13 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				_equationList = new EquationList();
 			}
 
+			//TODO: obsolete?
 			// stuff to get tab number
 			int current_tab;
 			SherlockFragmentActivity sherlockContext = getSherlockActivity();
 			current_tab = sherlockContext.getSupportActionBar().getSelectedNavigationIndex();
-
+			//TODO: obsolete?
+			
 			list_convert = _equationList.getEqns(1);
 
 			// setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
@@ -158,7 +156,6 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			{
 				eqn_adapter_convert = new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_convert);
 			}
-
 			setListAdapter(eqn_adapter_convert);
 
 			// Check to see if we have a frame in which to embed the details
@@ -174,10 +171,12 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 
 			if (mDualPane)
 			{
+				System.out.println("ConvertListFragment mDualPane handler reached");
+				
 				// In dual-pane mode, the list view highlights the selected item.
-				// getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+				getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 				// Make sure our UI is in the correct state.
-				// showDetails(mCurCheckPosition);
+				showDetails(mCurCheckPosition);
 			}
 		}
 
@@ -205,6 +204,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 
 			if (mDualPane)
 			{
+				System.out.println("showDetails for mDualPane reached");
 				// We can display everything in-place with fragments, so update
 				// the list to highlight the selected item and show the data.
 				getListView().setItemChecked(index, true);
@@ -227,6 +227,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			}
 			else
 			{
+				System.out.println("showDetails for !mDualPane reached");
 				// Otherwise we need to launch a new activity to display
 				// the dialog fragment with selected text.
 				Intent intent = new Intent();

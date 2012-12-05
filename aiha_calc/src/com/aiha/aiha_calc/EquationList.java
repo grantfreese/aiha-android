@@ -145,27 +145,21 @@ public class EquationList
 		{
 		case TAB_AIHA:
 			menuItems = null;	// change to tab_aiha later if needed (probably not)
-			System.out.println("getVect using TAB_AIHA (null)");
 			break;
 		case TAB_CONVERT:
 			menuItems = tab_convert;	// change to tab_convert later if needed
-			System.out.println("getVect using TAB_CONVERT (null)");
 			break;
 		case TAB_NOISE:
 			menuItems = tab_noise;
-			System.out.println("getVect using TAB_NOISE");
 			break;
 		case TAB_HEAT:
 			menuItems = tab_heat;
-			System.out.println("getVect using TAB_HEAT");
 			break;
 		case TAB_VENT:
 			menuItems = tab_vent;
-			System.out.println("getVect using TAB_VENT");
 			break;
 		case TAB_EXPOS:
 			menuItems = tab_expos;
-			System.out.println("getVect using TAB_EXPOS");
 			break;
 		default:
 			// should not occur
