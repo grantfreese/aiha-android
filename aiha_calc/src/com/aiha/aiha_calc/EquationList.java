@@ -59,8 +59,11 @@ public class EquationList
 		 * tab_convert.add(new EqnMenuItem(9, R.raw.conv_flowrate));
 		 * tab_convert.add(new EqnMenuItem(10, R.raw.conv_constants)); */
 
+		
 		/*** Noise *****************************************************************************/
-		tab_noise.add(new EqnMenuItem(1, R.raw.eqn_noise_01, 2, new String[] { "N", "decibels", "SPLi", "decibels" }, noiseObj.getMethod(1)));
+		//Removed on orders from the mentor
+		//tab_noise.add(new EqnMenuItem(1, R.raw.eqn_noise_01, 2, new String[] { "N", "decibels", "SPLi", "decibels" }, noiseObj.getMethod(1)));
+		
 		tab_noise.add(new EqnMenuItem(2, R.raw.eqn_noise_02, 1, new String[] { "L", "decibels" }, noiseObj.getMethod(2)));
 		tab_noise.add(new EqnMenuItem(3, R.raw.eqn_noise_03, 1, new String[] { "L", "hours" }, noiseObj.getMethod(3)));
 		tab_noise.add(new EqnMenuItem(4, R.raw.eqn_noise_04, 3, new String[] { "I1", "watts/m2", "D1", "meters", "D2", "meters" }, noiseObj.getMethod(4)));
@@ -77,7 +80,10 @@ public class EquationList
 		tab_vent.add(new EqnMenuItem(3, R.raw.eqn_vent_03, 2, new String[] { "VP", "", "SP", "" }, ventObj.getMethod(3)));
 		tab_vent.add(new EqnMenuItem(4, R.raw.eqn_vent_04, 5, new String[] { "Qind", "L/min", "Pc", "kPa", "Ts", "degrees K", "Ps", "kPa", "Tc", "degrees K" }, ventObj.getMethod(4)));
 		tab_vent.add(new EqnMenuItem(5, R.raw.eqn_vent_05, 1, new String[] { "VP", "in. WC" }, ventObj.getMethod(5)));
-		tab_vent.add(new EqnMenuItem(6, R.raw.eqn_vent_06, 2, new String[] { "VPd", "in. WC", "he", "in. WC" }, ventObj.getMethod(6)));
+		
+		//Removed on orders from the mentor
+		//tab_vent.add(new EqnMenuItem(6, R.raw.eqn_vent_06, 2, new String[] { "VPd", "in. WC", "he", "in. WC" }, ventObj.getMethod(6)));
+		
 		tab_vent.add(new EqnMenuItem(7, R.raw.eqn_vent_07, 4, new String[] { "G", "CFM", "Q", "CFM", "t", "minutes", "N", "air changes/hour" }, ventObj.getMethod(7)));
 		tab_vent.add(new EqnMenuItem(8, R.raw.eqn_vent_08, 5, new String[] { "SG", "", "ER", "pints/min", "K", "", "MW", "g", "C", "ppm" }, ventObj.getMethod(8)));
 		tab_vent.add(new EqnMenuItem(9, R.raw.eqn_vent_09, 3, new String[] { "SPout", "in. WC", "SPin", "in. WC", "VPin", "in. WC" }, ventObj.getMethod(9)));

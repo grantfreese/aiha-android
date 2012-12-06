@@ -763,16 +763,16 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			entries = new EditText[emi.num_of_variables];
 			result = (EditText) V.findViewById(R.id.editText1);
 			
-			
-			
-			
+			ImageView imageView = (ImageView) V.findViewById(R.id.imageView1);
+			SVG svg = SVGParser.getSVGFromResource(getResources(), emi.graphic_id);
+			imageView.setImageDrawable(svg.createPictureDrawable());
 
 			if (android.os.Build.VERSION.RELEASE.startsWith("3.") || android.os.Build.VERSION.RELEASE.startsWith("4."))
 			{
 				V.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 			}
 
-			//render equation
+			// If num_of_variables = 0, this the heat stress table //
 			if (emi.num_of_variables == 0)
 			{
 				heatStressTable(V);
@@ -780,19 +780,17 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				Button bt1 = (Button) V.findViewById(R.id.button1);
 				Button bt2 = (Button) V.findViewById(R.id.button2);
 				et1.setVisibility(View.INVISIBLE);
-				bt1.setVisibility(View.INVISIBLE);
+				bt1.setVisibility(View.INVISIBLE);  // result bar and buttons are hidden //
 				bt2.setVisibility(View.INVISIBLE);
 				return V;
 			}
 
-			ImageView imageView = (ImageView) V.findViewById(R.id.imageView1);
-			SVG svg = SVGParser.getSVGFromResource(getResources(), emi.graphic_id);
-			imageView.setImageDrawable(svg.createPictureDrawable());
-
 			TableLayout tl = (TableLayout) V.findViewById(R.id.varTable);
 			LayoutParams params = new TableRow.LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f);
 
-			//create data fields
+
+			// Creates a a text field, text box, and another text field for each variable in //
+			// the equation, and adds them to the view. //
 			for (int i = 0; i < numberOfFields; i++)
 			{
 				TableRow tr = new TableRow(V.getContext());
@@ -815,7 +813,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				textbox1.setGravity(Gravity.RIGHT);
 				textbox1.setLayoutParams(params);
 				textbox1.setInputType(InputType.TYPE_CLASS_NUMBER);
-				textbox1.setKeyListener(DigitsKeyListener.getInstance("0123456789."));
+				textbox1.setKeyListener(DigitsKeyListener.getInstance("0123456789.-"));
 				entries[i] = textbox1;
 				tr.addView(textbox1);
 
@@ -990,9 +988,10 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			case 2:
 				tv.setGravity(Gravity.RIGHT);
 				break;
-			default:
+				default:
 				break;
 			}
+			
 			tr.addView(tv);
 		}
 

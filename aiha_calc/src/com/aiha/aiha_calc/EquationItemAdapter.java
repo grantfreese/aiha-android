@@ -8,6 +8,7 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.aiha.aiha_calc.EquationList.EqnMenuItem;
 import com.larvalabs.svgandroid.SVG;
+import com.larvalabs.svgandroid.SVGColors;
 import com.larvalabs.svgandroid.SVGParser;
 
 import android.annotation.TargetApi;
@@ -76,8 +77,8 @@ public class EquationItemAdapter extends ArrayAdapter<EqnMenuItem>
 			// holder.eqn_image.setText("img=" + menuitem.graphic_name);
 			 
 			//int svg_resid = activity.getResources().getIdentifier("aiha_tag_white" ,"drawable" ,activity.getPackageName());
-
-			SVG svg = SVGParser.getSVGFromResource(activity.getResources(), menuitem.graphic_id);
+			
+			SVG svg = SVGParser.getSVGFromResource(activity.getResources(), menuitem.graphic_id, 0xff000000, 0xffffffff);
 
 			holder.eqn_image.setImageDrawable(svg.createPictureDrawable());
 
