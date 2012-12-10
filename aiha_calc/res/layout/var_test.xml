@@ -77,8 +77,10 @@
             android:clickable="false"
             android:ems="10"
             android:focusable="false"
+            android:focusableInTouchMode="false"
             android:gravity="right"
             android:inputType="numberDecimal"
+            android:longClickable="true"
             android:selectAllOnFocus="true"
             android:text="0" >
 

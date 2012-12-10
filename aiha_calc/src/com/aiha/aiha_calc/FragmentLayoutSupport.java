@@ -721,7 +721,8 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		private EqnMenuItem emi;
 		private EditText[] entries;
 		private EditText result;
-
+		private boolean honeycombPlus;
+		
 		public static DetailsFragment newInstance(int index, int currentTab)
 		{
 			DetailsFragment f = new DetailsFragment();
@@ -762,6 +763,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			int numberOfFields = emi.num_of_variables;
 			entries = new EditText[emi.num_of_variables];
 			result = (EditText) V.findViewById(R.id.editText1);
+			honeycombPlus = false;
 			
 			ImageView imageView = (ImageView) V.findViewById(R.id.imageView1);
 			SVG svg = SVGParser.getSVGFromResource(getResources(), emi.graphic_id);
@@ -770,6 +772,8 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			if (android.os.Build.VERSION.RELEASE.startsWith("3.") || android.os.Build.VERSION.RELEASE.startsWith("4."))
 			{
 				V.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+				honeycombPlus = true;
+				result.setBackgroundColor(Color.WHITE);
 			}
 
 			// If num_of_variables = 0, this the heat stress table //
@@ -812,8 +816,12 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				textbox1.setId(10 + i);
 				textbox1.setGravity(Gravity.RIGHT);
 				textbox1.setLayoutParams(params);
-				textbox1.setInputType(InputType.TYPE_CLASS_NUMBER);
+				textbox1.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
 				textbox1.setKeyListener(DigitsKeyListener.getInstance("0123456789.-"));
+				if (honeycombPlus){
+					textbox1.setBackgroundColor(Color.WHITE);
+					tr.setPadding(0, 10, 0, 0);
+				}
 				entries[i] = textbox1;
 				tr.addView(textbox1);
 
