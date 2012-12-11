@@ -81,6 +81,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			super.onCreate(savedInstanceState);
 			setTheme(THEME);
 
+			/*
 			if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
 			{
 				// If the screen is now in landscape mode, we can show the
@@ -88,6 +89,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				finish();
 				return;
 			}
+			*/
 
 			//hide actionbar in equation editor
 			ActionBar bar = getSupportActionBar();			
