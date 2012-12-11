@@ -73,7 +73,7 @@ public class EquationList
 		tab_heat.add(new EqnMenuItem(1, R.raw.eqn_heat_01, 3, new String[] { "tnwb", "Degrees F", "tg", "Degrees F", "db", "Degrees F" }, heatObj.getMethod(1)));
 		tab_heat.add(new EqnMenuItem(2, R.raw.eqn_heat_02, 2, new String[] { "tnwb", "Degrees F", "tg", "Degrees F" }, heatObj.getMethod(2)));
 		//Contains placeholder image. Need to make an image for the heat stress table.
-		tab_heat.add(new EqnMenuItem(3, R.raw.to_ppm, 0, new String[]{}, heatObj.getMethod(3)));
+		tab_heat.add(new EqnMenuItem(3, R.raw.eqn_heat_03, 0, new String[]{}, heatObj.getMethod(3)));
 		/*** Vent *****************************************************************************/
 		tab_vent.add(new EqnMenuItem(1, R.raw.eqn_vent_01, 4, new String[] { "gas volume", "liters", "gas density", "grams/cm3", "gas MW", "grams", "roomVolume", "feet3" }, ventObj.getMethod(1)));
 		tab_vent.add(new EqnMenuItem(2, R.raw.eqn_vent_02, 2, new String[] { "Q", "cfm", "Volume", "feet3" }, ventObj.getMethod(2)));
