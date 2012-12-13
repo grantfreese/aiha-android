@@ -17,6 +17,7 @@ import android.text.InputType;
 import android.text.method.DigitsKeyListener;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -127,10 +128,15 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 	public static class ConvertListFragment extends SherlockListFragment
 	{
 		boolean mDualPane;
+		static boolean sublistSelected = false;
 		int mCurCheckPosition = 0;
+		final int FLOW_RATE = 9;
+		String message = "hello!";
 
 		EquationItemAdapter eqn_adapter_convert;
+		EquationItemAdapter eqn_adapter_sublist;
 		ArrayList<EqnMenuItem> list_convert;
+		
 
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState)
@@ -141,7 +147,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			{
 				_equationList = new EquationList();
 			}
-
+			
 			//TODO: obsolete?
 			// stuff to get tab number
 			int current_tab;
@@ -153,7 +159,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 
 			// setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
 			// Populate list with our static array of titles.
-
+			sublistSelected = false;
 			if (list_convert != null)
 			{
 				eqn_adapter_convert = new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_convert);
@@ -232,12 +238,47 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				System.out.println("showDetails for !mDualPane reached");
 				// Otherwise we need to launch a new activity to display
 				// the dialog fragment with selected text.
-				Intent intent = new Intent();
-				intent.setClass(getActivity(), DetailsActivity.class);
-				intent.putExtra("index", index);
-				intent.putExtra("currentTab", 1);
-				startActivity(intent);
+				if(list_convert.get(index).num_of_variables == -1){
+					
+					
+					int newList = list_convert.get(index).number;
+					
+					list_convert = _equationList.getEqns(2);
+					eqn_adapter_convert = new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_convert);
+					
+					//for(int i =0; i < list_convert.size(); i++){
+					//	eqn_adapter_convert.add(list_convert.get(i));
+					//}
+					
+					setListAdapter(eqn_adapter_convert);
+					sublistSelected = true;
+					eqn_adapter_convert.notifyDataSetChanged();
+				
+				}else{
+					
+					Intent intent = new Intent();
+					intent.setClass(getActivity(), DetailsActivity.class);
+					intent.putExtra("index", index);
+					intent.putExtra("currentTab", 1);
+					startActivity(intent);
+				}
 			}
+		}
+		
+		public void backButtonPressed(){
+			
+			list_convert = _equationList.getEqns(1);
+			eqn_adapter_convert.clear();
+			
+			System.out.println(list_convert.size());
+			for(int i =0; i < list_convert.size(); i++){
+				eqn_adapter_convert.add(list_convert.get(i));
+			}
+			
+			setListAdapter(eqn_adapter_convert);
+			System.out.println(message);
+			sublistSelected = false;
+			eqn_adapter_convert.notifyDataSetChanged();
 		}
 	}
 
@@ -723,7 +764,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		private EqnMenuItem emi;
 		private EditText[] entries;
 		private EditText result;
-		private boolean honeycombPlus;
+		private boolean honeycombPlus, conversion;
 		
 		public static DetailsFragment newInstance(int index, int currentTab)
 		{
@@ -766,6 +807,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			entries = new EditText[emi.num_of_variables];
 			result = (EditText) V.findViewById(R.id.editText1);
 			honeycombPlus = false;
+			conversion = false;
 			
 			ImageView imageView = (ImageView) V.findViewById(R.id.imageView1);
 			SVG svg = SVGParser.getSVGFromResource(getResources(), emi.graphic_id);
@@ -777,17 +819,23 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				honeycombPlus = true;
 				result.setBackgroundColor(Color.WHITE);
 			}
-
-			// If num_of_variables = 0, this the heat stress table //
+			
+			if (tab == 1)
+				conversion = true;
+			
+			// If num_of_variables = 0, this is a table //
 			if (emi.num_of_variables == 0)
 			{
-				heatStressTable(V);
 				EditText et1 = (EditText) V.findViewById(R.id.editText1);
 				Button bt1 = (Button) V.findViewById(R.id.button1);
 				Button bt2 = (Button) V.findViewById(R.id.button2);
 				et1.setVisibility(View.INVISIBLE);
 				bt1.setVisibility(View.INVISIBLE);  // result bar and buttons are hidden //
 				bt2.setVisibility(View.INVISIBLE);
+				if(emi.number == 3)
+					heatStressTable(V);
+				else
+					constantsTable(V);
 				return V;
 			}
 
@@ -846,47 +894,100 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		{
 
 			Object[] params = new Object[emi.num_of_variables];
-			boolean calculate = true;
+			Object convertEntry = new Object();
+			boolean calculate = true, convert = true;
+			int index = 0, entry = 0;
 
-			for (int i = 0; i < params.length; i++)
-			{
+			if(!conversion){
+					for (int i = 0; i < params.length; i++)
+					{
 
-				if (entries[i].getText().length() > 0)
+						if (entries[i].getText().length() > 0)
+						{
+							try
+							{
+								params[i] = new Double(Double.parseDouble(entries[i].getText().toString()));
+							} catch (NumberFormatException e)
+							{}
+						}
+						else
+						{
+							calculate = false;
+						}
+					}
+			
+				
+				if (calculate)
 				{
 					try
 					{
-						params[i] = new Double(Double.parseDouble(entries[i].getText().toString()));
-					} catch (NumberFormatException e)
+						Object returnVal = emi.eqnMethod.invoke(this, params);
+						Double rVal = (Double) returnVal;
+						double d = rVal.doubleValue();
+						String s = new DecimalFormat("#.##").format(d);
+						result.setText(s);
+					} catch (IllegalArgumentException e)
 					{
+
+						e.printStackTrace();
+					} catch (IllegalAccessException e)
+					{
+
+						e.printStackTrace();
+					} catch (InvocationTargetException e)
+					{
+
+						e.printStackTrace();
 					}
 				}
-				else
-				{
-					calculate = false;
-				}
 			}
-
-			if (calculate)
-			{
-				try
-				{
-					Object returnVal = emi.eqnMethod.invoke(this, params);
-					Double rVal = (Double) returnVal;
-					double d = rVal.doubleValue();
-					String s = new DecimalFormat("#.##").format(d);
-					result.setText(s);
-				} catch (IllegalArgumentException e)
+			else{
+				
+				for (int i = 0; i < entries.length; i++)
 				{
 
-					e.printStackTrace();
-				} catch (IllegalAccessException e)
+					if (entries[i].getText().length() > 0)
+					{
+						entry++;
+						try
+						{
+							convertEntry = new Double(Double.parseDouble(entries[i].getText().toString()));
+						} catch (NumberFormatException e)
+						{}
+						index = i;
+					}
+				}
+				
+				if (entry == 1)
 				{
+					try
+					{
+						Object[]returnVal =  (Object[]) emi.eqnMethod.invoke(this, index, convertEntry);
+						Double[] rVal = (Double[]) returnVal;
+						double[] d  = new double[rVal.length];
+						for(int i=0; i< rVal.length; i++){
+							d[i] = rVal[i].doubleValue();
+						}
+						
+						for(int i=0; i< entries.length; i++){
+							String s = new DecimalFormat("#.##").format(d[i]);
+							entries[i].setText(s);
+						}
+						
+						
+					} catch (IllegalArgumentException e)
+					{
 
-					e.printStackTrace();
-				} catch (InvocationTargetException e)
-				{
+						e.printStackTrace();
+					} catch (IllegalAccessException e)
+					{
 
-					e.printStackTrace();
+						e.printStackTrace();
+					} catch (InvocationTargetException e)
+					{
+
+						e.printStackTrace();
+					}
 				}
 			}
 		}
@@ -978,6 +1079,52 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 
 			return V;
 		}
+		
+		public View constantsTable(View V)
+		{
+			TableLayout tl = (TableLayout) V.findViewById(R.id.varTable);
+			LayoutParams params = new TableRow.LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f);
+			tl.setColumnStretchable(0, true);
+			tl.setColumnStretchable(1, true);
+
+			TableRow rowA = createTableRow(V, 1);
+			createTableText("", 1, params, V, rowA);
+			tl.addView(rowA);
+
+			TableRow row2 = createTableRow(V, 2);
+			createTableText("Avogadro's Number", 0, params, V, row2);
+			createTableText("6.022 * 10^23", 1, params, V, row2);
+			tl.addView(row2);
+
+			TableRow rowB = createTableRow(V, 1);
+			createTableText("", 1, params, V, rowB);
+			tl.addView(rowB);
+
+			TableRow row3 = createTableRow(V, 2);
+			createTableText("Planck's Constant", 0, params, V, row3);
+			createTableText("6.63 * 10^-34 m^2 kg/s", 1, params, V, row3);
+			tl.addView(row3);
+
+			TableRow rowC = createTableRow(V, 1);
+			createTableText("", 1, params, V, rowC);
+			tl.addView(rowC);
+
+			TableRow row4 = createTableRow(V, 2);
+			createTableText("Speed of Light", 0, params, V, row4);
+			createTableText("3 * 10^8 m/s", 1, params, V, row4);
+			tl.addView(row4);
+
+			TableRow rowD = createTableRow(V, 1);
+			createTableText("", 1, params, V, rowD);
+			tl.addView(rowD);
+
+			TableRow row5 = createTableRow(V, 2);
+			createTableText("Speed of Sound (in air at 0\u00B0C)", 0, params, V, row5);
+			createTableText("(331 + 0.6 * \u00B0C) m/s", 1, params, V, row5);
+			tl.addView(row5);
+			
+			return V;
+		}
 
 		public void createTableText(String s, int gravity, LayoutParams lp, View V, TableRow tr)
 		{
@@ -1014,6 +1161,9 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		}
 	}
 
+	
+		
+	
 	/*****************************************************************************************************************/
 	public class EquationEvaluator
 	{

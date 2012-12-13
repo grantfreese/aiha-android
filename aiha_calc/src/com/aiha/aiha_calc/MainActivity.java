@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
@@ -15,6 +16,7 @@ import android.widget.TabHost;
 import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.ActionBar;
+import com.aiha.aiha_calc.FragmentLayoutSupport.ConvertListFragment;
 
 import com.larvalabs.svgandroid.SVG;
 import com.larvalabs.svgandroid.SVGParser;
@@ -54,15 +56,25 @@ public class MainActivity extends SherlockFragmentActivity
 		mTabsAdapter.addTab("ventilation", "Ventilation",	FragmentLayoutSupport.VentListFragment.class, null);
 		mTabsAdapter.addTab("exposure", "Exposure",			FragmentLayoutSupport.ExposListFragment.class, null);
 
-		//display AIHA SVG image
-		//ImageView imageView = new ImageView(this);
-		// imageView.setBackgroundColor(Color.RED); // Set the background color
-		
-		//SVG svg = SVGParser.getSVGFromResource(getResources(), R.raw.aiha_tag_white);
-		//imageView.setImageDrawable(svg.createPictureDrawable());
-		//setContentView(imageView);
 	}
-
+	
+	@Override
+	public void onBackPressed(){
+		System.out.println("Back button event called!");
+		System.out.println(ConvertListFragment.sublistSelected);
+		if(ConvertListFragment.sublistSelected){
+			FragmentManager fm = getSupportFragmentManager();
+			String frag = makeFragmentName(mViewPager.getId(), 1);
+			FragmentLayoutSupport.ConvertListFragment c = (ConvertListFragment) fm.findFragmentByTag(frag);
+			c.backButtonPressed();
+		}
+		else
+			super.onBackPressed();
+	}
+	
+	private static String makeFragmentName(int viewId, int index) {
+	     return "android:switcher:" + viewId + ":" + index;
+	}
 
 	public static class TabsAdapter extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener,
 			ActionBar.TabListener
@@ -193,6 +205,8 @@ public class MainActivity extends SherlockFragmentActivity
 		public void onTabReselected(Tab tab, FragmentTransaction ft)
 		{
 		}
+		
+		
 	}
 
 }

@@ -18,11 +18,13 @@ public class EquationList
 	private ArrayList<EqnMenuItem> tab_heat;
 	private ArrayList<EqnMenuItem> tab_vent;
 	private ArrayList<EqnMenuItem> tab_expos;
+	private ArrayList<EqnMenuItem> tab_iconvert;
 
 	private eqn_heat heatObj;
 	private eqn_noise noiseObj;
 	private eqn_vent ventObj;
 	private eqn_expos exposObj;
+	private Conversions convObj;
 
 	private static final int TAB_AIHA = 0;		// probably won't be used, but just in case..
 	private static final int TAB_CONVERT = 1;	// probably won't be used, but just in case..
@@ -30,6 +32,7 @@ public class EquationList
 	private static final int TAB_HEAT = 3;
 	private static final int TAB_VENT = 4;
 	private static final int TAB_EXPOS = 5;
+	private static final int TAB_ICONVERT = 6;
 
 	EquationList()
 	{
@@ -43,21 +46,22 @@ public class EquationList
 		heatObj = new eqn_heat();
 		ventObj = new eqn_vent();
 		exposObj = new eqn_expos();
+		convObj = new Conversions();
 
 		// Add menu items in tabs
 
 		/*** Conversion *****************************************************************************/
-		tab_convert.add(new EqnMenuItem(1, R.raw.eqn_expos_01, 3, new String[] { "qrtz", "", "crist", "", "trid", "" }, exposObj.getMethod(1)));
-		/* tab_convert.add(new EqnMenuItem(1, R.raw.conv_volume));
-		 * tab_convert.add(new EqnMenuItem(2, R.raw.conv_distance));
-		 * tab_convert.add(new EqnMenuItem(3, R.raw.conv_pressure));
-		 * tab_convert.add(new EqnMenuItem(4, R.raw.conv_mass));
-		 * tab_convert.add(new EqnMenuItem(5, R.raw.conv_temperature));
-		 * tab_convert.add(new EqnMenuItem(6, R.raw.conv_area));
-		 * tab_convert.add(new EqnMenuItem(7, R.raw.conv_oem));
-		 * tab_convert.add(new EqnMenuItem(8, R.raw.conv_concentration));
-		 * tab_convert.add(new EqnMenuItem(9, R.raw.conv_flowrate));
-		 * tab_convert.add(new EqnMenuItem(10, R.raw.conv_constants)); */
+		//tab_convert.add(new EqnMenuItem(1, R.raw.eqn_expos_01, 3, new String[] { "qrtz", "", "crist", "", "trid", "" }, exposObj.getMethod(1)));
+		tab_convert.add(new EqnMenuItem(1, R.raw.eqn_conv_01, 5, new String[]{ "","cubic feet","","cubic cm", "","cubic inches", "", "liters","","quarts"}, convObj.getMethod(1))); //volume
+		tab_convert.add(new EqnMenuItem(2, R.raw.eqn_conv_02, 5, new String[]{ "","feet","","inches", "","miles", "", "centimeters","","meters"}, convObj.getMethod(2))); //distance
+		tab_convert.add(new EqnMenuItem(3, R.raw.eqn_conv_03, 4, new String[]{ "","atm","","psi", "","mm Hg", "", "ft of water"}, convObj.getMethod(3))); //pressure
+		tab_convert.add(new EqnMenuItem(4, R.raw.eqn_conv_04, 5, new String[]{ "","pounds","","kilograms", "","grams", "", "grains", "", "ounces"}, convObj.getMethod(4))); //mass
+		tab_convert.add(new EqnMenuItem(5, R.raw.eqn_conv_05, 5, new String[]{ "","\u00B0Farenheit","","\u00B0Celsius", "","\u00B0Rankine", "", "\u00B0Kelvin", "", "\u00B0Reaumer"}, convObj.getMethod(5))); //temperature
+		 // tab_convert.add(new EqnMenuItem(6, R.raw.conv_area)); //area
+		 // tab_convert.add(new EqnMenuItem(7, R.raw.conv_oem)); //OEL
+		 // tab_convert.add(new EqnMenuItem(8, R.raw.conv_concentration)); //concentration
+		 // tab_convert.add(new EqnMenuItem(9, R.raw.from_ppm, 10, new String[]{}, convObj.getMethod(1))); //flow rate
+		tab_convert.add(new EqnMenuItem(10, R.raw.eqn_conv_10, 0, new String[]{}, convObj.getMethod(10))); //constants
 
 		
 		/*** Noise *****************************************************************************/
@@ -67,18 +71,18 @@ public class EquationList
 		tab_noise.add(new EqnMenuItem(2, R.raw.eqn_noise_02, 1, new String[] { "L", "decibels" }, noiseObj.getMethod(2)));
 		tab_noise.add(new EqnMenuItem(3, R.raw.eqn_noise_03, 1, new String[] { "L", "hours" }, noiseObj.getMethod(3)));
 		tab_noise.add(new EqnMenuItem(4, R.raw.eqn_noise_04, 3, new String[] { "I1", "watts/m2", "D1", "meters", "D2", "meters" }, noiseObj.getMethod(4)));
-		tab_noise.add(new EqnMenuItem(5, R.raw.eqn_noise_05, 1, new String[] { "% Dose", "" }, noiseObj.getMethod(5)));
+		tab_noise.add(new EqnMenuItem(5, R.raw.eqn_noise_05, 1, new String[] { "Dose", "" }, noiseObj.getMethod(5)));
 
 		/*** Heat *****************************************************************************/
-		tab_heat.add(new EqnMenuItem(1, R.raw.eqn_heat_01, 3, new String[] { "tnwb", "Degrees F", "tg", "Degrees F", "db", "Degrees F" }, heatObj.getMethod(1)));
-		tab_heat.add(new EqnMenuItem(2, R.raw.eqn_heat_02, 2, new String[] { "tnwb", "Degrees F", "tg", "Degrees F" }, heatObj.getMethod(2)));
+		tab_heat.add(new EqnMenuItem(1, R.raw.eqn_heat_01, 3, new String[] { "tnwb", "\u00B0F", "tg", "\u00B0F", "db", "\u00B0F" }, heatObj.getMethod(1)));
+		tab_heat.add(new EqnMenuItem(2, R.raw.eqn_heat_02, 2, new String[] { "tnwb", "\u00B0F", "tg", "\u00B0F" }, heatObj.getMethod(2)));
 		//Contains placeholder image. Need to make an image for the heat stress table.
 		tab_heat.add(new EqnMenuItem(3, R.raw.eqn_heat_03, 0, new String[]{}, heatObj.getMethod(3)));
 		/*** Vent *****************************************************************************/
 		tab_vent.add(new EqnMenuItem(1, R.raw.eqn_vent_01, 4, new String[] { "gas volume", "liters", "gas density", "grams/cm3", "gas MW", "grams", "roomVolume", "feet3" }, ventObj.getMethod(1)));
 		tab_vent.add(new EqnMenuItem(2, R.raw.eqn_vent_02, 2, new String[] { "Q", "cfm", "Volume", "feet3" }, ventObj.getMethod(2)));
 		tab_vent.add(new EqnMenuItem(3, R.raw.eqn_vent_03, 2, new String[] { "VP", "", "SP", "" }, ventObj.getMethod(3)));
-		tab_vent.add(new EqnMenuItem(4, R.raw.eqn_vent_04, 5, new String[] { "Qind", "L/min", "Pc", "kPa", "Ts", "degrees K", "Ps", "kPa", "Tc", "degrees K" }, ventObj.getMethod(4)));
+		tab_vent.add(new EqnMenuItem(4, R.raw.eqn_vent_04, 5, new String[] { "Qind", "L/min", "Pc", "kPa", "Ts", "\u00B0K", "Ps", "kPa", "Tc", "\u00B0K" }, ventObj.getMethod(4)));
 		tab_vent.add(new EqnMenuItem(5, R.raw.eqn_vent_05, 1, new String[] { "VP", "in. WC" }, ventObj.getMethod(5)));
 		
 		//Removed on orders from the mentor
@@ -93,7 +97,7 @@ public class EquationList
 		/*** Exposure *****************************************************************************/
 		tab_expos.add(new EqnMenuItem(1, R.raw.eqn_expos_01, 3, new String[] { "%qrtz", "", "%crist", "", "%trid", "" }, exposObj.getMethod(1)));
 		tab_expos.add(new EqnMenuItem(2, R.raw.eqn_expos_02, 3, new String[] { "%qrtz", "", "%crist", "", "%trid", "" }, exposObj.getMethod(2)));
-		tab_expos.add(new EqnMenuItem(3, R.raw.eqn_expos_03, 4, new String[] { "C1", "ppm", "T1", "ppm", "C2", "ppm", "T2", "ppm" }, exposObj.getMethod(3)));
+		tab_expos.add(new EqnMenuItem(3, R.raw.eqn_expos_03, 4, new String[] { "C1", "ppm", "OEL1", "ppm", "C2", "ppm", "OEL2", "ppm" }, exposObj.getMethod(3)));
 
 	}
 
@@ -153,7 +157,7 @@ public class EquationList
 			menuItems = null;	// change to tab_aiha later if needed (probably not)
 			break;
 		case TAB_CONVERT:
-			menuItems = tab_convert;	// change to tab_convert later if needed
+			menuItems = tab_convert;// change to tab_convert later if needed
 			break;
 		case TAB_NOISE:
 			menuItems = tab_noise;
@@ -166,6 +170,9 @@ public class EquationList
 			break;
 		case TAB_EXPOS:
 			menuItems = tab_expos;
+			break;
+		case TAB_ICONVERT:
+			menuItems = tab_iconvert;
 			break;
 		default:
 			// should not occur
