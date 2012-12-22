@@ -812,6 +812,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			ImageView imageView = (ImageView) V.findViewById(R.id.imageView1);
 			SVG svg = SVGParser.getSVGFromResource(getResources(), emi.graphic_id);
 			imageView.setImageDrawable(svg.createPictureDrawable());
+			result.setText("0 " + emi.resultUnit);
 
 			if (android.os.Build.VERSION.RELEASE.startsWith("3.") || android.os.Build.VERSION.RELEASE.startsWith("4."))
 			{
@@ -925,7 +926,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 						Double rVal = (Double) returnVal;
 						double d = rVal.doubleValue();
 						String s = new DecimalFormat("#.##").format(d);
-						result.setText(s);
+						result.setText(s + " " +emi.resultUnit);
 					} catch (IllegalArgumentException e)
 					{
 
@@ -971,7 +972,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 						
 						for(int i=0; i< entries.length; i++){
 							String s = new DecimalFormat("#.##").format(d[i]);
-							entries[i].setText(s);
+							entries[i].setText(s + " " +emi.resultUnit);
 						}
 						
 						
@@ -994,7 +995,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 
 		public void clearButtonClick(View v)
 		{
-			result.setText("0");
+			result.setText("0 " + emi.resultUnit);
 			for (int i = 0; i < entries.length; i++)
 			{
 				entries[i].setText("");
