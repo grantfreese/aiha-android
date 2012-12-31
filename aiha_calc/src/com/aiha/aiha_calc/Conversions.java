@@ -6,6 +6,8 @@ public class Conversions {
 	
 	Method[] conversionMethods;
 	
+	// ********* OEL Conversions ********* 
+	
 	public static double convertPPMToMMG(double mg, double ppm)
 	{
 		double convertedValue;
@@ -250,6 +252,44 @@ public class Conversions {
 		return convertedValue;
 	}
 
+	public static Double[] convertFlowRate1(int index, double val){
+		
+		Double[] d = new Double[3];
+		double baseValue = 0.0; // always in cubic ft/min
+		
+		switch(index){
+		case 0: baseValue = msToFtm(val); // cubic m/s
+			break;
+		case 1: baseValue = val; // cubic ft/min
+			break;
+		case 2: baseValue = cpsToFtm(val); // cubic cm/s
+			break;
+		}
+		
+		d[0] = ftmToMs(baseValue);
+		d[1] = baseValue;
+		d[2] = ftmToCps(baseValue);
+		
+		return d;
+	}
+	
+	public static Double[] convertFlowRate2(int index, double val){
+		
+		Double[] d = new Double[2];
+		double baseValue = 0.0; // always in cubic ft/hr
+		
+		switch(index){
+		case 0: baseValue = val; // cubic ft/hr
+			break;
+		case 1: baseValue = lmToFth(val); // liters/min
+			break;
+		}
+		
+		d[0] = baseValue;
+		d[1] = fthToLMin(baseValue);
+		
+		return d;
+	}
 	// ********* Concentration Conversions ********* 
 	public static double gToM(double g)
 	{
@@ -277,6 +317,42 @@ public class Conversions {
 		double convertedValue;
 		convertedValue = particles / 35.3;
 		return convertedValue;
+	}
+	
+	public static Double[] convertConcentration1(int index, double val){
+		
+		Double[] d = new Double[2];
+		double baseValue = 0.0; // always in grains/cubic ft
+		
+		switch(index){
+		case 0: baseValue = val; // grains/cubic ft
+			break;
+		case 1: baseValue = mToG(val); // g/cubic m
+			break;
+		}
+		
+		d[0] = baseValue;
+		d[1] = gToM(baseValue);
+		
+		return d;
+	}
+	
+	public static Double[] convertConcentration2(int index, double val){
+		
+		Double[] d = new Double[2];
+		double baseValue = 0.0; // always in mppcf
+		
+		switch(index){
+		case 0: baseValue = val; // mppcf
+			break;
+		case 1: baseValue = particlesToMppcf(val); // particles/cubic cm
+			break;
+		}
+		
+		d[0] = baseValue;
+		d[1] = mppcfToParticles(baseValue);
+		
+		return d;
 	}
 	
 	// ********* Temperature Conversions ********* 
@@ -512,10 +588,31 @@ public class Conversions {
 		return d;
 	}
 	
+	// ********* Area Conversions *********
+	public static Double[] convertAreaOfCircle(int index, double val){
+		Double[] d = new Double[3];
+		double baseValue = 0.0; // always radius
+		
+		switch(index){
+		case 0: baseValue = val; //radius
+			break;
+		case 1: baseValue = val/2; //diameter
+			break;
+		case 2: baseValue = Math.abs(Math.sqrt(val/Math.PI)); //area
+			break;
+		}
+		
+		d[0] = baseValue;
+		d[1] = baseValue*2;
+		d[2] = Math.PI*baseValue*baseValue;
+	
+		return d;
+	}
+	
 	public void dummyMethod(){};
 	
 	public Conversions(){
-		conversionMethods = new Method[10];
+		conversionMethods = new Method[13];
 		try {
 			conversionMethods[0]= this.getClass().getMethod(
 					"convertVolume", Integer.TYPE, Double.TYPE); //volume
@@ -532,7 +629,28 @@ public class Conversions {
 			conversionMethods[4]= this.getClass().getMethod(
 					"convertTemperature", Integer.TYPE, Double.TYPE); //temperature
 			
+			conversionMethods[5]= this.getClass().getMethod(
+					"convertAreaOfCircle", Integer.TYPE, Double.TYPE); //area of circle
+			
+			conversionMethods[6]= this.getClass().getMethod(
+					"convertPPMToMMG", Double.TYPE, Double.TYPE); //OEL 1
+			
+			conversionMethods[7]= this.getClass().getMethod(
+					"getOELinPPM", Double.TYPE, Double.TYPE); //OEL 2
+			
+			conversionMethods[8]= this.getClass().getMethod(
+					"convertConcentration1", Integer.TYPE, Double.TYPE); //concentration 1
+			
+			conversionMethods[9]= this.getClass().getMethod(
+					"convertConcentration2", Integer.TYPE, Double.TYPE); //concentration 2
+			
 			conversionMethods[10]= this.getClass().getMethod(
+					"convertFlowRate1", Integer.TYPE, Double.TYPE); //flow rate 1
+			
+			conversionMethods[11]= this.getClass().getMethod(
+					"convertFlowRate2", Integer.TYPE, Double.TYPE); //flow rate 2
+			
+			conversionMethods[12]= this.getClass().getMethod(
 					"dummyMethod", Integer.TYPE, Double.TYPE); //constants
 			
 		} catch (NoSuchMethodException e) {

@@ -36,7 +36,7 @@ public class EquationItemAdapter extends ArrayAdapter<EqnMenuItem>
 
 	}
 
-	public static class ViewHolder
+	public class ViewHolder
 	{
 		public TextView eqn_number;
 		public ImageView eqn_image;

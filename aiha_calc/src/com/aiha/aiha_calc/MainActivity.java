@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TabHost;
 
@@ -74,6 +75,11 @@ public class MainActivity extends SherlockFragmentActivity
 	
 	private static String makeFragmentName(int viewId, int index) {
 	     return "android:switcher:" + viewId + ":" + index;
+	}
+	
+	public static void notifySublist(EquationItemAdapter e)
+	{
+		e.notifyDataSetChanged();
 	}
 
 	public static class TabsAdapter extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener,

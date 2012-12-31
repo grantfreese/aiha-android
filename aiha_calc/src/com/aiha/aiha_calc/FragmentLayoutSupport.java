@@ -129,12 +129,10 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 	{
 		boolean mDualPane;
 		static boolean sublistSelected = false;
-		int mCurCheckPosition = 0;
-		final int FLOW_RATE = 9;
-		String message = "hello!";
+		int mCurCheckPosition = 0, subList = 2;
+		final int CONVERT = 1, INIT_CONVERT = 6, OEL = 7, CONCEN = 8, FLOW_RATE = 9;
 
 		EquationItemAdapter eqn_adapter_convert;
-		EquationItemAdapter eqn_adapter_sublist;
 		ArrayList<EqnMenuItem> list_convert;
 		
 
@@ -155,14 +153,19 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			current_tab = sherlockContext.getSupportActionBar().getSelectedNavigationIndex();
 			//TODO: obsolete?
 			
-			list_convert = _equationList.getEqns(1);
-
-			// setListAdapter(new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_temp) );
+			list_convert = _equationList.getEqns(INIT_CONVERT);
+			
 			// Populate list with our static array of titles.
 			sublistSelected = false;
 			if (list_convert != null)
 			{
-				eqn_adapter_convert = new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_convert);
+				eqn_adapter_convert = new EquationItemAdapter(getSherlockActivity(), R.layout.menu_list_grid, list_convert);
+			}
+			
+			list_convert = _equationList.getEqns(CONVERT);  //get the conversion list to add to the adapter.
+			eqn_adapter_convert.clear();
+			for(int i = 0; i < list_convert.size(); i++){
+				eqn_adapter_convert.add(list_convert.get(i));
 			}
 			setListAdapter(eqn_adapter_convert);
 
@@ -238,28 +241,29 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				System.out.println("showDetails for !mDualPane reached");
 				// Otherwise we need to launch a new activity to display
 				// the dialog fragment with selected text.
-				if(list_convert.get(index).num_of_variables == -1){
+				
+				if(list_convert.get(index).num_of_variables == -1){		
 					
+					subList = list_convert.get(index).number;
 					
-					int newList = list_convert.get(index).number;
+					eqn_adapter_convert.clear();
+					list_convert = _equationList.getEqns(subList);  //get new list to add to the adapter.
 					
-					list_convert = _equationList.getEqns(2);
-					eqn_adapter_convert = new EquationItemAdapter(getActivity(), R.layout.menu_list_grid, list_convert);
-					
-					//for(int i =0; i < list_convert.size(); i++){
-					//	eqn_adapter_convert.add(list_convert.get(i));
-					//}
-					
-					setListAdapter(eqn_adapter_convert);
+					for(int i = 0; i < list_convert.size(); i++){
+						eqn_adapter_convert.add(list_convert.get(i));
+					}
+					updateList();
 					sublistSelected = true;
-					eqn_adapter_convert.notifyDataSetChanged();
 				
 				}else{
 					
 					Intent intent = new Intent();
 					intent.setClass(getActivity(), DetailsActivity.class);
 					intent.putExtra("index", index);
-					intent.putExtra("currentTab", 1);
+					if (sublistSelected == false)
+						intent.putExtra("currentTab", 1);
+					else
+						intent.putExtra("currentTab", subList);
 					startActivity(intent);
 				}
 			}
@@ -267,18 +271,24 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 		
 		public void backButtonPressed(){
 			
-			list_convert = _equationList.getEqns(1);
 			eqn_adapter_convert.clear();
+			list_convert = _equationList.getEqns(CONVERT);  //get the conversion list to add to the adapter.
 			
-			System.out.println(list_convert.size());
-			for(int i =0; i < list_convert.size(); i++){
+			for(int i = 0; i < list_convert.size(); i++){
 				eqn_adapter_convert.add(list_convert.get(i));
 			}
-			
 			setListAdapter(eqn_adapter_convert);
-			System.out.println(message);
+			updateList();
+			subList = CONVERT;
 			sublistSelected = false;
-			eqn_adapter_convert.notifyDataSetChanged();
+		}
+		
+		public void updateList(){
+		getActivity().runOnUiThread(new Runnable() {
+	        public void run() {
+	            eqn_adapter_convert.notifyDataSetChanged();
+	        }
+		});
 		}
 	}
 
@@ -821,15 +831,19 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				result.setBackgroundColor(Color.WHITE);
 			}
 			
-			if (tab == 1)
+			EditText et1 = (EditText) V.findViewById(R.id.editText1);
+			Button bt1 = (Button) V.findViewById(R.id.button1);
+			Button bt2 = (Button) V.findViewById(R.id.button2);
+			
+			if (tab == 1 || tab == 8 || tab == 9)
+			{
 				conversion = true;
+				et1.setVisibility(View.INVISIBLE); // hide result bar for conversions
+			}
 			
 			// If num_of_variables = 0, this is a table //
 			if (emi.num_of_variables == 0)
 			{
-				EditText et1 = (EditText) V.findViewById(R.id.editText1);
-				Button bt1 = (Button) V.findViewById(R.id.button1);
-				Button bt2 = (Button) V.findViewById(R.id.button2);
 				et1.setVisibility(View.INVISIBLE);
 				bt1.setVisibility(View.INVISIBLE);  // result bar and buttons are hidden //
 				bt2.setVisibility(View.INVISIBLE);
