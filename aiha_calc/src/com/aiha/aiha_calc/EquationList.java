@@ -109,21 +109,22 @@ public class EquationList
 		tab_expos.add(new EqnMenuItem(1, R.raw.eqn_expos_01, 3, new String[] { "%qrtz", "", "%crist", "", "%trid", "" },"PEL", exposObj.getMethod(1)));
 		tab_expos.add(new EqnMenuItem(2, R.raw.eqn_expos_02, 3, new String[] { "%qrtz", "", "%crist", "", "%trid", "" },"PEL", exposObj.getMethod(2)));
 		tab_expos.add(new EqnMenuItem(3, R.raw.eqn_expos_03, 4, new String[] { "C1", "ppm", "OEL1", "ppm", "C2", "ppm", "OEL2", "ppm" },"", exposObj.getMethod(3)));
+		tab_expos.add(new EqnMenuItem(4, R.raw.missing_twa, 4, new String[] { "Ca", "ppm", "Ta", "minutes", "Cb", "ppm", "Tb", "minutes" },"ppm", exposObj.getMethod(4)));
 		
 		/*** Initial Conversion *****************************************************************************/
 		tab_init_convert.add(new EqnMenuItem(1, R.raw.eqn_conv_01, -1, new String[]{"",""}, "", convObj.getMethod(1))); //dummy array for the conversion list
 		
 		/*** OEL Conversions *****************************************************************************/
-		tab_oel.add(new EqnMenuItem(1, R.raw.to_ppm, 2, new String[]{"mg","gram weight", "ppm", "OEL in PPM"}, "OEL in mg/m3", convObj.getMethod(7)));
-		tab_oel.add(new EqnMenuItem(2, R.raw.from_ppm, 2, new String[]{"OEL","gram weight", "mg","OEL in mg/m3"}, "OEL in PPM", convObj.getMethod(8)));
+		tab_oel.add(new EqnMenuItem(1, R.raw.to_ppm, 2, new String[]{"mg","gram weight", "ppm", "OEL in ppm"}, "OEL(mg/m3)", convObj.getMethod(7)));
+		tab_oel.add(new EqnMenuItem(2, R.raw.from_ppm, 2, new String[]{"OEL","gram weight", "mg","OEL in mg/m3"}, "OEL(ppm)", convObj.getMethod(8)));
 		
 		/*** Concentration Conversions *****************************************************************************/
-		tab_concen.add(new EqnMenuItem(1, R.raw.eqn_conv_01, 2, new String[]{"","grain/cubic ft", "", "g/cubic m"}, "", convObj.getMethod(9)));
-		tab_concen.add(new EqnMenuItem(2, R.raw.eqn_conv_01, 2, new String[]{"","mppcf","","particles/cm3"}, "", convObj.getMethod(10)));
+		tab_concen.add(new EqnMenuItem(1, R.raw.eqn_concen_01, 2, new String[]{"","grain/cubic ft", "", "g/cubic m"}, "", convObj.getMethod(9)));
+		tab_concen.add(new EqnMenuItem(2, R.raw.eqn_concen_02, 2, new String[]{"","mppcf","","particles/cm3"}, "", convObj.getMethod(10)));
 		
 		/*** Flow Rate Conversions *****************************************************************************/
-		tab_flow.add(new EqnMenuItem(1, R.raw.eqn_conv_01, 3, new String[]{"","cubic m/s", "", "cubic ft/min", "", "cubic cm/s"}, "", convObj.getMethod(11)));
-		tab_flow.add(new EqnMenuItem(2, R.raw.eqn_conv_01, 2, new String[]{"","cubic ft/hr", "", "liters/min"}, "", convObj.getMethod(12)));
+		tab_flow.add(new EqnMenuItem(1, R.raw.eqn_flow_01, 3, new String[]{"","cubic m/s", "", "cubic ft/min", "", "cubic cm/s"}, "", convObj.getMethod(11)));
+		tab_flow.add(new EqnMenuItem(2, R.raw.eqn_flow_02, 2, new String[]{"","cubic ft/hr", "", "liters/min"}, "", convObj.getMethod(12)));
 	}
 
 	public class EqnMenuItem

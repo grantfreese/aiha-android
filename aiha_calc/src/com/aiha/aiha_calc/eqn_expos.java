@@ -47,8 +47,21 @@ public class eqn_expos
 		return Double.valueOf(df.format(part1));
 	}
 	
+	// TWA
+	public static double eqn_expos_04(double ca, double ta, double cb, double tb)
+	{
+		df.setMaximumFractionDigits(2);
+		double part1;
+		if (cb == 0.0 || tb == 0.0)
+			part1 = (((ca*ta) / ta));
+		else
+			part1 = (((ca*ta + cb*tb) / ta+tb));
+
+		return Double.valueOf(df.format(part1));
+	}
+	
 	public eqn_expos(){
-		equationMethods = new Method[3];
+		equationMethods = new Method[4];
 		
 		try {
 			equationMethods[0]= this.getClass().getMethod(
@@ -59,6 +72,9 @@ public class eqn_expos
 			
 			equationMethods[2]= this.getClass().getMethod(
 					"eqn_expos_03", Double.TYPE, Double.TYPE, Double.TYPE, Double.TYPE);
+			
+			equationMethods[3]= this.getClass().getMethod(
+					"eqn_expos_04", Double.TYPE, Double.TYPE, Double.TYPE, Double.TYPE);
 			
 		} catch (NoSuchMethodException e) {
 		} catch (SecurityException e) {

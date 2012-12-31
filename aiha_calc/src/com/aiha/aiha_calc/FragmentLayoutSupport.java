@@ -129,7 +129,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 	{
 		boolean mDualPane;
 		static boolean sublistSelected = false;
-		int mCurCheckPosition = 0, subList = 2;
+		int mCurCheckPosition = 0, subList = 1;
 		final int CONVERT = 1, INIT_CONVERT = 6, OEL = 7, CONCEN = 8, FLOW_RATE = 9;
 
 		EquationItemAdapter eqn_adapter_convert;
@@ -260,10 +260,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 					Intent intent = new Intent();
 					intent.setClass(getActivity(), DetailsActivity.class);
 					intent.putExtra("index", index);
-					if (sublistSelected == false)
-						intent.putExtra("currentTab", 1);
-					else
-						intent.putExtra("currentTab", subList);
+					intent.putExtra("currentTab", subList);
 					startActivity(intent);
 				}
 			}
