@@ -1088,6 +1088,14 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 			TableRow rowG = createTableRow(V, 1);
 			createTableText("**Values in \u00b0C and \u00b0F, WBGT", 1, params, V, rowG);
 			tl.addView(rowG);
+			
+			TableRow rowH = createTableRow(V, 1);
+			createTableText("", 1, params, V, rowH);
+			tl.addView(rowH);
+			
+			TableRow rowI = createTableRow(V, 1);
+			createTableText("OSHA Technical Manual Section III, Chap. 4", 1, params, V, rowI);
+			tl.addView(rowI);
 
 			return V;
 		}

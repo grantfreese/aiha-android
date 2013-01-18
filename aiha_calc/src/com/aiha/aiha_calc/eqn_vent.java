@@ -48,7 +48,7 @@ public class eqn_vent
 		df.setMaximumFractionDigits(2);
 		double part1;
 		part1 = vp + sp;
-		return Double.valueOf(df.format(part1*100));
+		return Double.valueOf(df.format(part1));
 	}
 
 	// flowRateAdjustmentFormulaOne

@@ -90,7 +90,9 @@ public class EquationList
 		tab_heat.add(new EqnMenuItem(3, R.raw.eqn_heat_03, 0, new String[]{},"", heatObj.getMethod(3))); // Heat Stress Table
 		
 		/*** Vent *****************************************************************************/
-		tab_vent.add(new EqnMenuItem(1, R.raw.eqn_vent_01, 4, new String[] { "gas volume", "liters", "gas density", "grams/cm3", "gas MW", "grams", "roomVolume", "feet3" },"%", ventObj.getMethod(1)));
+		//Removed on orders from the mentor
+		//tab_vent.add(new EqnMenuItem(1, R.raw.eqn_vent_01, 4, new String[] { "gas volume", "liters", "gas density", "grams/cm3", "gas MW", "grams", "roomVolume", "feet3" },"%", ventObj.getMethod(1)));
+		
 		tab_vent.add(new EqnMenuItem(2, R.raw.eqn_vent_02, 2, new String[] { "Q", "cfm", "Volume", "feet3" },"AC/hr", ventObj.getMethod(2)));
 		tab_vent.add(new EqnMenuItem(3, R.raw.eqn_vent_03, 2, new String[] { "VP", "", "SP", "" },"", ventObj.getMethod(3)));
 		tab_vent.add(new EqnMenuItem(4, R.raw.eqn_vent_04, 5, new String[] { "Qind", "L/min", "Pc", "kPa", "Ts", "\u00B0K", "Ps", "kPa", "Tc", "\u00B0K" },"L/min", ventObj.getMethod(4)));
@@ -103,7 +105,7 @@ public class EquationList
 		tab_vent.add(new EqnMenuItem(8, R.raw.eqn_vent_08, 5, new String[] { "SG", "", "ER", "pints/min", "K", "", "MW", "g", "C", "ppm" },"ft3/min", ventObj.getMethod(8)));
 		tab_vent.add(new EqnMenuItem(9, R.raw.eqn_vent_09, 3, new String[] { "SPout", "in. WC", "SPin", "in. WC", "VPin", "in. WC" },"in. WC", ventObj.getMethod(9)));
 		tab_vent.add(new EqnMenuItem(10, R.raw.eqn_vent_10, 2, new String[] { "TPout", "in. WC", "TPin", "in. WC" },"in. WC", ventObj.getMethod(10)));
-		tab_vent.add(new EqnMenuItem(11, R.raw.eqn_vent_11, 5, new String[] { "Q", "CFM", "Size1", "Inches", "Size2", "Inches", "RPM1", "", "RPM2", "" }, "CFM",ventObj.getMethod(11)));
+		tab_vent.add(new EqnMenuItem(11, R.raw.eqn_vent_11, 5, new String[] { "Q1", "CFM", "Size1", "Inches", "Size2", "Inches", "RPM1", "", "RPM2", "" }, "CFM",ventObj.getMethod(11)));
 
 		/*** Exposure *****************************************************************************/
 		tab_expos.add(new EqnMenuItem(1, R.raw.eqn_expos_01, 3, new String[] { "%qrtz", "", "%crist", "", "%trid", "" },"PEL", exposObj.getMethod(1)));
