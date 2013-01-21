@@ -61,9 +61,8 @@ public class MainActivity extends SherlockFragmentActivity
 	
 	@Override
 	public void onBackPressed(){
-		System.out.println("Back button event called!");
-		System.out.println(ConvertListFragment.sublistSelected);
-		if(ConvertListFragment.sublistSelected){
+		ActionBar bar = getSupportActionBar();
+		if(ConvertListFragment.sublistSelected && bar.getSelectedNavigationIndex() == 1){
 			FragmentManager fm = getSupportFragmentManager();
 			String frag = makeFragmentName(mViewPager.getId(), 1);
 			FragmentLayoutSupport.ConvertListFragment c = (ConvertListFragment) fm.findFragmentByTag(frag);
@@ -75,11 +74,6 @@ public class MainActivity extends SherlockFragmentActivity
 	
 	private static String makeFragmentName(int viewId, int index) {
 	     return "android:switcher:" + viewId + ":" + index;
-	}
-	
-	public static void notifySublist(EquationItemAdapter e)
-	{
-		e.notifyDataSetChanged();
 	}
 
 	public static class TabsAdapter extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener,

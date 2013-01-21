@@ -168,6 +168,7 @@ public class FragmentLayoutSupport extends SherlockFragmentActivity
 				eqn_adapter_convert.add(list_convert.get(i));
 			}
 			setListAdapter(eqn_adapter_convert);
+			subList = CONVERT;
 
 			// Check to see if we have a frame in which to embed the details
 			// fragment directly in the containing UI.
