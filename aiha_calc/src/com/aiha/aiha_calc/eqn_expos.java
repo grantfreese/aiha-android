@@ -55,7 +55,7 @@ public class eqn_expos
 		if (cb == 0.0 || tb == 0.0)
 			part1 = (((ca*ta) / ta));
 		else
-			part1 = (((ca*ta + cb*tb) / ta+tb));
+			part1 = (((ca*ta + cb*tb) / (ta+tb)));
 
 		return Double.valueOf(df.format(part1));
 	}

@@ -79,10 +79,10 @@ public class EquationList
 		//Removed on orders from the mentor
 		//tab_noise.add(new EqnMenuItem(1, R.raw.eqn_noise_01, 2, new String[] { "N", "decibels", "SPLi", "decibels" }, noiseObj.getMethod(1)));
 		
-		tab_noise.add(new EqnMenuItem(3, R.raw.eqn_noise_03, 1, new String[] { "SPL", "hours" },"hours", noiseObj.getMethod(3)));
+		tab_noise.add(new EqnMenuItem(3, R.raw.eqn_noise_03, 1, new String[] { "SPL", "decibels" },"hours", noiseObj.getMethod(2)));
 		tab_noise.add(new EqnMenuItem(4, R.raw.eqn_noise_04, 3, new String[] { "I1", "watts/m2", "D1", "meters", "D2", "meters" },"watts/m2", noiseObj.getMethod(4)));
 		tab_noise.add(new EqnMenuItem(5, R.raw.eqn_noise_05, 1, new String[] { "Dose", "" },"decibels", noiseObj.getMethod(5)));
-		tab_noise.add(new EqnMenuItem(2, R.raw.eqn_noise_02, 1, new String[] { "SPL", "decibels" },"hours", noiseObj.getMethod(2)));
+		tab_noise.add(new EqnMenuItem(2, R.raw.eqn_noise_02, 1, new String[] { "SPL", "decibels" },"hours", noiseObj.getMethod(3)));
 		
 		/*** Heat *****************************************************************************/
 		tab_heat.add(new EqnMenuItem(1, R.raw.eqn_heat_01, 3, new String[] { "tnwb", "\u00B0F", "tg", "\u00B0F", "db", "\u00B0F" },"\u00B0F", heatObj.getMethod(1)));
@@ -117,8 +117,8 @@ public class EquationList
 		tab_init_convert.add(new EqnMenuItem(1, R.raw.eqn_conv_01, -1, new String[]{"",""}, "", convObj.getMethod(1))); //dummy array for the conversion list
 		
 		/*** OEL Conversions *****************************************************************************/
-		tab_oel.add(new EqnMenuItem(1, R.raw.to_ppm, 2, new String[]{"mg","gram weight", "ppm", "OEL in ppm"}, "OEL(mg/m3)", convObj.getMethod(7)));
-		tab_oel.add(new EqnMenuItem(2, R.raw.from_ppm, 2, new String[]{"OEL","gram weight", "mg","OEL in mg/m3"}, "OEL(ppm)", convObj.getMethod(8)));
+		tab_oel.add(new EqnMenuItem(1, R.raw.to_ppm, 2, new String[]{"","molecular weight", "", "OEL in ppm"}, "OEL(mg/m3)", convObj.getMethod(7)));
+		tab_oel.add(new EqnMenuItem(2, R.raw.from_ppm, 2, new String[]{"","molecular weight", "","OEL in mg/m3"}, "OEL(ppm)", convObj.getMethod(8)));
 		
 		/*** Concentration Conversions *****************************************************************************/
 		tab_concen.add(new EqnMenuItem(1, R.raw.eqn_concen_01, 2, new String[]{"","grain/cubic ft", "", "g/cubic m"}, "", convObj.getMethod(9)));
