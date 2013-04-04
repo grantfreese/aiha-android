@@ -41,11 +41,12 @@ public class MainActivity extends SherlockFragmentActivity
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 
 		// configure actionbar to hide logo and use tabs
-		bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		//bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS); moved to fix tab collapsing issue 
 		bar.setDisplayUseLogoEnabled(false);
 		bar.setDisplayShowTitleEnabled(false);
 		bar.setDisplayShowHomeEnabled(false);
 		bar.setDisplayHomeAsUpEnabled(false);
+		
 		
 		mTabsAdapter = new TabsAdapter(this, mViewPager);
 
@@ -57,6 +58,7 @@ public class MainActivity extends SherlockFragmentActivity
 		mTabsAdapter.addTab("ventilation", "Ventilation",	FragmentLayoutSupport.VentListFragment.class, null);
 		mTabsAdapter.addTab("exposure", "Exposure",			FragmentLayoutSupport.ExposListFragment.class, null);
 
+		bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS); //moved to fix tab collapsing issue
 	}
 	
 	@Override

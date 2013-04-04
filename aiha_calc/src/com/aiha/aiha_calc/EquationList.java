@@ -117,8 +117,8 @@ public class EquationList
 		tab_init_convert.add(new EqnMenuItem(1, R.raw.eqn_conv_01, -1, new String[]{"",""}, "", convObj.getMethod(1))); //dummy array for the conversion list
 		
 		/*** OEL Conversions *****************************************************************************/
-		tab_oel.add(new EqnMenuItem(1, R.raw.to_ppm, 2, new String[]{"","molecular weight", "", "OEL in ppm"}, "OEL(mg/m3)", convObj.getMethod(7)));
-		tab_oel.add(new EqnMenuItem(2, R.raw.from_ppm, 2, new String[]{"","molecular weight", "","OEL in mg/m3"}, "OEL(ppm)", convObj.getMethod(8)));
+		tab_oel.add(new EqnMenuItem(1, R.raw.to_ppm, 2, new String[]{"","molecular weight", "", "ppm"}, "mg/m3", convObj.getMethod(7)));
+		tab_oel.add(new EqnMenuItem(2, R.raw.from_ppm, 2, new String[]{"","molecular weight", "","mg/m3"}, "ppm", convObj.getMethod(8)));
 		
 		/*** Concentration Conversions *****************************************************************************/
 		tab_concen.add(new EqnMenuItem(1, R.raw.eqn_concen_01, 2, new String[]{"","grain/cubic ft", "", "g/cubic m"}, "", convObj.getMethod(9)));
