@@ -5,7 +5,18 @@
     android:background="@color/aiha__turquoise"
     android:clickable="false"
     android:orientation="vertical" >
-
+
+
+
+
+
+
+
+
+
+
+
+
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
@@ -16,7 +27,8 @@
         android:clickable="true"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_action_search" />
-
+
+
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
@@ -66,9 +78,9 @@
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="0.2"
+            android:onClick="clearButtonClick"
             android:text="X"
-            android:textColor="@color/aiha__white" 
-            android:onClick="clearButtonClick"/>
+            android:textColor="@color/aiha_red" />
 
         <EditText
             android:id="@+id/editText1"
@@ -94,9 +106,12 @@
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="0.2"
+            android:onClick="calcButtonClick"
             android:text="="
-            android:textColor="@color/aiha__white" 
-            android:onClick="calcButtonClick" />
+            android:textColor="@color/aiha_darkgreen"
+            android:textSize="@dimen/abs__action_bar_title_text_size"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
 </LinearLayout>

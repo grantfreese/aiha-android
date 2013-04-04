@@ -4,4 +4,6 @@
     <color name="aiha__white">#FFFFFFFF</color>
     <color name="aiha__turquoise">#FF006C94</color>
     <color name="aiha__green">#FFB0C42A</color>
+    <color name="aiha_red">#FFFF2222</color>
+    <color name="aiha_darkgreen">#FF44FF44</color>
 </resources>
