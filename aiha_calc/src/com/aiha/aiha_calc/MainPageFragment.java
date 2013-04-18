@@ -1,5 +1,6 @@
 package com.aiha.aiha_calc;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.actionbarsherlock.app.SherlockFragment;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.graphics.Color;
 
 public class MainPageFragment extends SherlockFragment
@@ -34,6 +36,14 @@ public class MainPageFragment extends SherlockFragment
 			 {
 				V.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 			 }
+		
+		imageView.setOnClickListener(new View.OnClickListener(){
+			@Override
+		    public void onClick(View v) {
+				Uri uri = Uri.parse("http://www.aiha.org");
+                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+			}
+		});
 		
 		return V;
 	}

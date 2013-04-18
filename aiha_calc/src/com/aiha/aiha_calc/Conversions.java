@@ -16,7 +16,7 @@ public class Conversions {
 		return convertedValue;
 	}
 
-	public static double getOELinPPM(double oel, double mg)
+	public static double getOELinPPM(double mg, double oel)
 	{
 		double convertedValue;
 		convertedValue = 24.45*oel;
